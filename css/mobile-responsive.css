@@ -1,0 +1,19 @@
+@media screen and ( max-width:767px) {
+.addressnew ul{display:block;}
+.addressnew ul li{margin-bottom:18px;}
+.addressnew ul li{font-size:14px;}
+h4.text-white.mb-4{font-size:16px;}
+.footer-item strong span {
+    font-size:14px;
+}
+
+
+
+
+
+
+
+
+
+
+}
