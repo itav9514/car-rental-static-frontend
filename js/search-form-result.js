@@ -69,7 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
     format: 'DD MMM YYYY',
     delimiter: ' → ',
     autoApply: true,
-    numberOfColumns: 2,
+    numberOfColumns: 1,
     numberOfMonths: 2,
     minDate: new Date(),
     allowRepick: true,

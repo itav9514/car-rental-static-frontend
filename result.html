@@ -14,6 +14,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
         rel="stylesheet">
+    
 
     <!-- Icon Font Stylesheet -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" />
@@ -22,7 +23,10 @@
     <!-- Libraries Stylesheet -->
     <link href="lib/animate/animate.min.css" rel="stylesheet">
     <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/litepicker/dist/css/litepicker.css"
+    />
 
     <!-- Customized Bootstrap Stylesheet -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -82,7 +86,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-4">
-                    <div class="bg-secondary rounded p-4 p-md-5">
+                    <div class="bg-secondary rounded p-2">
                     <div class="bg-white rounded shadow p-4 text-dark">
 
                       <!-- Radio toggle -->
@@ -129,25 +133,48 @@
 
                           <!-- Drop-off Time (only time remains) -->
                           <div class="col-md-12">
-                            <label class="form-label fw-bold small mb-1">Pick-up Time</label>
-                            <div class="input-group">
-                              <span class="input-group-text bg-light"><i class="fas fa-clock"></i></span>
-                              <input id="pickup-time" class="form-control" type="time" value="09:00" required
-                                step="900">
-                            </div>
+                            <label class="form-label fw-bold small mb-1"
+                                >Pick-up Time</label
+                              >
+                              <div class="input-group">
+                                <span class="input-group-text bg-light"
+                                  ><i class="fas fa-clock"></i
+                                ></span>
+                                <input
+                                  id="pickup-time"
+                                  class="form-control"
+                                  type="time"
+                                  value="09:00"
+                                  required
+                                  step="900"
+                                  placeholder="HH:mm (24h)"
+                                  onfocus="this.showPicker()"
+                                />
+                              </div>
 
                           </div>
 
 
                           <div class="col-md-12">
-                            <label class="form-label fw-bold small mb-1">Drop-off Time</label>
-
-                            <div class="input-group">
-                              <span class="input-group-text bg-light"><i class="fas fa-clock"></i></span>
-                              <input id="dropoff-time" class="form-control" type="time" value="17:00" required
-                                step="900">
+                            <label class="form-label fw-bold small mb-1"
+                                >Drop-off Time</label
+                              >
+                              <div class="input-group">
+                                <span class="input-group-text bg-light"
+                                  ><i class="fas fa-clock"></i
+                                ></span>
+                                <input
+                                  id="dropoff-time"
+                                  class="form-control"
+                                  type="time"
+                                  value="17:00"
+                                  required
+                                  step="900"
+                                  placeholder="HH:mm (24h)"
+                                  onfocus="this.showPicker()"
+                                />
+                              </div>
                             </div>
-                          </div>
 
                         </div>
 
@@ -567,6 +594,9 @@
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
+    <script src="/js/search-form-result.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/litepicker/dist/litepicker.js"></script>
+
 </body>
 
 </html>
