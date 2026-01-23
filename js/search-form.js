@@ -6,13 +6,13 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // Elements
-  const sameRadio          = document.getElementById('sameDropoff');
-  const diffRadio          = document.getElementById('differentDropoff');
-  const dropoffGroup       = document.getElementById('dropoff-group');
-  const dropoffLocation    = document.getElementById('dropoff-location');
-  const pickupDateDisplay  = document.getElementById('pickup-date-display');
-  const pickupTime         = document.getElementById('pickup-time');
-  const dropoffTime        = document.getElementById('dropoff-time');
+  const sameRadio       = document.getElementById('sameDropoff');
+  const diffRadio       = document.getElementById('differentDropoff');
+  const dropoffGroup    = document.getElementById('dropoff-group');
+  const dropoffLocation = document.getElementById('dropoff-location');
+  const dateDisplay     = document.getElementById('pickup-date-display');
+  const pickupTime      = document.getElementById('pickup-time');
+  const dropoffTime     = document.getElementById('dropoff-time');
 
   const DEFAULT_PICKUP = {
     formatted_address: "Indira Gandhi International Airport, New Delhi, Delhi 110037, India",
@@ -26,21 +26,46 @@ document.addEventListener('DOMContentLoaded', () => {
     geometry: { location: { lat: 28.4950, lng: 77.0880 } }
   };
 
-  // Toggle drop-off location visibility
+  // Toggle drop-off section with smooth animation
   function toggleDropoff() {
     const isDifferent = diffRadio.checked;
-    dropoffGroup.style.display = isDifferent ? 'block' : 'none';
-    if (dropoffLocation) dropoffLocation.required = isDifferent;
+
+    if (isDifferent) {
+      dropoffGroup.style.display = 'flex';
+      dropoffGroup.style.height = '0px';
+      dropoffGroup.style.opacity = '0';
+      dropoffGroup.offsetHeight; // force reflow
+
+      const contentHeight = dropoffGroup.scrollHeight + 'px';
+      dropoffGroup.style.height = contentHeight;
+      dropoffGroup.style.opacity = '1';
+      dropoffLocation.required = true;
+    } else {
+      dropoffGroup.style.height = dropoffGroup.scrollHeight + 'px';
+      dropoffGroup.offsetHeight; // force reflow
+
+      dropoffGroup.style.height = '0px';
+      dropoffGroup.style.opacity = '0';
+
+      setTimeout(() => {
+        dropoffGroup.style.display = 'none';
+        dropoffGroup.style.height = '';
+      }, 400);
+
+      dropoffLocation.required = false;
+    }
   }
 
   sameRadio.addEventListener('change', toggleDropoff);
   diffRadio.addEventListener('change', toggleDropoff);
-  toggleDropoff();
+  toggleDropoff(); // run once on load
 
-  // Litepicker – only pickup date is visible, but it still handles range internally
+  // ────────────────────────────────────────────────
+  // Litepicker – RANGE mode
+  // ────────────────────────────────────────────────
   const picker = new Litepicker({
-    element: pickupDateDisplay,
-    singleMode: false,                      // still range mode (hidden end date)
+    element: dateDisplay,
+    singleMode: false,
     format: 'DD MMM YYYY',
     delimiter: ' → ',
     autoApply: true,
@@ -49,64 +74,104 @@ document.addEventListener('DOMContentLoaded', () => {
     minDate: new Date(),
     allowRepick: true,
     parentEl: document.body,
+    mobileFriendly: true,
   });
 
-  // Default: today → today + 3 days
+  // Set sensible default range
   const today = new Date();
   const defaultEnd = new Date(today);
   defaultEnd.setDate(today.getDate() + 3);
   picker.setDateRange(today, defaultEnd);
 
-  // Show only pickup date in the visible field
-  const updatePickupDisplay = () => {
-    const startDate = picker.getStartDate();
-    if (startDate) {
-      pickupDateDisplay.value = startDate.format('DD MMM YYYY');
+  // Keep the visible input always up-to-date
+  const updateDateDisplay = () => {
+    const start = picker.getStartDate();
+    const end   = picker.getEndDate();
+
+    if (start && end) {
+      dateDisplay.value = `${start.format('DD MMM YYYY')} → ${end.format('DD MMM YYYY')}`;
+    } else if (start) {
+      dateDisplay.value = start.format('DD MMM YYYY') + ' → Select return date';
     } else {
-      pickupDateDisplay.value = 'Select pickup date';
+      dateDisplay.value = 'Select pickup & return dates';
     }
   };
 
-  picker.on('selected', updatePickupDisplay);
-  picker.on('render', updatePickupDisplay);
-  updatePickupDisplay();
+  picker.on('selected', updateDateDisplay);
+  picker.on('render', updateDateDisplay);
+  picker.on('clear', updateDateDisplay);
+  picker.on('button:apply', updateDateDisplay);
 
-  // Form submission – drop-off date is calculated automatically
+  // Force initial display
+  updateDateDisplay();
+
+  // ────────────────────────────────────────────────
+  // Form submission
+  // ────────────────────────────────────────────────
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
     const start = picker.getStartDate();
-    if (!start) {
-      alert('Please select pickup date');
+    const end   = picker.getEndDate();
+
+    // ─── Reliable validation ────────────────────────────────────────
+    if (!start || !end) {
+      alert('Please select both pickup and drop-off dates');
       return;
     }
 
-    // Calculate drop-off date automatically (e.g. +3 days from pickup)
-    const dropoffCalculated = new Date(start);
-    dropoffCalculated.setDate(start.getDate() + 3); // ← you can change this logic
+    const startJS = start.toJSDate();
+    const endJS   = end.toJSDate();
 
-    const pickupDate  = start.toISOString().split('T')[0];
-    const dropoffDate = dropoffCalculated.toISOString().split('T')[0];
+    if (isNaN(startJS.getTime()) || isNaN(endJS.getTime())) {
+      alert('Invalid date range. Please select again.');
+      return;
+    }
 
-    const pickupLoc = document.getElementById('pickup-location')?.value.trim() || '';
+    if (endJS < startJS) {
+      alert('Drop-off date cannot be before pickup date');
+      return;
+    }
+
+    // ─── Prepare data ───────────────────────────────────────────────
+    const pickupDate  = start.format('YYYY-MM-DD');
+    const dropoffDate = end.format('YYYY-MM-DD');
+
+    const pickupLoc = document.getElementById('pickup-location')?.value.trim();
 
     if (!pickupLoc) {
-      alert('Please enter pickup location');
+      alert('Please enter a pickup location');
       return;
     }
 
     const isSame = sameRadio.checked;
 
+    // ─── Decide which place details to send ─────────────────────────
+    let pickupPlaceDetails   = null;
+    let dropoffPlaceDetails  = null;
+
+    if (!pickupLoc || pickupLoc === DEFAULT_PICKUP.formatted_address) {
+      pickupPlaceDetails = DEFAULT_PICKUP;
+    }
+
+    if (isSame) {
+      dropoffPlaceDetails = pickupPlaceDetails; // same as pickup
+    } else {
+      const dropoffLoc = dropoffLocation?.value.trim();
+      if (!dropoffLoc || dropoffLoc === DEFAULT_DROPOFF.formatted_address) {
+        dropoffPlaceDetails = DEFAULT_DROPOFF;
+      }
+    }
+
     const bookingData = {
       pickupLocation: pickupLoc || DEFAULT_PICKUP.formatted_address,
-      pickupPlaceDetails: pickupLoc ? null : DEFAULT_PICKUP,
+      pickupPlaceDetails,           // contains lat/lng when using default
 
-      dropoffLocation: isSame 
+      dropoffLocation: isSame
         ? (pickupLoc || DEFAULT_PICKUP.formatted_address)
         : (dropoffLocation?.value.trim() || DEFAULT_DROPOFF.formatted_address),
-      dropoffPlaceDetails: isSame 
-        ? (pickupLoc ? null : DEFAULT_PICKUP)
-        : (dropoffLocation?.value.trim() ? null : DEFAULT_DROPOFF),
+
+      dropoffPlaceDetails,          // contains lat/lng when using default or same
 
       sameDropoff: isSame,
 
@@ -114,7 +179,7 @@ document.addEventListener('DOMContentLoaded', () => {
       dropoffDateTime: `${dropoffDate}T${dropoffTime.value || '17:00'}`,
     };
 
-    console.log('Submitting:', bookingData);
+    console.log('Submitting booking data:', bookingData);
 
     try {
       const res = await fetch('https://your-domain.com/api/CarRentalEnquiries/', {
@@ -123,13 +188,17 @@ document.addEventListener('DOMContentLoaded', () => {
         body: JSON.stringify(bookingData)
       });
 
-      if (!res.ok) throw new Error(await res.text() || 'Failed');
+      if (!res.ok) {
+        const errorText = await res.text();
+        throw new Error(errorText || `HTTP ${res.status}`);
+      }
 
       alert('Search request sent successfully!');
-      // window.location.href = '/results.html'; // optional
+      // window.location.href = '/results.html'; // uncomment if needed
+
     } catch (err) {
-      console.error(err);
-      alert('Error: ' + err.message);
+      console.error('Submission error:', err);
+      alert('Error sending request: ' + err.message);
     }
   });
 });

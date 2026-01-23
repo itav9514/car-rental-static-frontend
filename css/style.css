@@ -1096,3 +1096,23 @@
 
 
 /*** result page End ***/
+
+
+/* Search page */
+#dropoff-group {
+  transition: height 0.4s ease-out, opacity 0.4s ease-out;
+  overflow: hidden;
+}
+
+/* Hide the native clock icon in WebKit browsers (Chrome, Edge, Safari) */
+input[type="time"]::-webkit-calendar-picker-indicator {
+  display: none !important;
+  -webkit-appearance: none;
+}
+
+/* Optional: make cursor behave like clickable field */
+input[type="time"] {
+  cursor: pointer;
+}
+
+/* Firefox usually opens on field click already — no extra needed */
