@@ -877,107 +877,222 @@
     background-color: #41479B;
 }
 
-.thankyou{
-      background: url(../img/thanku-banner.png) no-repeat; width:100%; height:399px; text-align: center;
-     }
-     .thankyou h2{
-          font-size: 36px;
-          color: #00154c;
-          font-weight: 800;
-          padding: 133px 0 14px;
-     }
-    .thankyou p{
-          color: #000000;
-          font-size: 17px;
-          font-weight: 500;
-          line-height: 26px;
-    }
-    .get-in-touch{
-      float:left; width:100%; margin-top:20px;
-    }
-    .get-in-touch h2{
-      color: #000000;
-      font-size: 28px;
-      font-weight: 700;
-    }
+.thankyou {
+    background: url(../img/thanku-banner.png) no-repeat;
+    width: 100%;
+    height: 399px;
+    text-align: center;
+}
 
-    .wide-choice{
-      float:left; width:100%; margin-top:30px;
-    }
-    .wide-choice h3{
-      color: #000000;
-      font-size: 30px;
-      font-weight: 600;
-      margin: 0 0 20px;
-    }
-    .wide-choice p{
-      color: #000000;
-      font-size: 16px;
-      font-weight: 400;
-    }
-    .your-mind{
-      float:left; width:100%; margin-top:30px;
-    }
+.thankyou h2 {
+    font-size: 36px;
+    color: #00154c;
+    font-weight: 800;
+    padding: 133px 0 14px;
+}
 
-     .your-mind .questions{
-      background:url(../img/banner-2.png) no-repeat;
-      width:100%;
-      height:320px;
-      border-radius: 30px;
-      background-position: right;
-    }
-    .your-mind .questions span{
-      color: #fff;
-      font-size: 30px;
-      font-weight: 600;
-      line-height: 19px;
-      display: inline-block;
-      margin: 208px 33px 0;
-    }
-     .your-mind .questions button{
-        float: right;
-        margin: 182px 36px 0;
-        background: #001c76;
-        color: #fff;
-        font-size: 20px;
-        font-weight: 500;
-        padding: 5px 24px;
-        border-radius: 10px;
-     }
+.thankyou p {
+    color: #000000;
+    font-size: 17px;
+    font-weight: 500;
+    line-height: 26px;
+}
 
-      .progress-new{
-      width: 80%;
-      margin: 30px auto 25px;
-    }
-     .progress-new ul{margin:0; padding:0; display:flex; justify-content: space-between;}
-     .progress-new ul li{list-style-type: none;    text-align: center;}
-    .progress-new ul li h2{
-        color: #000000;
-        font-size: 19px;
-        font-weight: 700;
-        margin: 28px 0 0;
-    }
-      .progress-new ul li p{
-        color: #000000;
-        font-size:16px;
-        font-weight:500;
-        margin-top:8px;
-    }
-    .progress-new ul li span.active {
-        background:#001c76;
-        border:2px solid #001c76;
-        border-radius: 50%;
-        padding: 21px 15px;
-    }
-    .progress-new ul li span{
-        padding: 21px 15px;
-        border-radius: 50%;
-        background:#fff;
-        border:2px solid #efefef;
-    }
+.get-in-touch {
+    float: left;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.get-in-touch h2 {
+    color: #000000;
+    font-size: 28px;
+    font-weight: 700;
+}
+
+.wide-choice {
+    float: left;
+    width: 100%;
+    margin-top: 30px;
+}
+
+.wide-choice h3 {
+    color: #000000;
+    font-size: 30px;
+    font-weight: 600;
+    margin: 0 0 20px;
+}
+
+.wide-choice p {
+    color: #000000;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.your-mind {
+    float: left;
+    width: 100%;
+    margin-top: 30px;
+}
+
+.your-mind .questions {
+    background: url(../img/banner-2.png) no-repeat;
+    width: 100%;
+    height: 320px;
+    border-radius: 30px;
+    background-position: right;
+}
+
+.your-mind .questions span {
+    color: #fff;
+    font-size: 30px;
+    font-weight: 600;
+    line-height: 19px;
+    display: inline-block;
+    margin: 208px 33px 0;
+}
+
+.your-mind .questions button {
+    float: right;
+    margin: 182px 36px 0;
+    background: #001c76;
+    color: #fff;
+    font-size: 20px;
+    font-weight: 500;
+    padding: 5px 24px;
+    border-radius: 10px;
+}
+
+.progress-new {
+    width: 80%;
+    margin: 30px auto 25px;
+}
+
+.progress-new ul {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.progress-new ul li {
+    list-style-type: none;
+    text-align: center;
+}
+
+.progress-new ul li h2 {
+    color: #000000;
+    font-size: 19px;
+    font-weight: 700;
+    margin: 28px 0 0;
+}
+
+.progress-new ul li p {
+    color: #000000;
+    font-size: 16px;
+    font-weight: 500;
+    margin-top: 8px;
+}
+
+.progress-new ul li span.active {
+    background: #001c76;
+    border: 2px solid #001c76;
+    border-radius: 50%;
+    padding: 21px 15px;
+}
+
+.progress-new ul li span {
+    padding: 21px 15px;
+    border-radius: 50%;
+    background: #fff;
+    border: 2px solid #efefef;
+}
+
+/*** result page Start ***/
+
+.car-result {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .16);
+    border: 1px solid #d7d8d8;
+    background-color: #fff;
+    border-radius: 9px;
+    padding: 0 14px 0;
+    margin-bottom: 20px;
+}
+
+.car-result .rst-1 {
+    width: 28%;
+}
+
+.car-result .rst-2 {
+    width: 47%;
+}
+.car-result .rst-2 h2 {
+    font-size: 19px;
+    font-weight: 700;
+    line-height: 22px;
+    margin: 0 0 8px 0;
+    color: #222;
+}
+.car-result .rst-2 p {
+    font-size: 14px;
+    font-weight: 400;
+    color: #222;
+    margin-bottom: 9px;
+}
+.car-result .rst-3 {
+    width: 25%;
+    text-align: center;
+}
+
+.car-result .rst-3 strong {
+    font-size: 21px;
+    font-weight: 800;
+    color: #222;
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+.car-result .rst-3 strong span {
+    font-size: 14px;
+    font-weight: 500;
+    color: #222;
+}
+
+.car-result .rst-3 button {
+    border-radius: 10px;
+    background: #fd1001;
+    font-size: 17px;
+    color: #fff;
+    font-weight: 600;
+    padding: 8px 0;
+    border: none;
+    width: 100%;
+}
+.person-all {
+    display: flex;
+    justify-content: flex-start;
+}
+.person-all span{
+    font-size: 14px;
+    font-weight: 600;
+    color: #222;
+    display: inline-block;
+    margin-right: 16px;
+}
+.person-all span img{margin-right:10px;}
+.vehicle-txt{
+     font-size: 21px;
+    font-weight: 500;
+    color: #222;
+}
 
 
 
 
 
 
+/*** result page End ***/
