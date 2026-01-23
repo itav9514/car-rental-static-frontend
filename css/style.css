@@ -1024,11 +1024,11 @@
 }
 
 .car-result .rst-1 {
-    width: 28%;
+    width: 34%;
 }
 
 .car-result .rst-2 {
-    width: 47%;
+    width: 48%;
 }
 .car-result .rst-2 h2 {
     font-size: 19px;
@@ -1090,6 +1090,7 @@
     color: #222;
 }
 
+<<<<<<< HEAD
 
 
 
@@ -1116,3 +1117,6 @@ input[type="time"] {
 }
 
 /* Firefox usually opens on field click already — no extra needed */
+=======
+/*** result page End ***/
+>>>>>>> 5bc98f0d44e948aa058cd84f8e1db79b8ae0e34c
