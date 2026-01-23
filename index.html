@@ -28,6 +28,7 @@
     <!-- Libraries Stylesheet -->
     <link href="lib/animate/animate.min.css" rel="stylesheet" />
     <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/litepicker/dist/css/litepicker.css" />
 
     <!-- Customized Bootstrap Stylesheet -->
     <link href="css/bootstrap.min.css" rel="stylesheet" />
@@ -52,30 +53,7 @@
     </div>
     <!-- Spinner End -->
 
-    <!-- Topbar Start 
-        <div class="container-fluid topbar bg-secondary d-none d-xl-block w-100">
-            <div class="container">
-                <div class="row gx-0 align-items-center" style="height: 45px;">
-                    <div class="col-lg-6 text-center text-lg-start mb-lg-0">
-                        <div class="d-flex flex-wrap">
-                            <a href="#" class="text-muted me-4"><i class="fas fa-map-marker-alt text-primary me-2"></i>Find A Location</a>
-                            <a href="tel:+01234567890" class="text-muted me-4"><i class="fas fa-phone-alt text-primary me-2"></i>+01234567890</a>
-                            <a href="mailto:example@gmail.com" class="text-muted me-0"><i class="fas fa-envelope text-primary me-2"></i>Example@gmail.com</a>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 text-center text-lg-end">
-                        <div class="d-flex align-items-center justify-content-end">
-                            <a href="#" class="btn btn-light btn-sm-square rounded-circle me-3"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#" class="btn btn-light btn-sm-square rounded-circle me-3"><i class="fab fa-twitter"></i></a>
-                            <a href="#" class="btn btn-light btn-sm-square rounded-circle me-3"><i class="fab fa-instagram"></i></a>
-                            <a href="#" class="btn btn-light btn-sm-square rounded-circle me-0"><i class="fab fa-linkedin-in"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        -->
-    <!-- Topbar End -->
+
 
     <!-- Navbar & Hero Start -->
     <div class="container-fluid nav-bar sticky-top px-0 px-lg-4 py-2 py-lg-0">
@@ -117,12 +95,7 @@
         data-bs-ride="carousel"
         data-bs-interval="false"
       >
-        <!--
-                <ol class="carousel-indicators">
-                    <li data-bs-target="#carouselId" data-bs-slide-to="0" class="active" aria-current="true" aria-label="First slide"></li>
-                    <li data-bs-target="#carouselId" data-bs-slide-to="1" aria-label="Second slide"></li>
-                </ol>
-                -->
+
         <div class="carousel-inner" role="listbox">
           <div class="carousel-item active">
             <img
@@ -145,21 +118,135 @@
                     data-delay="1s"
                     style="animation-delay: 1s"
                   >
-                    <div class="bg-secondary rounded p-5">
-                      <h4 class="text-white mb-4">CONTINUE CAR RESERVATION</h4>
-                                      <div class="row g-3 bg-danger">
-                        <div class="text-dark">
-                          <div class="col-lg-4">
-                            Hello
-                          </div>
-                          <div class="col-lg-4">
-                            Hello
-                          </div>        
-                          <div class="col-lg-4">
-                            Hello
-                          </div>
-                        </div>
-                      </div>
+
+
+
+
+
+
+
+                  <div class="bg-secondary rounded p-4 p-md-5">
+  <div class="bg-white rounded shadow p-4 text-dark">
+
+    <!-- Radio toggle -->
+    <div class="row justify-content-center mb-4">
+      <div class="col-auto">
+        <div class="btn-group" role="group">
+          <input type="radio" class="btn-check" name="dropoffOption" id="sameDropoff" value="same" checked autocomplete="off">
+          <label class="btn btn-outline-danger" for="sameDropoff">Same Drop-off Location</label>
+
+          <input type="radio" class="btn-check" name="dropoffOption" id="differentDropoff" value="different" autocomplete="off">
+          <label class="btn btn-outline-danger" for="differentDropoff">Different Drop-off Location</label>
+        </div>
+      </div>
+    </div>
+
+    <form id="searchForm">
+
+      <div class="row g-3 mb-4 align-items-end">
+
+        <!-- Pickup Location -->
+        <div class="col-md-4">
+          <label class="form-label fw-bold small mb-1">Pickup Location</label>
+          <div class="input-group">
+            <span class="input-group-text bg-light"><i class="fas fa-map-marker-alt"></i></span>
+            <input 
+              id="pickup-location" 
+              class="form-control" 
+              type="text" 
+              placeholder="City or Airport" 
+              value="Indira Gandhi International Airport, New Delhi, Delhi 110037, India" 
+              required 
+              autocomplete="off"
+            >
+          </div>
+        </div>
+
+        <!-- Pickup Date & Time – now takes more space -->
+        <div class="col-md-4">
+          <label class="form-label fw-bold small mb-1">Pick-up & Dropoff Date</label>
+          <div class="input-group">
+            <span class="input-group-text bg-light"><i class="fas fa-calendar-alt"></i></span>
+            <input 
+              id="pickup-date-display" 
+              class="form-control" 
+              type="text" 
+              placeholder="Pick-up date" 
+              readonly 
+              required
+            >
+          </div>
+
+        </div>
+
+        <!-- Drop-off Time (only time remains) -->
+        <div class="col-md-2">
+          <label class="form-label fw-bold small mb-1">Pick-up Time</label>
+                    <div class="input-group">
+            <span class="input-group-text bg-light"><i class="fas fa-clock"></i></span>
+            <input 
+              id="pickup-time" 
+              class="form-control" 
+              type="time" 
+              value="09:00" 
+              required 
+              step="900"
+            >
+          </div>
+          
+        </div>
+
+
+                <div class="col-md-2">
+          <label class="form-label fw-bold small mb-1">Drop-off Time</label>
+
+          <div class="input-group">
+            <span class="input-group-text bg-light"><i class="fas fa-clock"></i></span>
+            <input 
+              id="dropoff-time" 
+              class="form-control" 
+              type="time" 
+              value="17:00" 
+              required 
+              step="900"
+            >
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Conditional Drop-off location -->
+      <div class="row g-3 mb-4" id="dropoff-group" style="display: none;">
+        <div class="col-4">
+          <label class="form-label fw-bold small mb-1">Drop-off Location</label>
+          <div class="input-group">
+            <span class="input-group-text bg-light"><i class="fas fa-map-marker-alt"></i></span>
+            <input 
+              id="dropoff-location" 
+              class="form-control" 
+              type="text" 
+              placeholder="Different drop-off city or airport" 
+              value="Cyber City, Gurugram, Haryana 122002, India" 
+              autocomplete="off"
+            >
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <button type="submit" class="btn btn-danger btn-lg py-3 fw-bold">
+          Search & Book
+        </button>
+      </div>
+
+    </form>
+  </div>
+</div>
+
+
+
+                  
+
                       
 
 
@@ -1304,12 +1391,15 @@
     <script src="{% static 'js/booking-form.js' %}"></script>
     -->
     <script src="/js/booking-form.js"></script>
+    <script src="/js/search-form.js"></script>
 
     <script
       async
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDVQMGq0Z3sW_SHPDWNEr8q9LzrVEXtR2o&libraries=places&callback=initGooglePlaces"
       defer
     ></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/litepicker/dist/litepicker.js"></script>
 
     <script>
       let pickupAutocomplete, dropoffAutocomplete;
