@@ -3,15 +3,14 @@
 .addressnew ul li{margin-bottom:18px;}
 .addressnew ul li{font-size:14px;}
 h4.text-white.mb-4{font-size:16px;}
-.footer-item strong span {
-    font-size:14px;
-}
-
-
-
-
-
-
+.footer-item strong span {font-size:14px;}
+.car-result{display: block; text-align: center;    padding: 0 14px 15px;}
+.car-result .rst-1,.car-result .rst-2,.car-result .rst-3{width:100%;}
+.person-all{margin-bottom:10px;}
+.car-result .rst-2 h2{font-size:17px;}
+.car-result .rst-3 strong{font-size:18px;}
+.car-result .rst-3 button{font-size:15px;}
+.vehicle-txt {font-size: 18px;display: inline-block;margin: 16px 0 13px;}
 
 
 

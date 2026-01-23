@@ -82,6 +82,97 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-4">
+                    <div class="bg-secondary rounded p-4 p-md-5">
+                    <div class="bg-white rounded shadow p-4 text-dark">
+
+                      <!-- Radio toggle -->
+                      <div class="row justify-content-center mb-4">
+                        <div class="col-auto">
+                          <div class="btn-group" role="group">
+                            <input type="radio" class="btn-check" name="dropoffOption" id="sameDropoff" value="same"
+                              checked autocomplete="off">
+                            <label class="btn btn-outline-danger" for="sameDropoff">Same Drop-off Location</label>
+
+                            <input type="radio" class="btn-check" name="dropoffOption" id="differentDropoff"
+                              value="different" autocomplete="off">
+                            <label class="btn btn-outline-danger" for="differentDropoff">Different Drop-off
+                              Location</label>
+                          </div>
+                        </div>
+                      </div>
+
+                      <form id="searchForm">
+
+                        <div class="row g-3 mb-4 align-items-end">
+
+                          <!-- Pickup Location -->
+                          <div class="col-md-12">
+                            <label class="form-label fw-bold small mb-1">Pickup Location</label>
+                            <div class="input-group">
+                              <span class="input-group-text bg-light"><i class="fas fa-map-marker-alt"></i></span>
+                              <input id="pickup-location" class="form-control" type="text" placeholder="City or Airport"
+                                value="Indira Gandhi International Airport, New Delhi, Delhi 110037, India" required
+                                autocomplete="off">
+                            </div>
+                          </div>
+
+                          <!-- Pickup Date & Time – now takes more space -->
+                          <div class="col-md-12">
+                            <label class="form-label fw-bold small mb-1">Pick-up & Dropoff Date</label>
+                            <div class="input-group">
+                              <span class="input-group-text bg-light"><i class="fas fa-calendar-alt"></i></span>
+                              <input id="pickup-date-display" class="form-control" type="text"
+                                placeholder="Pick-up date" readonly required>
+                            </div>
+
+                          </div>
+
+                          <!-- Drop-off Time (only time remains) -->
+                          <div class="col-md-12">
+                            <label class="form-label fw-bold small mb-1">Pick-up Time</label>
+                            <div class="input-group">
+                              <span class="input-group-text bg-light"><i class="fas fa-clock"></i></span>
+                              <input id="pickup-time" class="form-control" type="time" value="09:00" required
+                                step="900">
+                            </div>
+
+                          </div>
+
+
+                          <div class="col-md-12">
+                            <label class="form-label fw-bold small mb-1">Drop-off Time</label>
+
+                            <div class="input-group">
+                              <span class="input-group-text bg-light"><i class="fas fa-clock"></i></span>
+                              <input id="dropoff-time" class="form-control" type="time" value="17:00" required
+                                step="900">
+                            </div>
+                          </div>
+
+                        </div>
+
+                        <!-- Conditional Drop-off location -->
+                        <div class="row g-3 mb-4" id="dropoff-group" style="display: none;">
+                          <div class="col-md-12">
+                            <label class="form-label fw-bold small mb-1">Drop-off Location</label>
+                            <div class="input-group">
+                              <span class="input-group-text bg-light"><i class="fas fa-map-marker-alt"></i></span>
+                              <input id="dropoff-location" class="form-control" type="text"
+                                placeholder="Different drop-off city or airport"
+                                value="Cyber City, Gurugram, Haryana 122002, India" autocomplete="off">
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="row">
+                          <button type="submit" class="btn btn-danger btn-lg py-3 fw-bold">
+                            Search & Book
+                          </button>
+                        </div>
+
+                      </form>
+                    </div>
+                  </div>
 
                 </div>
                 <div class="col-lg-8">
