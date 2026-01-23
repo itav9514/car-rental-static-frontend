@@ -1102,24 +1102,21 @@
     font-size: 21px;
     font-weight: 500;
     color: #222;
+    margin-bottom: 18px;
 }
-
-
-
-
-
 
 /*** result page End ***/
 /*** addon extra page Start ***/
 
 .extra-all {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     margin-bottom: 26px;
+    gap: 24px;
 }
 
 .extra-all .addon-services {
-    width: 21%;
+    width: 32%;
     min-height: 429px;
     border: 1px solid #c4c6cc;
     position: relative;
@@ -1245,24 +1242,230 @@
     margin-bottom: 31px;
 }
 
+.Price-details {
+    width: 100%;
+    float: left;
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-top: 21px;
+    background: #f3f3f3;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.Price-details h2 {
+    font-size: 21px;
+    color: #222;
+    font-weight: 700;
+    margin: 0 7px 11px;
+}
+
+.Price-details .dtl {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 7px 10px;
+}
+
+.Price-details .dtl span {
+    font-size: 14px;
+    color: #222;
+    font-weight: 500;
+}
+
+.Price-details .dtl strong {
+    font-size: 16px;
+    color: #222;
+    font-weight: 600;
+}
+
+.conti-btn a {
+    color: #fff;
+}
+
+
+
+.your-car {
+    width: 100%;
+    float: left;
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-top: 21px;
+    border-radius: 10px;
+}
+
+.your-car img {
+    margin: 0 auto 0;
+    display: block;
+}
+
+.your-car h2 {
+    font-size: 21px;
+    color: #222;
+    font-weight: 700;
+    margin: 0 7px 11px;
+}
+
+.your-car strong {
+    font-size: 14px;
+    color: #222;
+    font-weight: 700;
+    margin: 0 7px 0;
+}
+
+.your-car p {
+    font-size: 13px;
+    color: #222;
+    font-weight: 500;
+    margin: 0 7px 8px;
+}
 
 /*** addon extra page End ***/
 
+/*** Payment page Start ***/
+.chk-txt {
+    font-size: 22px;
+    color: #222;
+    font-weight: 700;
+}
+
+.pickup {
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid #ddd;
+    padding: 10px;
+    background: #f3f3f3;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    align-items: center;
+}
+
+.pickup .loc-1 {}
+
+.pickup .loc-1 label {
+    font-size: 15px;
+    color: #222;
+    font-weight: 700;
+}
+
+.pickup .loc-1 p {
+    font-size: 14px;
+    color: #222;
+    font-weight: 500;
+}
+
+.Personal {
+     width: 100%;
+    float: left;
+    background: rgba(255, 255, 255, 0.70);
+    border-radius: 10px;
+    border: 1px solid #e7e7e7;
+    box-shadow: 0px 3px 4px 0px rgb(12 6 14 / 14%);
+    -webkit-box-shadow: 0px 3px 4px 0px rgb(12 6 14 / 14%);
+    padding: 15px;
+    margin-bottom:30px;
+}
+
+.Personal h2 {
+    font-size: 22px;
+    color: #222;
+    font-weight: 700;
+}
+
+.Personal .deatls {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 19px;
+}
+
+.Personal .deatls .data-1 {
+    width: 48%;
+}
+
+.Personal .deatls .data-1 label {
+    display: block;
+}
+
+.Personal .deatls .data-1 label {
+    font-size: 15px;
+    color: #222;
+    font-weight: 500;
+    margin-bottom: 7px;
+}
+
+
+
+.about .about-item .about-item-inner p {
+    text-align: left;
+}
+
+.display-6 {
+    font-size: 20px;
+}
+
+.text-light {
+    font-size: 14px;
+}
+
+
+
+
+.Personal .card-deatls {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 19px;
+}
+
+.Personal .card-deatls .data-1 {
+    width: 100%;
+}
+
+.Personal .card-deatls .data-1 label {
+    display: block;
+}
+
+.Personal .card-deatls .data-1 label {
+    font-size: 15px;
+    color: #222;
+    font-weight: 500;
+    margin-bottom: 7px;
+}
+
+.Personal .month {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 19px;
+}
+
+.Personal .month .data-1 {
+   width: 32%;
+}
+
+.Personal .month .data-1 label {
+    display: block;
+}
+
+.Personal .month .data-1 label {
+    font-size: 15px;
+    color: #222;
+    font-weight: 500;
+    margin-bottom: 7px;
+}
+
+/*** Payment page  End ***/
 
 /* Search page */
 #dropoff-group {
-  transition: height 0.4s ease-out, opacity 0.4s ease-out;
-  overflow: hidden;
+    transition: height 0.4s ease-out, opacity 0.4s ease-out;
+    overflow: hidden;
 }
 
 /* Hide the native clock icon in WebKit browsers (Chrome, Edge, Safari) */
 input[type="time"]::-webkit-calendar-picker-indicator {
-  display: none !important;
-  -webkit-appearance: none;
+    display: none !important;
+    -webkit-appearance: none;
 }
 
 /* Optional: make cursor behave like clickable field */
 input[type="time"] {
-  cursor: pointer;
+    cursor: pointer;
 }
-

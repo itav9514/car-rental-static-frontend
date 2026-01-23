@@ -75,19 +75,13 @@
     </div>
     <!-- Navbar & Hero End -->
 
-
-
     <!-- Result Start -->
     <div class="container-fluid overflow-hidden about py-5">
         <div class="container">
             <div class="row">
-                <div class="col-lg-10">
+
+                <div class="col-lg-8">
                     <h1 class="vehicle-txt">You have planned your trip, now protect it!</h1>
-                </div>
-                <div class="col-lg-2">
-                    <a class="conti-btn" href="addon-extra.html">Continue</a>
-                </div>
-                <div class="col-lg-12">
                     <div class="extra-all">
 
                         <div class="addon-services">
@@ -305,6 +299,9 @@
                             </div>
                             <!-- Modal End -->
                         </div>
+
+                    </div>
+                    <div class="extra-all">
                         <div class="addon-services">
                             <img src="img/BoosterSeat.jpg">
                             <h2>Booster Seat
@@ -360,11 +357,6 @@
                             </div>
                             <!-- Modal End -->
                         </div>
-
-
-                    </div>
-                    <div class="extra-all">
-
                         <div class="addon-services">
                             <img src="img/protect-car.jpg">
                             <h2>Protect the Car
@@ -520,6 +512,12 @@
                             </div>
                             <!-- Modal End -->
                         </div>
+
+
+
+                    </div>
+                    <div class="extra-all">
+
                         <div class="addon-services">
                             <img src="img/Protect-banner-2.jpg">
                             <h2>Protect yourself, passengers & belongings
@@ -779,6 +777,141 @@
 
                     </div>
                 </div>
+                <div class="col-lg-4">
+                    <div class="bg-secondary rounded p-2">
+                        <div class="bg-white rounded shadow p-4 text-dark">
+
+                            <!-- Radio toggle -->
+                            <div class="row justify-content-center mb-4">
+                                <div class="col-auto">
+                                    <div class="btn-group" role="group">
+                                        <input type="radio" class="btn-check" name="dropoffOption" id="sameDropoff"
+                                            value="same" checked autocomplete="off">
+                                        <label class="btn btn-outline-danger" for="sameDropoff">Same Drop-off
+                                            Location</label>
+
+                                        <input type="radio" class="btn-check" name="dropoffOption" id="differentDropoff"
+                                            value="different" autocomplete="off">
+                                        <label class="btn btn-outline-danger" for="differentDropoff">Different Drop-off
+                                            Location</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <form id="searchForm">
+
+                                <div class="row g-3 mb-4 align-items-end">
+
+                                    <!-- Pickup Location -->
+                                    <div class="col-md-12">
+                                        <label class="form-label fw-bold small mb-1">Pickup Location</label>
+                                        <div class="input-group">
+                                            <span class="input-group-text bg-light"><i
+                                                    class="fas fa-map-marker-alt"></i></span>
+                                            <input id="pickup-location" class="form-control" type="text"
+                                                placeholder="City or Airport"
+                                                value="Indira Gandhi International Airport, New Delhi, Delhi 110037, India"
+                                                required autocomplete="off">
+                                        </div>
+                                    </div>
+
+                                    <!-- Pickup Date & Time – now takes more space -->
+                                    <div class="col-md-12">
+                                        <label class="form-label fw-bold small mb-1">Pick-up & Dropoff Date</label>
+                                        <div class="input-group">
+                                            <span class="input-group-text bg-light"><i
+                                                    class="fas fa-calendar-alt"></i></span>
+                                            <input id="pickup-date-display" class="form-control" type="text"
+                                                placeholder="Pick-up date" readonly required>
+                                        </div>
+
+                                    </div>
+
+                                    <!-- Drop-off Time (only time remains) -->
+                                    <div class="col-md-12">
+                                        <label class="form-label fw-bold small mb-1">Pick-up Time</label>
+                                        <div class="input-group">
+                                            <span class="input-group-text bg-light"><i class="fas fa-clock"></i></span>
+                                            <input id="pickup-time" class="form-control" type="time" value="09:00"
+                                                required step="900" placeholder="HH:mm (24h)"
+                                                onfocus="this.showPicker()" />
+                                        </div>
+
+                                    </div>
+
+
+                                    <div class="col-md-12">
+                                        <label class="form-label fw-bold small mb-1">Drop-off Time</label>
+                                        <div class="input-group">
+                                            <span class="input-group-text bg-light"><i class="fas fa-clock"></i></span>
+                                            <input id="dropoff-time" class="form-control" type="time" value="17:00"
+                                                required step="900" placeholder="HH:mm (24h)"
+                                                onfocus="this.showPicker()" />
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <!-- Conditional Drop-off location -->
+                                <div class="row g-3 mb-4" id="dropoff-group" style="display: none;">
+                                    <div class="col-md-12">
+                                        <label class="form-label fw-bold small mb-1">Drop-off Location</label>
+                                        <div class="input-group">
+                                            <span class="input-group-text bg-light"><i
+                                                    class="fas fa-map-marker-alt"></i></span>
+                                            <input id="dropoff-location" class="form-control" type="text"
+                                                placeholder="Different drop-off city or airport"
+                                                value="Cyber City, Gurugram, Haryana 122002, India" autocomplete="off">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <button type="submit" class="btn btn-danger btn-lg py-3 fw-bold">
+                                        Search & Book
+                                    </button>
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+                    <div class="your-car">
+                        <img src="img/tesla.jpg">
+                        <h2>Your Car</h2>
+                        <hr>
+                        <strong>Tesla Model 3 (Group E7) JCAE</strong>
+                        <p>(E7)Tesla Model 3 Standard Range or similar</p>
+                    </div>
+                    <div class="Price-details">
+                        <h2>Price Details</h2>
+                        <hr>
+                        <div class="dtl">
+                            <span>Infant Child Seat </span> <strong>98.00 USD</strong>
+                        </div>
+                        <div class="dtl">
+                            <span>Infant Child Seat </span> <strong>98.00 USD</strong>
+                        </div>
+                        <div class="dtl">
+                            <span>Infant Child Seat </span> <strong>98.00 USD</strong>
+                        </div>
+                        <div class="dtl">
+                            <span>Infant Child Seat </span> <strong>98.00 USD</strong>
+                        </div>
+                        <div class="dtl">
+                            <span>Infant Child Seat </span> <strong>98.00 USD</strong>
+                        </div>
+                        <div class="dtl">
+                            <strong>Total Price </strong> <strong>1200.00 USD</strong>
+                        </div>
+
+
+                    </div>
+                    
+                        <button class="conti-btn"><a href="payment.html">Continue</a></button>
+                    
+
+
+                </div>
             </div>
         </div>
     </div>
@@ -842,7 +975,7 @@
                             <a href="#"><i class="fas fa-angle-right me-2"></i> Car Types</a>
                             <a href="#"><i class="fas fa-angle-right me-2"></i> Team</a> -->
                         <a href="contact.html"><i class="fas fa-angle-right me-2"></i> Contact us</a>
-                        <a href="Cookies.html"><i class="fas fa-angle-right me-2"></i> Cookies</a>
+                        <a href="Cookies.html"><i class="fas fa-angle-right me-2"></i> Cookies Policy</a>
                         <a href="disclaimer.html"><i class="fas fa-angle-right me-2"></i> Disclaimer</a>
 
                     </div>

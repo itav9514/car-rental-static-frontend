@@ -2,7 +2,7 @@
 .addressnew ul{display:block;}
 .addressnew ul li{margin-bottom:18px;}
 .addressnew ul li{font-size:14px;}
-h4.text-white.mb-4{font-size:16px;}
+h4.text-white.mb-4{font-size:16px;         margin-top: 16px;}
 .footer-item strong span {font-size:14px;}
 .car-result{display: block; text-align: center;    padding: 0 14px 15px;}
 .car-result .rst-1,.car-result .rst-2,.car-result .rst-3{width:100%;}
@@ -10,7 +10,51 @@ h4.text-white.mb-4{font-size:16px;}
 .car-result .rst-2 h2{font-size:17px;}
 .car-result .rst-3 strong{font-size:18px;}
 .car-result .rst-3 button{font-size:15px;}
-.vehicle-txt {font-size: 18px;display: inline-block;margin: 16px 0 13px;}
+.vehicle-txt {font-size: 16px;display: inline-block;margin: 16px 0 13px;}
+.extra-all {display: block;}
+.extra-all .addon-services {width: 100%; text-align: center;        margin-bottom: 20px;}
+.extra-all .addon-services button{left:0;}
+.py-5 {padding-top: 0 !important;}
+.extra-all .addon-services h2{font-size:16px;}
+.Price-details h2 {
+    font-size: 16px;
+    color: #222;
+    font-weight: 700;
+    margin: 0 7px 0;
+}
+.Price-details .dtl strong {
+    font-size: 14px;
+    color: #222;
+    font-weight: 600;
+}
+.your-car h2 {
+    font-size: 16px;
+    margin: 0 7px 0;
+}
+.extra-all .addon-services img {
+    margin-top: 10px;
+}
+.extra-all .addon-services strong{font-size:16px;}
+.footer .footer-item a {
+    font-size: 13px;
+}
+.chk-txt,.Personal h2 {
+    font-size: 17px;
+
+}
+.Personal .deatls {
+    display: block;
+}
+.Personal .deatls .data-1 {
+    width: 100%;
+}
+.Personal .deatls .data-1 label {
+    margin-bottom: 7px;
+    margin-top: 7px;
+}
+.pickup {display: block;}
+.mob-hide{display: none;}
+
 
 
 
