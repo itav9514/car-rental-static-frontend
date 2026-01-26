@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const dateDisplay     = document.getElementById('pickup-date-display');
   const pickupTime      = document.getElementById('pickup-time');
   const dropoffTime     = document.getElementById('dropoff-time');
+  const submitBtn       = form.querySelector('button[type="submit"]');
 
   const DEFAULT_PICKUP = {
     formatted_address: "Indira Gandhi International Airport, New Delhi, Delhi 110037, India",
@@ -26,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
     geometry: { location: { lat: 28.4950, lng: 77.0880 } }
   };
 
-  // Toggle drop-off section with smooth animation
+  // Toggle drop-off section
   function toggleDropoff() {
     const isDifferent = diffRadio.checked;
 
@@ -36,13 +37,12 @@ document.addEventListener('DOMContentLoaded', () => {
       dropoffGroup.style.opacity = '0';
       dropoffGroup.offsetHeight; // force reflow
 
-      const contentHeight = dropoffGroup.scrollHeight + 'px';
-      dropoffGroup.style.height = contentHeight;
+      dropoffGroup.style.height = dropoffGroup.scrollHeight + 'px';
       dropoffGroup.style.opacity = '1';
       dropoffLocation.required = true;
     } else {
       dropoffGroup.style.height = dropoffGroup.scrollHeight + 'px';
-      dropoffGroup.offsetHeight; // force reflow
+      dropoffGroup.offsetHeight;
 
       dropoffGroup.style.height = '0px';
       dropoffGroup.style.opacity = '0';
@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   sameRadio.addEventListener('change', toggleDropoff);
   diffRadio.addEventListener('change', toggleDropoff);
-  toggleDropoff(); // run once on load
+  toggleDropoff(); // initial state
 
   // ────────────────────────────────────────────────
   // Litepicker – RANGE mode
@@ -77,13 +77,11 @@ document.addEventListener('DOMContentLoaded', () => {
     mobileFriendly: true,
   });
 
-  // Set sensible default range
   const today = new Date();
   const defaultEnd = new Date(today);
   defaultEnd.setDate(today.getDate() + 3);
   picker.setDateRange(today, defaultEnd);
 
-  // Keep the visible input always up-to-date
   const updateDateDisplay = () => {
     const start = picker.getStartDate();
     const end   = picker.getEndDate();
@@ -101,22 +99,27 @@ document.addEventListener('DOMContentLoaded', () => {
   picker.on('render', updateDateDisplay);
   picker.on('clear', updateDateDisplay);
   picker.on('button:apply', updateDateDisplay);
-
-  // Force initial display
   updateDateDisplay();
 
   // ────────────────────────────────────────────────
-  // Form submission
+  // Form submission → localStorage + redirect
   // ────────────────────────────────────────────────
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
+    // Disable button & show loading
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Searching...';
+    }
+
     const start = picker.getStartDate();
     const end   = picker.getEndDate();
 
-    // ─── Reliable validation ────────────────────────────────────────
+    // Validation
     if (!start || !end) {
-      alert('Please select both pickup and drop-off dates');
+      alert('Please select both pickup and return dates');
+      resetButton();
       return;
     }
 
@@ -125,39 +128,37 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (isNaN(startJS.getTime()) || isNaN(endJS.getTime())) {
       alert('Invalid date range. Please select again.');
+      resetButton();
       return;
     }
 
     if (endJS < startJS) {
-      alert('Drop-off date cannot be before pickup date');
+      alert('Return date cannot be before pickup date');
+      resetButton();
       return;
     }
 
-    // ─── Prepare data ───────────────────────────────────────────────
-    const pickupDate  = start.format('YYYY-MM-DD');
-    const dropoffDate = end.format('YYYY-MM-DD');
-
-    const pickupLoc = document.getElementById('pickup-location')?.value.trim();
+    const pickupLoc = document.getElementById('pickup-location')?.value.trim() || '';
 
     if (!pickupLoc) {
       alert('Please enter a pickup location');
+      resetButton();
       return;
     }
 
     const isSame = sameRadio.checked;
 
-    // ─── Decide which place details to send ─────────────────────────
-    let pickupPlaceDetails   = null;
-    let dropoffPlaceDetails  = null;
+    let pickupPlaceDetails  = null;
+    let dropoffPlaceDetails = null;
 
     if (!pickupLoc || pickupLoc === DEFAULT_PICKUP.formatted_address) {
       pickupPlaceDetails = DEFAULT_PICKUP;
     }
 
     if (isSame) {
-      dropoffPlaceDetails = pickupPlaceDetails; // same as pickup
+      dropoffPlaceDetails = pickupPlaceDetails || DEFAULT_PICKUP;
     } else {
-      const dropoffLoc = dropoffLocation?.value.trim();
+      const dropoffLoc = dropoffLocation?.value.trim() || '';
       if (!dropoffLoc || dropoffLoc === DEFAULT_DROPOFF.formatted_address) {
         dropoffPlaceDetails = DEFAULT_DROPOFF;
       }
@@ -165,40 +166,51 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const bookingData = {
       pickupLocation: pickupLoc || DEFAULT_PICKUP.formatted_address,
-      pickupPlaceDetails,           // contains lat/lng when using default
+      pickupPlaceDetails,
 
       dropoffLocation: isSame
         ? (pickupLoc || DEFAULT_PICKUP.formatted_address)
         : (dropoffLocation?.value.trim() || DEFAULT_DROPOFF.formatted_address),
 
-      dropoffPlaceDetails,          // contains lat/lng when using default or same
+      dropoffPlaceDetails,
 
       sameDropoff: isSame,
 
-      pickupDateTime: `${pickupDate}T${pickupTime.value || '09:00'}`,
-      dropoffDateTime: `${dropoffDate}T${dropoffTime.value || '17:00'}`,
+      pickupDateTime:  `${start.format('YYYY-MM-DD')}T${pickupTime.value  || '09:00'}`,
+      dropoffDateTime: `${end.format('YYYY-MM-DD')}T${dropoffTime.value || '17:00'}`,
+
+      // Optional: timestamp when search was made
+      searchTimestamp: new Date().toISOString(),
     };
 
-    console.log('Submitting booking data:', bookingData);
-
+    // Save to localStorage
     try {
-      const res = await fetch('https://your-domain.com/api/CarRentalEnquiries/', {
+      localStorage.setItem('lastCarRentalSearch', JSON.stringify(bookingData));
+      console.log('Search data saved to localStorage:', bookingData);
+
+      // Optional: still try to send to backend (fire-and-forget style)
+      fetch('https://your-domain.com/api/CarRentalEnquiries/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(bookingData)
+      }).catch(err => {
+        console.warn('Backend save failed, but search proceeds:', err);
       });
 
-      if (!res.ok) {
-        const errorText = await res.text();
-        throw new Error(errorText || `HTTP ${res.status}`);
-      }
-
-      alert('Search request sent successfully!');
-      // window.location.href = '/results.html'; // uncomment if needed
+      // Redirect to results
+      window.location.href = 'result.html';
 
     } catch (err) {
-      console.error('Submission error:', err);
-      alert('Error sending request: ' + err.message);
+      console.error('Error saving search:', err);
+      alert('Failed to save search data. Please try again.');
+      resetButton();
     }
   });
+
+  function resetButton() {
+    if (submitBtn) {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Search Cars'; // ← change to your actual button text
+    }
+  }
 });

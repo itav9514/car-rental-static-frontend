@@ -889,62 +889,68 @@ Find practical guidance and updates designed to make your journey easier.
     <script src="{% static 'js/booking-form.js' %}"></script>
     -->
   <!--<script src="/js/booking-form.js"></script>-->
-  <script src="/js/search-form.js"></script>
+  <!--<script src="/js/search-form.js"></script>-->
 
+  <!--
   <script async
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDVQMGq0Z3sW_SHPDWNEr8q9LzrVEXtR2o&libraries=places&callback=initGooglePlaces"
     defer></script>
+    -->
 
   <script src="https://cdn.jsdelivr.net/npm/litepicker/dist/litepicker.js"></script>
 
+
+<!--
   <script>
-    let pickupAutocomplete, dropoffAutocomplete;
+  let pickupAutocomplete, dropoffAutocomplete;
 
-    function initGooglePlaces() {
-      // Pick-up field
-      const pickupInput = document.querySelector("#pickup-location");
-      pickupAutocomplete = new google.maps.places.Autocomplete(pickupInput, {
-        types: ["airport", "(cities)"], // airports + cities
-        // componentRestrictions: { country: ['in'] },   // optional: only India
-        // fields: ['formatted_address', 'geometry', 'name', 'place_id']
+  function initGooglePlaces() {
+    // Pickup location – no restrictions
+    const pickupInput = document.querySelector("#pickup-location");
+    pickupAutocomplete = new google.maps.places.Autocomplete(pickupInput, {
+      // No types → full freedom (airports, cities, addresses, etc.)
+      // No componentRestrictions → worldwide suggestions
+    });
+
+    // Drop-off location – same as pickup
+    const dropoffInput = document.querySelector("#dropoff-location");
+    dropoffAutocomplete = new google.maps.places.Autocomplete(dropoffInput, {
+      // No types, no restrictions
+    });
+
+    // When user selects a place (pickup)
+    pickupAutocomplete.addListener("place_changed", () => {
+      const place = pickupAutocomplete.getPlace();
+      if (!place.geometry) {
+        console.log("No details available for input: '" + (place.name || '—') + "'");
+        return;
+      }
+      console.log("Pickup selected:", {
+        name: place.name || '—',
+        address: place.formatted_address || '—',
+        lat: place.geometry.location.lat(),
+        lng: place.geometry.location.lng(),
+        placeId: place.place_id || '—'
       });
+      // Optional: save lat/lng to hidden fields or localStorage if needed later
+    });
 
-      // Drop-off field (same options)
-      const dropoffInput = document.querySelector("#dropoff-location");
-      dropoffAutocomplete = new google.maps.places.Autocomplete(
-        dropoffInput,
-        {
-          types: ["airport", "(cities)"],
-          // componentRestrictions: { country: ['in'] },
-        },
-      );
-
-      // Optional: Listen when user selects a place
-      pickupAutocomplete.addListener("place_changed", () => {
-        const place = pickupAutocomplete.getPlace();
-        if (!place.geometry) {
-          console.log("No details available for input: '" + place.name + "'");
-          return;
-        }
-        console.log("Pickup selected:", {
-          name: place.name,
-          address: place.formatted_address,
+    // When user selects a place (dropoff)
+    dropoffAutocomplete.addListener("place_changed", () => {
+      const place = dropoffAutocomplete.getPlace();
+      if (place.geometry) {
+        console.log("Dropoff selected:", {
+          name: place.name || '—',
+          address: place.formatted_address || '—',
           lat: place.geometry.location.lat(),
           lng: place.geometry.location.lng(),
-          placeId: place.place_id,
+          placeId: place.place_id || '—'
         });
-        // You can store lat/lng in hidden inputs if needed
-      });
-
-      // Same for dropoff if you want
-      dropoffAutocomplete.addListener("place_changed", () => {
-        const place = dropoffAutocomplete.getPlace();
-        if (place.geometry) {
-          console.log("Dropoff selected:", place);
-        }
-      });
-    }
-  </script>
+      }
+    });
+  }
+</script>
+-->
 
   <script>
     document.addEventListener("DOMContentLoaded", () => {
