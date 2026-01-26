@@ -1,587 +1,824 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-    <meta charset="utf-8">
+  <head>
+    <meta charset="utf-8" />
     <title>Car Rent Website Template</title>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="" name="keywords">
-    <meta content="" name="description">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="" name="keywords" />
+    <meta content="" name="description" />
 
     <!-- Google Web Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-        href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
-        rel="stylesheet">
-    
+      href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
 
     <!-- Icon Font Stylesheet -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
 
     <!-- Libraries Stylesheet -->
-    <link href="lib/animate/animate.min.css" rel="stylesheet">
-    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="lib/animate/animate.min.css" rel="stylesheet" />
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet" />
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/litepicker/dist/css/litepicker.css"
     />
 
     <!-- Customized Bootstrap Stylesheet -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
 
     <!-- Template Stylesheet -->
-    <link href="css/style.css" rel="stylesheet">
-    <link href="css/mobile-responsive.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet" />
+    <link href="css/mobile-responsive.css" rel="stylesheet" />
+  </head>
 
-</head>
-
-<body>
-
+  <body>
     <!-- Spinner Start -->
-    <div id="spinner"
-        class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
-        <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
-            <span class="sr-only">Loading...</span>
-        </div>
+    <div
+      id="spinner"
+      class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center"
+    >
+      <div
+        class="spinner-border text-primary"
+        style="width: 3rem; height: 3rem"
+        role="status"
+      >
+        <span class="sr-only">Loading...</span>
+      </div>
     </div>
     <!-- Spinner End -->
 
-
-
     <!-- Navbar & Hero Start -->
     <div class="container-fluid nav-bar sticky-top px-0 px-lg-4 py-2 py-lg-0">
-        <div class="container">
-            <nav class="navbar navbar-expand-lg navbar-light">
-                <a href="" class="navbar-brand p-0">
-                    <!--<h1 class="display-6 text-primary"><i class="fas fa-car-alt me-3"></i></i>Cental</h1>-->
-                    <img src="img/logo.jpeg" alt="Logo">
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-                    <span class="fa fa-bars"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarCollapse">
-                    <div class="navbar-nav mx-auto py-0">
-                        <a href="index.html" class="nav-item nav-link active">Home</a>
-                        <a href="about.html" class="nav-item nav-link">About</a>
-                        <a href="https://us.adamvacations.com/travel-agencies" class="nav-item nav-link">Travel
-                            Agencies</a>
-                        <a href="https://us.adamvacations.com/corporate-concierge" class="nav-item nav-link">Corporate
-                            Concierge</a>
-                        <a href="https://us.adamvacations.com/destinations" class="nav-item nav-link">Destinations</a>
-                    </div>
-                    <a href="tel:1-844-539-0014" class="phone-txt py-2 px-4"><i class="fas fa-phone me-2"></i>
-                        1-844-539-0014</a>
-                </div>
-            </nav>
-        </div>
+      <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-light">
+          <a href="" class="navbar-brand p-0">
+            <!--<h1 class="display-6 text-primary"><i class="fas fa-car-alt me-3"></i></i>Cental</h1>-->
+            <img src="img/logo.jpeg" alt="Logo" />
+          </a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarCollapse"
+          >
+            <span class="fa fa-bars"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav mx-auto py-0">
+              <a href="index.html" class="nav-item nav-link active">Home</a>
+              <a href="about.html" class="nav-item nav-link">About</a>
+              <a
+                href="https://us.adamvacations.com/travel-agencies"
+                class="nav-item nav-link"
+                >Travel Agencies</a
+              >
+              <a
+                href="https://us.adamvacations.com/corporate-concierge"
+                class="nav-item nav-link"
+                >Corporate Concierge</a
+              >
+              <a
+                href="https://us.adamvacations.com/destinations"
+                class="nav-item nav-link"
+                >Destinations</a
+              >
+            </div>
+            <a href="tel:1-844-539-0014" class="phone-txt py-2 px-4"
+              ><i class="fas fa-phone me-2"></i> 1-844-539-0014</a
+            >
+          </div>
+        </nav>
+      </div>
     </div>
     <!-- Navbar & Hero End -->
 
-
-
     <!-- Result Start -->
     <div class="container-fluid overflow-hidden about py-5">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-4">
-                    <div class="bg-secondary rounded p-2">
-                    <div class="bg-white rounded shadow p-4 text-dark">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4">
+            <div class="bg-secondary rounded p-2">
+              <div class="bg-white rounded shadow p-4 text-dark">
+                <!-- Radio toggle -->
+                <div class="row justify-content-center mb-4">
+                  <div class="col-auto">
+                    <div class="btn-group" role="group">
+                      <input
+                        type="radio"
+                        class="btn-check"
+                        name="dropoffOption"
+                        id="sameDropoff"
+                        value="same"
+                        checked
+                        autocomplete="off"
+                      />
+                      <label class="btn btn-outline-danger" for="sameDropoff"
+                        >Same Drop-off Location</label
+                      >
 
-                      <!-- Radio toggle -->
-                      <div class="row justify-content-center mb-4">
-                        <div class="col-auto">
-                          <div class="btn-group" role="group">
-                            <input type="radio" class="btn-check" name="dropoffOption" id="sameDropoff" value="same"
-                              checked autocomplete="off">
-                            <label class="btn btn-outline-danger" for="sameDropoff">Same Drop-off Location</label>
+                      <input
+                        type="radio"
+                        class="btn-check"
+                        name="dropoffOption"
+                        id="differentDropoff"
+                        value="different"
+                        autocomplete="off"
+                      />
+                      <label
+                        class="btn btn-outline-danger"
+                        for="differentDropoff"
+                        >Different Drop-off Location</label
+                      >
+                    </div>
+                  </div>
+                </div>
 
-                            <input type="radio" class="btn-check" name="dropoffOption" id="differentDropoff"
-                              value="different" autocomplete="off">
-                            <label class="btn btn-outline-danger" for="differentDropoff">Different Drop-off
-                              Location</label>
-                          </div>
-                        </div>
+                <form id="searchForm">
+                  <div class="row g-3 mb-4 align-items-end">
+                    <!-- Pickup Location -->
+                    <div class="col-md-12">
+                      <label class="form-label fw-bold small mb-1"
+                        >Pickup Location</label
+                      >
+                      <div class="input-group">
+                        <span class="input-group-text bg-light"
+                          ><i class="fas fa-map-marker-alt"></i
+                        ></span>
+                        <input
+                          id="pickup-location"
+                          class="form-control"
+                          type="text"
+                          placeholder="City or Airport"
+                          value="Indira Gandhi International Airport, New Delhi, Delhi 110037, India"
+                          required
+                          autocomplete="off"
+                        />
                       </div>
+                    </div>
 
-                      <form id="searchForm">
+                    <!-- Pickup Date & Time – now takes more space -->
+                    <div class="col-md-12">
+                      <label class="form-label fw-bold small mb-1"
+                        >Pick-up & Dropoff Date</label
+                      >
+                      <div class="input-group">
+                        <span class="input-group-text bg-light"
+                          ><i class="fas fa-calendar-alt"></i
+                        ></span>
+                        <input
+                          id="pickup-date-display"
+                          class="form-control"
+                          type="text"
+                          placeholder="Pick-up date"
+                          readonly
+                          required
+                        />
+                      </div>
+                    </div>
 
-                        <div class="row g-3 mb-4 align-items-end">
+                    <!-- Drop-off Time (only time remains) -->
+                    <div class="col-md-12">
+                      <label class="form-label fw-bold small mb-1"
+                        >Pick-up Time</label
+                      >
+                      <div class="input-group">
+                        <span class="input-group-text bg-light"
+                          ><i class="fas fa-clock"></i
+                        ></span>
+                        <input
+                          id="pickup-time"
+                          class="form-control"
+                          type="time"
+                          value="09:00"
+                          required
+                          step="60"
+                          placeholder="HH:mm (24h)"
+                          onfocus="this.showPicker()"
+                        />
+                      </div>
+                    </div>
 
-                          <!-- Pickup Location -->
-                          <div class="col-md-12">
-                            <label class="form-label fw-bold small mb-1">Pickup Location</label>
-                            <div class="input-group">
-                              <span class="input-group-text bg-light"><i class="fas fa-map-marker-alt"></i></span>
-                              <input id="pickup-location" class="form-control" type="text" placeholder="City or Airport"
-                                value="Indira Gandhi International Airport, New Delhi, Delhi 110037, India" required
-                                autocomplete="off">
-                            </div>
-                          </div>
-
-                          <!-- Pickup Date & Time – now takes more space -->
-                          <div class="col-md-12">
-                            <label class="form-label fw-bold small mb-1">Pick-up & Dropoff Date</label>
-                            <div class="input-group">
-                              <span class="input-group-text bg-light"><i class="fas fa-calendar-alt"></i></span>
-                              <input id="pickup-date-display" class="form-control" type="text"
-                                placeholder="Pick-up date" readonly required>
-                            </div>
-
-                          </div>
-
-                          <!-- Drop-off Time (only time remains) -->
-                          <div class="col-md-12">
-                            <label class="form-label fw-bold small mb-1"
-                                >Pick-up Time</label
-                              >
-                              <div class="input-group">
-                                <span class="input-group-text bg-light"
-                                  ><i class="fas fa-clock"></i
-                                ></span>
-                                <input
-                                  id="pickup-time"
-                                  class="form-control"
-                                  type="time"
-                                  value="09:00"
-                                  required
-                                  step="900"
-                                  placeholder="HH:mm (24h)"
-                                  onfocus="this.showPicker()"
-                                />
-                              </div>
-
-                          </div>
-
-
-                          <div class="col-md-12">
-                            <label class="form-label fw-bold small mb-1"
-                                >Drop-off Time</label
-                              >
-                              <div class="input-group">
-                                <span class="input-group-text bg-light"
-                                  ><i class="fas fa-clock"></i
-                                ></span>
-                                <input
-                                  id="dropoff-time"
-                                  class="form-control"
-                                  type="time"
-                                  value="17:00"
-                                  required
-                                  step="900"
-                                  placeholder="HH:mm (24h)"
-                                  onfocus="this.showPicker()"
-                                />
-                              </div>
-                            </div>
-
-                        </div>
-
-                        <!-- Conditional Drop-off location -->
-                        <div class="row g-3 mb-4" id="dropoff-group" style="display: none;">
-                          <div class="col-md-12">
-                            <label class="form-label fw-bold small mb-1">Drop-off Location</label>
-                            <div class="input-group">
-                              <span class="input-group-text bg-light"><i class="fas fa-map-marker-alt"></i></span>
-                              <input id="dropoff-location" class="form-control" type="text"
-                                placeholder="Different drop-off city or airport"
-                                value="Cyber City, Gurugram, Haryana 122002, India" autocomplete="off">
-                            </div>
-                          </div>
-                        </div>
-
-                        <div class="row">
-                          <button type="submit" class="btn btn-danger btn-lg py-3 fw-bold">
-                            Search & Book
-                          </button>
-                        </div>
-
-                      </form>
+                    <div class="col-md-12">
+                      <label class="form-label fw-bold small mb-1"
+                        >Drop-off Time</label
+                      >
+                      <div class="input-group">
+                        <span class="input-group-text bg-light"
+                          ><i class="fas fa-clock"></i
+                        ></span>
+                        <input
+                          id="dropoff-time"
+                          class="form-control"
+                          type="time"
+                          value="17:00"
+                          required
+                          step="60"
+                          placeholder="HH:mm (24h)"
+                          onfocus="this.showPicker()"
+                        />
+                      </div>
                     </div>
                   </div>
 
-                </div>
-                <div class="col-lg-8">
-                    <h1 class="vehicle-txt">Showing All Vehicle Results</h1>
-                    <div class="car-result" id="car-tesla-model3" data-car-id="tesla-model3">
-                        <div class="rst-1">
-                            <img src="img/tesla.jpg">
-                        </div>
-                        <div class="rst-2">
-                            <h2>Tesla Model 3</h2>
-                            <p>(E7)Tesla Model 3 Standard Range or similar</p>
-                            <div class="person-all">
-                                <span><img src="img/person.png"> 5</span> <span><img src="img/feature_suitcase.png">
-                                    3</span> <span><img src="img/feature_transmission.png"> A</span> <span><img
-                                        src="img/feature_battery.png"> 418 km range</span>
-                            </div>
-
-                        </div>
-                        <div class="rst-3">
-                            <strong>358.14 <span>USD/Week</span></strong>
-                            <button><a href="addon-extra.html">Continue</a></button>
-
-                        </div>
+                  <!-- Conditional Drop-off location -->
+                  <div
+                    class="row g-3 mb-4"
+                    id="dropoff-group"
+                    style="display: none"
+                  >
+                    <div class="col-md-12">
+                      <label class="form-label fw-bold small mb-1"
+                        >Drop-off Location</label
+                      >
+                      <div class="input-group">
+                        <span class="input-group-text bg-light"
+                          ><i class="fas fa-map-marker-alt"></i
+                        ></span>
+                        <input
+                          id="dropoff-location"
+                          class="form-control"
+                          type="text"
+                          placeholder="Different drop-off city or airport"
+                          value="Cyber City, Gurugram, Haryana 122002, India"
+                          autocomplete="off"
+                        />
+                      </div>
                     </div>
-                    <div class="car-result" id="car-large-sedan" data-car-id="large-sedan">
-                        <div class="rst-1">
-                            <img src="img/Large-Sedan.jpg">
-                        </div>
-                        <div class="rst-2">
-                            <h2>Large Sedan</h2>
-                            <p>(F) Chevrolet Malibu or similar</p>
-                            <div class="person-all">
-                                <span><img src="img/person.png"> 5</span> <span><img src="img/feature_suitcase.png">
-                                    3</span> <span><img src="img/feature_transmission.png"> A</span> <span><img
-                                        src="img/feature_fuel.png"> 412.5 l/100km</span>
-                            </div>
+                  </div>
 
-                        </div>
-                        <div class="rst-3">
-                            <strong>476.25 <span>USD/Week</span></strong>
-                            <button class="continue-btn">Continue</button>
-
-                        </div>
-                    </div>
-                    <div class="car-result" id="car-midsize-suv" data-car-id="midsize-suv">
-                        <div class="rst-1">
-                            <img src="img/midsize.jpg">
-                        </div>
-                        <div class="rst-2">
-                            <h2>Midsize SUV 2WD</h2>
-                            <p>(Q4) Nissan Rogue or similar </p>
-                            <div class="person-all">
-                                <span><img src="img/person.png"> 5</span> <span><img src="img/feature_suitcase.png">
-                                    4</span> <span><img src="img/feature_transmission.png"> A</span> <span><img
-                                        src="img/feature_fuel.png"> 9.1 l/100km</span>
-                            </div>
-
-                        </div>
-                        <div class="rst-3">
-                            <strong>558.12 <span>USD/Week</span></strong>
-                            <button class="continue-btn">Continue</button>
-
-                        </div>
-                    </div>
-                    <div class="car-result" id="car-standard5-passenger-2wd-suv" data-car-id="standard5-passenger-2wd-suv">
-                        <div class="rst-1">
-                            <img src="img/2WD.jpg">
-                        </div>
-                        <div class="rst-2">
-                            <h2>Standard 5 Passenger 2WD SUV</h2>
-                            <p>(L) Chevrolet Equinox or similar </p>
-                            <div class="person-all">
-                                <span><img src="img/person.png"> 5</span> <span><img src="img/feature_suitcase.png">
-                                    4</span> <span><img src="img/feature_transmission.png"> A</span> <span><img
-                                        src="img/feature_fuel.png"> 11.1 l/100km</span>
-                            </div>
-
-                        </div>
-                        <div class="rst-3">
-                            <strong>428.45 <span>USD/Week</span></strong>
-                            <button class="continue-btn">Continue</button>
-
-                        </div>
-                    </div>
-                    <div class="car-result" id="car-7standard5-passenger-2wd-suv" data-car-id="7standard5-passenger-2wd-suv">
-                        <div class="rst-1">
-                            <img src="img/ZEUSFRAR999.jpg">
-                        </div>
-                        <div class="rst-2">
-                            <h2>7 Passenger Standard 4WD/AWD SUV</h2>
-                            <p>(L4) Nissan Pathfinder or similar </p>
-                            <div class="person-all">
-                                <span><img src="img/person.png"> 7</span> <span><img src="img/feature_suitcase.png">
-                                    2/span> <span><img src="img/feature_transmission.png"> A</span> <span><img
-                                            src="img/feature_fuel.png"> 8.3 l/100km</span>
-                            </div>
-
-                        </div>
-                        <div class="rst-3">
-                            <strong>550.99 <span>USD/Week</span></strong>
-                            <button class="continue-btn">Continue</button>
-
-                        </div>
-                    </div>
-                    <div class="car-result" id="car-minivan" data-car-id="minivan">
-                        <div class="rst-1">
-                            <img src="img/suv.jpg">
-                        </div>
-                        <div class="rst-2">
-                            <h2>Minivan</h2>
-                            <p>(R) Chrysler Pacifica or similar </p>
-                            <div class="person-all">
-                                <span><img src="img/person.png"> 7</span> <span><img src="img/feature_suitcase.png">
-                                    5</span> <span><img src="img/feature_transmission.png"> A</span> <span><img
-                                        src="img/feature_fuel.png"> 10.0 l/100km</span>
-                            </div>
-
-                        </div>
-                        <div class="rst-3">
-                            <strong>576.12 <span>USD/Week</span></strong>
-                            <button class="continue-btn">Continue</button>
-
-                        </div>
-                    </div>
-                    <div class="car-result" id="car-large-suv" data-car-id="large-suv">
-                        <div class="rst-1">
-                            <img src="img/4wd.jpg">
-                        </div>
-                        <div class="rst-2">
-                            <h2>Large SUV</h2>
-                            <p>(T) Chevrolet Tahoe or similar </p>
-                            <div class="person-all">
-                                <span><img src="img/person.png"> 7</span> <span><img src="img/feature_suitcase.png">
-                                    4</span> <span><img src="img/feature_transmission.png"> A</span> <span><img
-                                        src="img/feature_fuel.png"> 12.5 l/100km</span>
-                            </div>
-
-                        </div>
-                        <div class="rst-3">
-                            <strong>608.02 <span>USD/Week</span></strong>
-                            <button class="continue-btn">Continue</button>
-
-                        </div>
-                    </div>
-                    <div class="car-result" id="car-extra-capacity-large-suv" data-car-id="extra-capacity-large-suv">
-                        <div class="rst-1">
-                            <img src="img/extra-capacity.jpg">
-                        </div>
-                        <div class="rst-2">
-                            <h2>Extra Capacity Large SUV</h2>
-                            <p>(T6) Chevrolet Suburban or similar </p>
-                            <div class="person-all">
-                                <span><img src="img/person.png"> 7</span> <span><img src="img/feature_suitcase.png">
-                                    6</span> <span><img src="img/feature_transmission.png"> A</span> <span><img
-                                        src="img/feature_fuel.png"> 12.5 l/100km</span>
-                            </div>
-
-                        </div>
-                        <div class="rst-3">
-                            <strong>608.02 <span>USD/Week</span></strong>
-                            <button class="continue-btn">Continue</button>
-
-                        </div>
-                    </div>
-                    <div class="car-result" id="car-small-suv-2wd" data-car-id="small-suv-2wd">
-                        <div class="rst-1">
-                            <img src="img/2WD.jpg">
-                        </div>
-                        <div class="rst-2">
-                            <h2>Small SUV 2WD</h2>
-                            <p>(B4) Chevrolet Trax or similar </p>
-                            <div class="person-all">
-                                <span><img src="img/person.png"> 5</span> <span><img src="img/feature_suitcase.png">
-                                    2</span> <span><img src="img/feature_transmission.png"> A</span>
-                            </div>
-
-                        </div>
-                        <div class="rst-3">
-                            <strong>608.02 <span>USD/Week</span></strong>
-                            <button class="continue-btn">Continue</button>
-
-                        </div>
-                    </div>
-                    <div class="car-result" id="car-small-suv-awd" data-car-id="small-suv-awd">
-                        <div class="rst-1">
-                            <img src="img/AWD.jpg">
-                        </div>
-                        <div class="rst-2">
-                            <h2>Small SUV AWD</h2>
-                            <p>(B5) Buick Encore GX or similar </p>
-                            <div class="person-all">
-                                <span><img src="img/person.png"> 5</span> <span><img src="img/feature_suitcase.png">
-                                    2</span> <span><img src="img/feature_transmission.png"> A</span> <span><img
-                                        src="img/feature_fuel.png"> 9.1 l/100km</span>
-                            </div>
-
-                        </div>
-                        <div class="rst-3">
-                            <strong>558.02 <span>USD/Week</span></strong>
-                            <button class="continue-btn">Continue</button>
-
-                        </div>
-                    </div>
-                    <div class="car-result" id="car-midsize-suv-awd" data-car-id="midsize-suv-awd">
-                        <div class="rst-1">
-                            <img src="img/AWD.jpg">
-                        </div>
-                        <div class="rst-2">
-                            <h2>Midsize SUV AWD</h2>
-                            <p>(Q5) Jeep Compass or similar </p>
-                            <div class="person-all">
-                                <span><img src="img/person.png"> 5</span> <span><img src="img/feature_suitcase.png">
-                                    3</span> <span><img src="img/feature_transmission.png"> A</span> <span><img
-                                        src="img/feature_fuel.png"> 9.1 l/100km</span>
-                            </div>
-
-                        </div>
-                        <div class="rst-3">
-                            <strong>586.12 <span>USD/Week</span></strong>
-                            <button class="continue-btn">Continue</button>
-
-                        </div>
-                    </div>
-                    <div class="car-result" id="car-medium-luxury-suv" data-car-id="medium-luxury-suv">
-                        <div class="rst-1">
-                            <img src="img/medium-elite-sedan.jpg">
-                        </div>
-                        <div class="rst-2">
-                            <h2>Medium Luxury SUV
-                            </h2>
-                            <p>(H4) Volvo XC60 Hybrid Prestige or similar</p>
-                            <div class="person-all">
-                                <span><img src="img/person.png"> 5</span> <span><img src="img/feature_suitcase.png">
-                                    4</span> <span><img src="img/feature_transmission.png"> A</span> <span><img
-                                        src="img/feature_fuel.png"> 9.1 l/100km</span>
-                            </div>
-
-                        </div>
-                        <div class="rst-3">
-                            <strong>631.40 <span>USD/Week</span></strong>
-                            <button class="continue-btn">Continue</button>
-
-                        </div>
-                    </div>
-                    <div class="car-result" id="car-12-passenger-van" data-car-id="12-passenger-van">
-                        <div class="rst-1">
-                            <img src="img/van.jpg">
-                        </div>
-                        <div class="rst-2">
-                            <h2>12 Passenger Van
-
-                            </h2>
-                            <p>(M) Ford Transit 12 psgr or similar </p>
-                            <div class="person-all">
-                                <span><img src="img/person.png"> 12</span> <span><img src="img/feature_suitcase.png">
-                                    8</span> <span><img src="img/feature_transmission.png"> A</span> <span><img
-                                        src="img/feature_fuel.png"> 14.3 l/100km</span>
-                            </div>
-
-                        </div>
-                        <div class="rst-3">
-                            <strong>585.99 <span>USD/Week</span></strong>
-                            <button class="continue-btn">Continue</button>
-
-                        </div>
-                    </div>
-                </div>
+                  <div class="row">
+                    <button
+                      type="submit"
+                      class="btn btn-danger btn-lg py-3 fw-bold"
+                    >
+                      Search & Book
+                    </button>
+                  </div>
+                </form>
+              </div>
             </div>
+          </div>
+
+          <div class="col-lg-8">
+            <h1 class="vehicle-txt">Showing All Vehicle Results</h1>
+
+            <!-- Tesla Model 3 -->
+            <div
+              class="car-result"
+              id="car-tesla-model3"
+              data-car-id="tesla-model3"
+            >
+              <div class="rst-1">
+                <img src="img/tesla.jpg" alt="Tesla Model 3" />
+              </div>
+              <div class="rst-2">
+                <h2>Tesla Model 3</h2>
+                <p>(E7) Tesla Model 3 Standard Range or similar</p>
+                <div class="person-all">
+                  <span><img src="img/person.png" alt="" /> 5</span>
+                  <span><img src="img/feature_suitcase.png" alt="" /> 3</span>
+                  <span
+                    ><img src="img/feature_transmission.png" alt="" /> A</span
+                  >
+                  <span
+                    ><img src="img/feature_battery.png" alt="" /> 418 km
+                    range</span
+                  >
+                </div>
+              </div>
+              <div class="rst-3">
+                <strong>358.14 <span>USD/Week</span></strong>
+                <button class="continue-btn">Continue</button>
+              </div>
+            </div>
+
+            <!-- Large Sedan -->
+            <div
+              class="car-result"
+              id="car-large-sedan"
+              data-car-id="large-sedan"
+            >
+              <div class="rst-1">
+                <img src="img/Large-Sedan.jpg" alt="Large Sedan" />
+              </div>
+              <div class="rst-2">
+                <h2>Large Sedan</h2>
+                <p>(F) Chevrolet Malibu or similar</p>
+                <div class="person-all">
+                  <span><img src="img/person.png" alt="" /> 5</span>
+                  <span><img src="img/feature_suitcase.png" alt="" /> 3</span>
+                  <span
+                    ><img src="img/feature_transmission.png" alt="" /> A</span
+                  >
+                  <span
+                    ><img src="img/feature_fuel.png" alt="" /> 8.4 l/100km</span
+                  >
+                </div>
+              </div>
+              <div class="rst-3">
+                <strong>476.25 <span>USD/Week</span></strong>
+                <button class="continue-btn">Continue</button>
+              </div>
+            </div>
+
+            <!-- Midsize SUV 2WD -->
+            <div
+              class="car-result"
+              id="car-midsize-suv"
+              data-car-id="midsize-suv"
+            >
+              <div class="rst-1">
+                <img src="img/midsize.jpg" alt="Midsize SUV" />
+              </div>
+              <div class="rst-2">
+                <h2>Midsize SUV 2WD</h2>
+                <p>(Q4) Nissan Rogue or similar</p>
+                <div class="person-all">
+                  <span><img src="img/person.png" alt="" /> 5</span>
+                  <span><img src="img/feature_suitcase.png" alt="" /> 4</span>
+                  <span
+                    ><img src="img/feature_transmission.png" alt="" /> A</span
+                  >
+                  <span
+                    ><img src="img/feature_fuel.png" alt="" /> 9.1 l/100km</span
+                  >
+                </div>
+              </div>
+              <div class="rst-3">
+                <strong>558.12 <span>USD/Week</span></strong>
+                <button class="continue-btn">Continue</button>
+              </div>
+            </div>
+
+            <!-- Standard 5 Passenger 2WD SUV -->
+            <div
+              class="car-result"
+              id="car-standard5-passenger-2wd-suv"
+              data-car-id="standard5-passenger-2wd-suv"
+            >
+              <div class="rst-1">
+                <img src="img/2WD.jpg" alt="Standard 5 Passenger 2WD SUV" />
+              </div>
+              <div class="rst-2">
+                <h2>Standard 5 Passenger 2WD SUV</h2>
+                <p>(L) Chevrolet Equinox or similar</p>
+                <div class="person-all">
+                  <span><img src="img/person.png" alt="" /> 5</span>
+                  <span><img src="img/feature_suitcase.png" alt="" /> 4</span>
+                  <span
+                    ><img src="img/feature_transmission.png" alt="" /> A</span
+                  >
+                  <span
+                    ><img src="img/feature_fuel.png" alt="" /> 11.1
+                    l/100km</span
+                  >
+                </div>
+              </div>
+              <div class="rst-3">
+                <strong>428.45 <span>USD/Week</span></strong>
+                <button class="continue-btn">Continue</button>
+              </div>
+            </div>
+
+            <!-- 7 Passenger Standard 4WD/AWD SUV -->
+            <div
+              class="car-result"
+              id="7-passenger-standard-4wd-awd-suv"
+              data-car-id="7-passenger-standard-4wd-awd-suv"
+            >
+              <div class="rst-1">
+                <img src="img/ZEUSFRAR999.jpg" alt="7 Passenger SUV" />
+              </div>
+              <div class="rst-2">
+                <h2>7 Passenger Standard 4WD/AWD SUV</h2>
+                <p>(L4) Nissan Pathfinder or similar</p>
+                <div class="person-all">
+                  <span><img src="img/person.png" alt="" /> 7</span>
+                  <span><img src="img/feature_suitcase.png" alt="" /> 2</span>
+                  <span
+                    ><img src="img/feature_transmission.png" alt="" /> A</span
+                  >
+                  <span
+                    ><img src="img/feature_fuel.png" alt="" /> 8.3 l/100km</span
+                  >
+                </div>
+              </div>
+              <div class="rst-3">
+                <strong>550.99 <span>USD/Week</span></strong>
+                <button class="continue-btn">Continue</button>
+              </div>
+            </div>
+
+            <!-- Minivan -->
+            <div class="car-result" id="car-minivan" data-car-id="minivan">
+              <div class="rst-1">
+                <img src="img/suv.jpg" alt="Minivan" />
+              </div>
+              <div class="rst-2">
+                <h2>Minivan</h2>
+                <p>(R) Chrysler Pacifica or similar</p>
+                <div class="person-all">
+                  <span><img src="img/person.png" alt="" /> 7</span>
+                  <span><img src="img/feature_suitcase.png" alt="" /> 5</span>
+                  <span
+                    ><img src="img/feature_transmission.png" alt="" /> A</span
+                  >
+                  <span
+                    ><img src="img/feature_fuel.png" alt="" /> 10.0
+                    l/100km</span
+                  >
+                </div>
+              </div>
+              <div class="rst-3">
+                <strong>576.12 <span>USD/Week</span></strong>
+                <button class="continue-btn">Continue</button>
+              </div>
+            </div>
+
+            <!-- Large SUV -->
+            <div class="car-result" id="car-large-suv" data-car-id="large-suv">
+              <div class="rst-1">
+                <img src="img/4wd.jpg" alt="Large SUV" />
+              </div>
+              <div class="rst-2">
+                <h2>Large SUV</h2>
+                <p>(T) Chevrolet Tahoe or similar</p>
+                <div class="person-all">
+                  <span><img src="img/person.png" alt="" /> 7</span>
+                  <span><img src="img/feature_suitcase.png" alt="" /> 4</span>
+                  <span
+                    ><img src="img/feature_transmission.png" alt="" /> A</span
+                  >
+                  <span
+                    ><img src="img/feature_fuel.png" alt="" /> 12.5
+                    l/100km</span
+                  >
+                </div>
+              </div>
+              <div class="rst-3">
+                <strong>608.02 <span>USD/Week</span></strong>
+                <button class="continue-btn">Continue</button>
+              </div>
+            </div>
+
+            <!-- Extra Capacity Large SUV -->
+            <div
+              class="car-result"
+              id="car-extra-capacity-large-suv"
+              data-car-id="extra-capacity-large-suv"
+            >
+              <div class="rst-1">
+                <img
+                  src="img/extra-capacity.jpg"
+                  alt="Extra Capacity Large SUV"
+                />
+              </div>
+              <div class="rst-2">
+                <h2>Extra Capacity Large SUV</h2>
+                <p>(T6) Chevrolet Suburban or similar</p>
+                <div class="person-all">
+                  <span><img src="img/person.png" alt="" /> 7</span>
+                  <span><img src="img/feature_suitcase.png" alt="" /> 6</span>
+                  <span
+                    ><img src="img/feature_transmission.png" alt="" /> A</span
+                  >
+                  <span
+                    ><img src="img/feature_fuel.png" alt="" /> 12.5
+                    l/100km</span
+                  >
+                </div>
+              </div>
+              <div class="rst-3">
+                <strong>608.02 <span>USD/Week</span></strong>
+                <button class="continue-btn">Continue</button>
+              </div>
+            </div>
+
+            <!-- Small SUV 2WD -->
+            <div
+              class="car-result"
+              id="car-small-suv-2wd"
+              data-car-id="small-suv-2wd"
+            >
+              <div class="rst-1">
+                <img src="img/2WD.jpg" alt="Small SUV 2WD" />
+              </div>
+              <div class="rst-2">
+                <h2>Small SUV 2WD</h2>
+                <p>(B4) Chevrolet Trax or similar</p>
+                <div class="person-all">
+                  <span><img src="img/person.png" alt="" /> 5</span>
+                  <span><img src="img/feature_suitcase.png" alt="" /> 2</span>
+                  <span
+                    ><img src="img/feature_transmission.png" alt="" /> A</span
+                  >
+                  <span
+                    ><img src="img/feature_fuel.png" alt="" /> 7.8 l/100km</span
+                  >
+                </div>
+              </div>
+              <div class="rst-3">
+                <strong>608.02 <span>USD/Week</span></strong>
+                <button class="continue-btn">Continue</button>
+              </div>
+            </div>
+
+            <!-- Small SUV AWD -->
+            <div
+              class="car-result"
+              id="car-small-suv-awd"
+              data-car-id="small-suv-awd"
+            >
+              <div class="rst-1">
+                <img src="img/AWD.jpg" alt="Small SUV AWD" />
+              </div>
+              <div class="rst-2">
+                <h2>Small SUV AWD</h2>
+                <p>(B5) Buick Encore GX or similar</p>
+                <div class="person-all">
+                  <span><img src="img/person.png" alt="" /> 5</span>
+                  <span><img src="img/feature_suitcase.png" alt="" /> 2</span>
+                  <span
+                    ><img src="img/feature_transmission.png" alt="" /> A</span
+                  >
+                  <span
+                    ><img src="img/feature_fuel.png" alt="" /> 9.1 l/100km</span
+                  >
+                </div>
+              </div>
+              <div class="rst-3">
+                <strong>558.02 <span>USD/Week</span></strong>
+                <button class="continue-btn">Continue</button>
+              </div>
+            </div>
+
+            <!-- Midsize SUV AWD -->
+            <div
+              class="car-result"
+              id="car-midsize-suv-awd"
+              data-car-id="midsize-suv-awd"
+            >
+              <div class="rst-1">
+                <img src="img/AWD.jpg" alt="Midsize SUV AWD" />
+              </div>
+              <div class="rst-2">
+                <h2>Midsize SUV AWD</h2>
+                <p>(Q5) Jeep Compass or similar</p>
+                <div class="person-all">
+                  <span><img src="img/person.png" alt="" /> 5</span>
+                  <span><img src="img/feature_suitcase.png" alt="" /> 3</span>
+                  <span
+                    ><img src="img/feature_transmission.png" alt="" /> A</span
+                  >
+                  <span
+                    ><img src="img/feature_fuel.png" alt="" /> 9.1 l/100km</span
+                  >
+                </div>
+              </div>
+              <div class="rst-3">
+                <strong>586.12 <span>USD/Week</span></strong>
+                <button class="continue-btn">Continue</button>
+              </div>
+            </div>
+
+            <!-- Medium Luxury SUV -->
+            <div
+              class="car-result"
+              id="car-medium-luxury-suv"
+              data-car-id="medium-luxury-suv"
+            >
+              <div class="rst-1">
+                <img src="img/medium-elite-sedan.jpg" alt="Medium Luxury SUV" />
+              </div>
+              <div class="rst-2">
+                <h2>Medium Luxury SUV</h2>
+                <p>(H4) Volvo XC60 Hybrid Prestige or similar</p>
+                <div class="person-all">
+                  <span><img src="img/person.png" alt="" /> 5</span>
+                  <span><img src="img/feature_suitcase.png" alt="" /> 4</span>
+                  <span
+                    ><img src="img/feature_transmission.png" alt="" /> A</span
+                  >
+                  <span
+                    ><img src="img/feature_fuel.png" alt="" /> 8.2 l/100km</span
+                  >
+                </div>
+              </div>
+              <div class="rst-3">
+                <strong>631.40 <span>USD/Week</span></strong>
+                <button class="continue-btn">Continue</button>
+              </div>
+            </div>
+
+            <!-- 12 Passenger Van -->
+            <div
+              class="car-result"
+              id="car-12-passenger-van"
+              data-car-id="12-passenger-van"
+            >
+              <div class="rst-1">
+                <img src="img/van.jpg" alt="12 Passenger Van" />
+              </div>
+              <div class="rst-2">
+                <h2>12 Passenger Van</h2>
+                <p>(M) Ford Transit 12 psgr or similar</p>
+                <div class="person-all">
+                  <span><img src="img/person.png" alt="" /> 12</span>
+                  <span><img src="img/feature_suitcase.png" alt="" /> 8</span>
+                  <span
+                    ><img src="img/feature_transmission.png" alt="" /> A</span
+                  >
+                  <span
+                    ><img src="img/feature_fuel.png" alt="" /> 14.3
+                    l/100km</span
+                  >
+                </div>
+              </div>
+              <div class="rst-3">
+                <strong>585.99 <span>USD/Week</span></strong>
+                <button class="continue-btn">Continue</button>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
     </div>
     <!-- Result End -->
 
-
     <!-- Footer Start -->
-    <div class="container-fluid footer py-4 mt-4 wow fadeIn" data-wow-delay="0.2s">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="addressnew">
-                        <ul>
-                            <li>
-                                <img src="img/phone-icon-us.png">
-                                <span>USA Toll Free<a href="tel:+1-844-539-0014">+1-844-539-0014</a></span>
-                            </li>
-                            <li style="color:#8792AA;" class="mob-hide">|</li>
-                            <li>
-                                <img src="img/email-icon-us.png">
-                                <span>Email to us<br> <a
-                                        href="mailto:car@adamvacations.com">car@adamvacations.com</a></span>
-                            </li>
-                            <li style="color:#8792AA;" class="mob-hide">|</li>
-                            <li>
-                                <img src="img/address-icon-us.png">
-                                <span>
-                                    7901 4TH ST N STE 300,<br>
-                                    ST PETERSBURG, FL 33702
-                                </span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+    <div
+      class="container-fluid footer py-4 mt-4 wow fadeIn"
+      data-wow-delay="0.2s"
+    >
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="addressnew">
+              <ul>
+                <li>
+                  <img src="img/phone-icon-us.png" />
+                  <span
+                    >USA Toll Free<a href="tel:+1-844-539-0014"
+                      >+1-844-539-0014</a
+                    ></span
+                  >
+                </li>
+                <li style="color: #8792aa" class="mob-hide">|</li>
+                <li>
+                  <img src="img/email-icon-us.png" />
+                  <span
+                    >Email to us<br />
+                    <a href="mailto:car@adamvacations.com"
+                      >car@adamvacations.com</a
+                    ></span
+                  >
+                </li>
+                <li style="color: #8792aa" class="mob-hide">|</li>
+                <li>
+                  <img src="img/address-icon-us.png" />
+                  <span>
+                    7901 4TH ST N STE 300,<br />
+                    ST PETERSBURG, FL 33702
+                  </span>
+                </li>
+              </ul>
             </div>
-            <div class="row py-3 mt-3">
-                <div class="col-md-6 col-lg-6 col-xl-4">
-                    <div class="footer-item d-flex flex-column">
-                        <div class="footer-item">
-                            <h4 class="text-white mb-4">About Us</h4>
-                            <p class="mb-3">Adam Vacations is an Online Travel Agency & Airline Consolidator. Positioned
-                                itself as one of the leading companies, providing great offers, competitive airfares,
-                                exclusive discounts, and a seamless online booking experience to many of its customers.
-                            </p>
-                            <strong class="mr0 hidden-xs">
-                                <span><b>Country:</b> <a href="http://us.adamvacations.com/" target="_blank">USA</a>, <a
-                                        href="https://www.adamvacations.com/" target="_blank">INDIA</a>, <a
-                                        href="http://es.adamvacations.com/" target="_blank">SPAIN</a>, <a
-                                        href="http://ca.adamvacations.com/" target="_blank">CANADA</a> , <a
-                                        href="http://ae.adamvacations.com/" target="_blank"> UAE</a> &amp; UK</span>
-                            </strong>
-                        </div>
-
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-6 col-xl-4">
-                    <div class="footer-item d-flex flex-column">
-                        <h4 class="text-white mb-4">Quick Links</h4>
-                        <a href="about.html"><i class="fas fa-angle-right me-2"></i> About</a>
-                        <!-- <a href="#"><i class="fas fa-angle-right me-2"></i> Cars</a>
+          </div>
+        </div>
+        <div class="row py-3 mt-3">
+          <div class="col-md-6 col-lg-6 col-xl-4">
+            <div class="footer-item d-flex flex-column">
+              <div class="footer-item">
+                <h4 class="text-white mb-4">About Us</h4>
+                <p class="mb-3">
+                  Adam Vacations is an Online Travel Agency & Airline
+                  Consolidator. Positioned itself as one of the leading
+                  companies, providing great offers, competitive airfares,
+                  exclusive discounts, and a seamless online booking experience
+                  to many of its customers.
+                </p>
+                <strong class="mr0 hidden-xs">
+                  <span
+                    ><b>Country:</b>
+                    <a href="http://us.adamvacations.com/" target="_blank"
+                      >USA</a
+                    >,
+                    <a href="https://www.adamvacations.com/" target="_blank"
+                      >INDIA</a
+                    >,
+                    <a href="http://es.adamvacations.com/" target="_blank"
+                      >SPAIN</a
+                    >,
+                    <a href="http://ca.adamvacations.com/" target="_blank"
+                      >CANADA</a
+                    >
+                    ,
+                    <a href="http://ae.adamvacations.com/" target="_blank">
+                      UAE</a
+                    >
+                    &amp; UK</span
+                  >
+                </strong>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-6 col-xl-4">
+            <div class="footer-item d-flex flex-column">
+              <h4 class="text-white mb-4">Quick Links</h4>
+              <a href="about.html"
+                ><i class="fas fa-angle-right me-2"></i> About</a
+              >
+              <!-- <a href="#"><i class="fas fa-angle-right me-2"></i> Cars</a>
                             <a href="#"><i class="fas fa-angle-right me-2"></i> Car Types</a>
                             <a href="#"><i class="fas fa-angle-right me-2"></i> Team</a> -->
-                        <a href="contact.html"><i class="fas fa-angle-right me-2"></i> Contact us</a>
-                        <a href="Cookies.html"><i class="fas fa-angle-right me-2"></i> Cookies Policy</a>
-                        <a href="disclaimer.html"><i class="fas fa-angle-right me-2"></i> Disclaimer</a>
-
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-6 col-xl-4">
-                    <div class="footer-item d-flex flex-column">
-                        <h4 class="text-white mb-4">Our Policy</h4>
-                        <a href="booking-policy.html"><i class="fas fa-angle-right me-2"></i>Booking Policy</a>
-                        <a href="privacy-policy.html"><i class="fas fa-angle-right me-2"></i> Privacy policy</a>
-
-                        <a href="terms-conditions.html"><i class="fas fa-angle-right me-2"></i> Terms & Conditions</a>
-                        <a href="Cancellation-policy.html"><i class="fas fa-angle-right me-2"></i> Cancellation & Refund
-                            Policy</a>
-
-                    </div>
-                </div>
+              <a href="contact.html"
+                ><i class="fas fa-angle-right me-2"></i> Contact us</a
+              >
+              <a href="Cookies.html"
+                ><i class="fas fa-angle-right me-2"></i> Cookies Policy</a
+              >
+              <a href="disclaimer.html"
+                ><i class="fas fa-angle-right me-2"></i> Disclaimer</a
+              >
             </div>
+          </div>
+          <div class="col-md-6 col-lg-6 col-xl-4">
+            <div class="footer-item d-flex flex-column">
+              <h4 class="text-white mb-4">Our Policy</h4>
+              <a href="booking-policy.html"
+                ><i class="fas fa-angle-right me-2"></i>Booking Policy</a
+              >
+              <a href="privacy-policy.html"
+                ><i class="fas fa-angle-right me-2"></i> Privacy policy</a
+              >
+
+              <a href="terms-conditions.html"
+                ><i class="fas fa-angle-right me-2"></i> Terms & Conditions</a
+              >
+              <a href="Cancellation-policy.html"
+                ><i class="fas fa-angle-right me-2"></i> Cancellation & Refund
+                Policy</a
+              >
+            </div>
+          </div>
         </div>
+      </div>
     </div>
     <!-- Footer End -->
 
     <!-- Copyright Start -->
     <div class="container-fluid copyright py-2">
-        <div class="container">
-            <div class="row g-4 align-items-center">
-                <div class="col-md-6 text-center text-md-start mb-md-0">
-                    <span class="text-body-1">2026 Adam Vacations. All rights reserved.</span>
-                </div>
-                <div class="col-md-6 text-center text-md-end text-body">
-                    <div class="pull-right  contect-adam">
-                        <div class="social-links">
-                            <span class="text-body-1">Follow us on</span>
-                            <a href="https://www.facebook.com/people/Adamvacation/100065127787909/" target="_blank"><i
-                                    class="fab bi bi-facebook"></i></a>
-                            <a href="https://www.instagram.com/adam.vacations/" target="_blank"><i
-                                    class="fab bi bi-instagram"></i></a>
+      <div class="container">
+        <div class="row g-4 align-items-center">
+          <div class="col-md-6 text-center text-md-start mb-md-0">
+            <span class="text-body-1"
+              >2026 Adam Vacations. All rights reserved.</span
+            >
+          </div>
+          <div class="col-md-6 text-center text-md-end text-body">
+            <div class="pull-right contect-adam">
+              <div class="social-links">
+                <span class="text-body-1">Follow us on</span>
+                <a
+                  href="https://www.facebook.com/people/Adamvacation/100065127787909/"
+                  target="_blank"
+                  ><i class="fab bi bi-facebook"></i
+                ></a>
+                <a
+                  href="https://www.instagram.com/adam.vacations/"
+                  target="_blank"
+                  ><i class="fab bi bi-instagram"></i
+                ></a>
 
-                            <a href="https://in.linkedin.com/company/adam-vacations" target="_blank"><i
-                                    class="fab bi bi-linkedin"></i></a>
-                        </div>
-                    </div>
-                </div>
+                <a
+                  href="https://in.linkedin.com/company/adam-vacations"
+                  target="_blank"
+                  ><i class="fab bi bi-linkedin"></i
+                ></a>
+              </div>
             </div>
+          </div>
         </div>
+      </div>
     </div>
     <!-- Copyright End -->
 
-
     <!-- Back to Top -->
-    <a href="#" class="btn btn-secondary btn-lg-square rounded-circle back-to-top"><i class="fa fa-arrow-up"></i></a>
-
+    <a
+      href="#"
+      class="btn btn-secondary btn-lg-square rounded-circle back-to-top"
+      ><i class="fa fa-arrow-up"></i
+    ></a>
 
     <!-- JavaScript Libraries -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
@@ -591,13 +828,9 @@
     <script src="lib/waypoints/waypoints.min.js"></script>
     <script src="lib/owlcarousel/owl.carousel.min.js"></script>
 
-
-
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
     <!--<script src="/js/search-form-result.js"></script>-->
     <script src="https://cdn.jsdelivr.net/npm/litepicker/dist/litepicker.js"></script>
-
-</body>
-
+  </body>
 </html>
