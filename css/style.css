@@ -1563,3 +1563,6 @@ input[type="time"] {
     display: none;
 }
 .mobile-phone a{color:#fff;}
+.your-mind .questions button a{
+    color: #fff;
+}

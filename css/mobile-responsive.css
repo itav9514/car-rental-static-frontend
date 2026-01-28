@@ -60,6 +60,79 @@ h4.text-white.mb-4{font-size:16px;         margin-top: 16px;}
         position: absolute;
         right: 20%;
     }
+.progress-new{
+    width:100%;
+}
+.progress-new ul{display: block;}
+.thankyou h2 {
+    font-size: 17px;
+    padding: 8px 0 3px;
+}
+.thankyou p {
+    font-size: 13px;
+    line-height: 20px;
+}
+.thankyou {
+    height: auto;
+    background-position: top;
+}
+.get-in-touch h2 {
+    font-size: 20px;
+}
+.progress-new ul li h2 {
+    font-size: 15px;
+    margin: 20px 0 0;
+}
+.progress-new ul li p {
+    color: #000000;
+    font-size: 13px;
+    font-weight: 500;
+    margin-top: 8px;
+}
+.wide-choice h3 {
+    color: #000000;
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0 0 13px;
+}
+.wide-choice p {
+    font-size: 14px;
+}
+.cookies-txt h2 {
+    font-size: 16px;
+    margin: 15px 0 12px;
+}
+
+.your-mind .questions {
+    height: 100%;
+    background-position: right;
+}
+.your-mind .questions span {
+    color: #fff;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 10px;
+    display: inline-block;
+    margin: 10px 33px 0;
+}
+
+.your-mind .questions button {
+    float: right;
+    margin: 182px 36px 31px;
+    background: #001c76;
+    color: #fff;
+    font-size: 20px;
+    font-weight: 500;
+    padding: 5px 24px;
+    border-radius: 10px;
+}
+.your-mind .questions button a{
+    color: #fff;
+}
+
+
+
+
 
 
 
