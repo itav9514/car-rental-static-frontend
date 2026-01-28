@@ -111,22 +111,20 @@
 
         <table class="table table-bordered">
           <tbody>
-            <tr><th>Booking Reference</th><td id="ref"></td></tr>
-            <tr><th>Name</th><td id="name"></td></tr>
-            <tr><th>Email</th><td id="email"></td></tr>
-            <tr><th>Phone</th><td id="phone"></td></tr>
+            <tr><th style="width:25%;">Booking Reference</th><td id="ref" style="width:75%;"></td></tr>
+            <tr><th style="width:25%;">Name</th><td id="name" style="width:75%;"></td></tr>
+            <tr><th style="width:25%;">Email</th><td id="email" style="width:75%;"></td></tr>
+            <tr><th style="width:25%;">Phone</th><td id="phone" style="width:75%;"></td></tr>
 
-            <tr><th>Car</th><td id="car"></td></tr>
-            <tr><th>Category</th><td id="category"></td></tr>
+            <tr><th style="width:25%;">Car</th><td id="car" style="width:75%;"></td></tr>
+            <tr><th style="width:25%;">Category</th><td id="category" style="width:75%;"></td></tr>
 
-            <tr><th>Pickup</th><td id="pickup"></td></tr>
-            <tr><th>Dropoff</th><td id="dropoff"></td></tr>
-
-            <tr><th>Add-ons</th><td id="addons"></td></tr>
-
-            <tr><th>Base Price</th><td id="basePrice"></td></tr>
-            <tr><th>Add-ons Total</th><td id="addonsTotal"></td></tr>
-            <tr><th><strong>Total Price</strong></th><td id="totalPrice"></td></tr>
+            <tr><th style="width:25%;">Pickup</th><td id="pickup" style="width:75%;"></td></tr>
+            <tr><th style="width:25%;">Dropoff</th><td id="dropoff" style="width:75%;"></td></tr>
+            <tr><th style="width:25%;">Add-ons</th><td id="addons" style="width:75%;"></td></tr>
+            <tr><th style="width:25%;">Base Price</th><td id="basePrice" style="width:75%;"></td></tr>
+            <tr><th style="width:25%;">Add-ons Total</th><td id="addonsTotal" style="width:75%;"></td></tr>
+            <tr><th style="width:25%;"><strong>Total Price</strong></th><td id="totalPrice" style="width:75%;"></td></tr>
           </tbody>
         </table>
       </div>
@@ -365,10 +363,10 @@ Whether you’re planning a business trip, family vacation, airport transfer, or
     <script>
   const data = sessionStorage.getItem('carRentalEnquiry');
 
-if (!data) {
+// if (!data) {
 
-    window.location.href = 'index.html';
-  } 
+//     window.location.href = 'index.html';
+//   } 
 
   const booking = JSON.parse(data);
 
