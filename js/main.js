@@ -191,7 +191,7 @@ function initGooglePlaces() {
 
 document.addEventListener('DOMContentLoaded', () => {
   const isSearchPage = document.getElementById('searchForm') !== null;
-  const isResultPage = document.querySelector('.car-result') !== null;
+  const isResultPage = document.getElementById('car-container') !== null;
   const isAddOnPage = document.querySelector('.addon-services') !== null;
 
 
@@ -414,184 +414,256 @@ document.addEventListener('DOMContentLoaded', () => {
   // ────────────────────────────────────────────────
   // RESULT PAGE LOGIC (car selection)
   // ────────────────────────────────────────────────
+
+
+  // ── On result page ────────────────────────────────────────
   if (isResultPage) {
 
-    console.log("✅ Result page logic STARTED");
-    console.log("Found car cards:", document.querySelectorAll('.car-result').length);
-    console.log("Found continue buttons:", document.querySelectorAll('.continue-btn').length);
+    console.log("✅ Dynamic car loading STARTED");
 
-    window.addEventListener('pageshow', (event) => {
-      if (event.persisted) {
-        console.log("Page restored from bfcache → reloading");
-        window.location.reload();
-      }
-    });
-
-    // ── Read search parameters ────────────────────────────────
+    // ── Read search parameters from URL ─────────────────────
     const urlParams = new URLSearchParams(window.location.search);
 
     const pickupAddr = urlParams.get('pickup') || DEFAULT_PICKUP.formatted_address;
     const dropoffAddr = urlParams.get('dropoff') || DEFAULT_DROPOFF.formatted_address;
-    const pickupTime = urlParams.get('pickupDt') || null;
-    const dropoffTime = urlParams.get('dropoffDt') || null;
+    const pickupDtStr = urlParams.get('pickupDt') || null;
+    const dropoffDtStr = urlParams.get('dropoffDt') || null;
 
-    let days = 3; // fallback
-    let hours = 72;
+    let totalHours = 72;  // fallback 3 days
+    let totalDays = 3;
 
-    if (pickupTime && dropoffTime) {
-      const start = new Date(pickupTime);
-      const end = new Date(dropoffTime);
+    if (pickupDtStr && dropoffDtStr) {
+      const start = new Date(pickupDtStr);
+      const end = new Date(dropoffDtStr);
       if (!isNaN(start) && !isNaN(end) && end > start) {
         const diffMs = end - start;
-        hours = Math.ceil(diffMs / (1000 * 60 * 60));
-        days = Math.ceil(hours / 24);
+        totalHours = Math.ceil(diffMs / (1000 * 60 * 60));
+        totalDays = Math.ceil(totalHours / 24);
       }
     }
 
-    // Very simple distance estimation function (you can replace later)
+    console.log(`Booking duration: ${totalDays} days (${totalHours} hours)`);
+
+    // ── Rough distance estimation (replace with real API later) ──
     function estimateDistanceKm(a, b) {
-      // Rough heuristic – real implementation needs Google Distance Matrix API
-      if (a.includes("Airport") && b.includes("Cyber") ||
-        b.includes("Airport") && a.includes("Cyber")) {
-        return 35; // Delhi airport → Cyber Hub ≈ 35–40 km
+      // Very basic heuristic – improve with Google Distance Matrix later
+      if ((a.includes("Airport") || a.includes("LAX")) &&
+        (b.includes("Downtown") || b.includes("Los Angeles"))) {
+        return 25; // LAX → Downtown LA ≈ 25–30 km
       }
-      // Default fallback
-      return 80;
+      return 80; // fallback
     }
 
     const distanceKm = estimateDistanceKm(pickupAddr, dropoffAddr);
+    console.log(`Estimated distance: ${distanceKm} km`);
 
-    // ── Price calculation logic ────────────────────────────────
-    function calculatePrice(baseWeeklyUsd, distanceKm, rentalHours) {
-      const baseDaily = baseWeeklyUsd / 7;
-      let price = baseDaily * (rentalHours / 24);
+    // ── Fetch cars from backend ───────────────────────────────
+    async function loadCars() {
+      try {
+        const response = await fetch('/cms/cms/car_cms/cars/');
+        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
 
-      // Add small distance surcharge (example: $0.35 per km)
-      price += distanceKm * 0.35;
+        const cars = await response.json();
+        console.log("Loaded cars from API:", cars.length);
 
-      // Round to 2 decimals
-      return Math.round(price * 100) / 100;
-    }
+        const container = document.getElementById('car-container');
+        const loading = document.getElementById('loading');
+        const noResults = document.getElementById('no-results');
 
-    // ── Update all displayed prices ────────────────────────────
-    const carCards = document.querySelectorAll('.car-result');
+        loading.style.display = 'none';
 
-    carCards.forEach(card => {
-      const priceElement = card.querySelector('.rst-3 strong');
-      if (!priceElement) {
-        console.warn("No price <strong> in card", card.id || card);
-        return;
-      }
-
-      // Extract original weekly price (fallback)
-      const text = priceElement.textContent.trim();
-      const weeklyMatch = text.match(/[\d,.]+/);
-      const weeklyUsd = weeklyMatch ? parseFloat(weeklyMatch[0].replace(',', '')) : 500;
-      console.log(`Updating ${card.id || 'card'} from ${weeklyUsd} → new price`);
-      const newPrice = calculatePrice(weeklyUsd, distanceKm, hours);
-      priceElement.innerHTML = `${newPrice.toFixed(2)} <span>USD/Week</span>`;
-
-
-    });
-
-    document.querySelectorAll('.continue-btn').forEach((button, index) => {
-      console.log(`Attaching listener to button #${index + 1}`);
-      button.addEventListener('click', (e) => {
-        console.log(">>> Continue button clicked! Index:", index);
-
-        const carCard = e.target.closest('.car-result');
-        if (!carCard) {
-          console.error("No .car-result parent found");
+        if (cars.length === 0) {
+          noResults.style.display = 'block';
           return;
         }
 
-        console.log("Car ID:", carCard.dataset.carId);
+        container.style.display = 'block';
 
-        button.disabled = true;
-        const originalText = button.textContent;
-        button.textContent = 'Loading...';
+        cars.forEach(car => {
+          // Calculate real price
+          const baseHourly = car.hourly_rate || 0;
+          let rentalCost = baseHourly * totalHours;
 
-        const carId = carCard.dataset.carId
-        const title = carCard.querySelector('h2')?.textContent.trim() || 'Unknown';
-        const subtitle = carCard.querySelector('p')?.textContent.trim() || '';
-        const priceStr = carCard.querySelector('.rst-3 strong')?.textContent.trim() || '0';
-        const priceNum = parseFloat(priceStr.match(/[\d,.]+/)?.[0]?.replace(',', '') || '0');
-        const currency = priceStr.includes('USD') ? 'USD' : 'Unknown';
-
-        const features = [];
-        carCard.querySelectorAll('.person-all span').forEach(span => {
-          const val = span.textContent.trim();
-          if (val) {
-            let type = 'other';
-            if (/person|seat/i.test(val)) type = 'passengers';
-            if (/suitcase|bag|luggage/i.test(val)) type = 'luggage';
-            if (/A|M|Auto|Manual/i.test(val)) type = 'transmission';
-            if (/km|range|l\/100km|fuel|battery/i.test(val)) type = 'fuel';
-            features.push({ type, value: val });
+          // Add fuel cost estimation
+          if (car.mileage && distanceKm > 0) {
+            // Parse mileage – e.g. "9.1 l/100km" → liters per 100 km
+            const match = car.mileage.match(/[\d.]+/);
+            if (match) {
+              const litersPer100km = parseFloat(match[0]);
+              const totalLiters = (distanceKm / 100) * litersPer100km;
+              const fuelPricePerLiter = 1.2; // USD/L – adjust or make dynamic
+              const fuelCost = totalLiters * fuelPricePerLiter;
+              rentalCost += fuelCost;
+            }
           }
+
+          const finalPrice = Math.round(rentalCost * 100) / 100;
+
+          // Build HTML card
+          const cardHTML = `
+              <div class="car-result" id="car-${car.id}" data-car-id="${car.id}">
+                <div class="rst-1">
+                  <img src="${car.image_url || 'img/placeholder-car.jpg'}" alt="${car.name}" />
+                </div>
+                <div class="rst-2">
+                  <h2>${car.name}</h2>
+                  <p>${car.display_category || ''}</p>
+
+
+                  <div class="person-all">
+  ${car.seats ? `
+    <span data-feature="seats" data-value="${car.seats}">
+      <img src="img/person.png" alt="" /> ${car.seats}
+    </span>` : ''}
+
+  ${car.luggage ? `
+    <span data-feature="luggage" data-value="${car.luggage}">
+      <img src="img/feature_suitcase.png" alt="" /> ${car.luggage}
+    </span>` : ''}
+
+  ${car.transmission ? `
+    <span data-feature="transmission"
+          data-value="${car.transmission_display || car.transmission}">
+      <img src="img/feature_transmission.png" alt="" />
+      ${car.transmission_display || car.transmission}
+    </span>` : ''}
+
+  ${car.fuel_type ? `
+    <span data-feature="fuel"
+          data-value="${car.fuel_type_display || car.fuel_type}">
+      <img src="img/feature_fuel.png" alt="" />
+      ${car.fuel_type_display || car.fuel_type}
+    </span>` : ''}
+
+  ${car.mileage ? (
+              car.fuel_type === 'Electric' || car.fuel_type_display === 'Electric'
+                ? `
+      <span data-feature="battery"
+            data-value="${car.mileage}"
+            data-unit="mi/charge">
+        <img src="img/feature_battery.png" alt="" />
+        ${car.mileage} mi/charge
+      </span>`
+                : `
+      <span data-feature="mileage"
+            data-value="${car.mileage}"
+            data-unit="mi/l">
+        <img src="img/feature_fuel.png" alt="" />
+        ${car.mileage} mi/l
+      </span>`
+            ) : ''}
+</div>
+
+
+                </div>
+                <div class="rst-3">
+                  <strong>${finalPrice.toFixed(2)} <span>USD (${totalDays} days)</span></strong>
+                  <button class="continue-btn">Continue</button>
+                </div>
+              </div>
+            `;
+
+          container.insertAdjacentHTML('beforeend', cardHTML);
         });
 
-        const selectedCar = {
-          id: carId,
-          name: title,
-          category: subtitle,
-          pricePerWeek: priceNum,
-          currency,
-          features,
-          imageUrl: carCard.querySelector('img')?.src || '',
-          selectedAt: new Date().toISOString()
-        };
+        // Now attach continue button listeners
+        attachContinueListeners();
 
-        console.log("Selected car:", selectedCar);
+      } catch (err) {
+        console.error("Failed to load cars:", err);
+        document.getElementById('loading').innerHTML = '<p style="color:red;">Error loading vehicles. Please try again later.</p>';
+      }
+    }
+
+    // ── Continue button logic (same as before, but now dynamic) ──
+    function attachContinueListeners() {
+      document.querySelectorAll('.continue-btn').forEach(button => {
+        button.addEventListener('click', (e) => {
+          const card = e.target.closest('.car-result');
+          if (!card) return;
+
+          button.disabled = true;
+          button.textContent = 'Loading...';
+
+          const carId = card.dataset.carId;
+          const car = document.querySelector(`#car-${carId}`);
+          if (!car) return;
+
+          const title = car.querySelector('h2')?.textContent.trim() || 'Unknown';
+          const subtitle = car.querySelector('p')?.textContent.trim() || '';
+          const priceEl = car.querySelector('.rst-3 strong');
+          const priceText = priceEl?.textContent.trim() || '0';
+          const priceNum = parseFloat(priceText.match(/[\d.]+/)?.[0] || '0');
+
+          const features = [];
+
+          car.querySelectorAll('.person-all span').forEach(span => {
+            const feature = span.dataset.feature;
+            const value = span.dataset.value;
+            const unit = span.dataset.unit || null;
+
+            if (!feature || !value) return;
+
+            features.push({
+              type: feature,
+              value: value,
+              unit: unit,
+              display: span.textContent.trim()
+            });
+          });
 
 
-        try {
-          const jsonString = JSON.stringify(selectedCar);
-          localStorage.setItem('selectedCar', jsonString);
+          const selectedCar = {
+            id: carId,
+            name: title,
+            category: subtitle,
+            priceTotal: priceNum,
+            currency: 'USD',
+            durationDays: totalDays,
+            durationHours: totalHours,
+            features,
+            imageUrl: car.querySelector('img')?.src || '',
+            selectedAt: new Date().toISOString()
+          };
 
-          console.group("localStorage Save Verification");
-          console.log("Original object:", selectedCar);
-          console.log("Saved as JSON string:", jsonString);
-
-          const retrieved = localStorage.getItem('selectedCar');
-          console.log("Retrieved from localStorage:", retrieved);
-
-          if (retrieved) {
-            const parsedBack = JSON.parse(retrieved);
-            console.log("Parsed back to object:", parsedBack);
-            console.log("Objects match?", JSON.stringify(parsedBack) === jsonString);
+          try {
+            localStorage.setItem('selectedCar', JSON.stringify(selectedCar));
+            setTimeout(() => {
+              window.location.href = 'addon-extra.html';
+            }, 400);
+          } catch (err) {
+            console.error("Save failed:", err);
+            alert('Could not save selection.');
+            button.disabled = false;
+            button.textContent = 'Continue';
           }
-          console.groupEnd();
-
-          console.log("Redirecting in 400ms...");
-          setTimeout(() => {
-            window.location.href = 'addon-extra.html';
-          }, 400);
-        } catch (err) {
-          console.error("Save failed:", err);
-          alert('Could not save selection. Please try again.');
-          button.disabled = false;
-          button.textContent = originalText;
-        }
-
+        });
       });
-    });
+    }
 
-    console.log("✅ Result page logic FINISHED");
+    // Load cars when page is ready
+    loadCars();
   }
+
+
 });
 
 
 
 
 
+
+
+
 // Add-on Extras Page Logic
-
 document.addEventListener('DOMContentLoaded', () => {
-
   const isPayNowPage = document.getElementById('pay-now-btn') !== null;
 
-  // ─── Helpers ────────────────────────────────────────
+  // ─── API Endpoints ─────────────────────────────────────
+  const API_BASE = '/cms/cms/car_cms/';  // Change if your API prefix is different
+  const ADDON_API = `${API_BASE}cars/`;
+
+  // ─── Helpers ───────────────────────────────────────────
   const getDays = () => {
     const search = JSON.parse(localStorage.getItem('lastCarRentalSearch') || '{}');
     if (!search.pickupDateTime || !search.dropoffDateTime) return 7;
@@ -601,51 +673,259 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   const days = getDays();
-  const formatPrice = (num) => num.toFixed(2);
 
+  const formatPrice = (num) => {
+    const parsed = parseFloat(num);
+    return isNaN(parsed) ? '0.00' : parsed.toFixed(2);
+  };
   const saveCart = (cart) => localStorage.setItem('addonCart', JSON.stringify(cart));
   const loadCart = () => JSON.parse(localStorage.getItem('addonCart') || '[]');
 
-  const isPriceKnown = (price) => price > 0;
+  const isPriceKnown = (price) => price !== null && price > 0;
 
-  // ─── Render Your Car + Base Price ───────────────────
-  const renderYourCarAndBasePrice = () => {
-    const car = JSON.parse(localStorage.getItem('selectedCar') || '{}');
-    const carSection = document.getElementById('your-car-section');
-    if (!carSection) return 0;
-
-    let basePriceValue = 0;
-    let basePriceHTML = '<div class="dtl"><span>Base rental price</span><strong>Calculated later</strong></div>';
-
-    if (car.pricePerWeek && car.pricePerWeek > 0) {
-      const dailyRate = car.pricePerWeek / 7;
-      basePriceValue = dailyRate * days;
-      basePriceHTML = `
-        <div class="dtl" id="base-price-row">
-          <span>Base Rental (${days} days @ ${formatPrice(dailyRate)}/day)</span>
-          <strong>${formatPrice(basePriceValue)} USD</strong>
-        </div>
-      `;
-    }
-
-    carSection.innerHTML = car.id
-      ? `
-        <img src="${car.imageUrl || 'img/placeholder-car.jpg'}" alt="${car.name}">
-        <h2>Your Car</h2>
-        <hr>
-        <strong>${car.name} ${car.category ? `(${car.category})` : ''}</strong>
-        <p>${car.description || car.category || 'Similar vehicle'}</p>
-      `
-      : '<p>No car selected yet.</p>';
-
-    const baseRow = document.getElementById('base-price-row');
-    if (baseRow) baseRow.outerHTML = basePriceHTML;
-
-    return basePriceValue;
+  // Safe HTML rendering (prevents XSS)
+  const safeHTML = (html) => {
+    const div = document.createElement('div');
+    div.innerHTML = html;
+    return div.innerHTML;  // or use DOMPurify if you include it
   };
 
-  // ─── Render Add-ons & Total ──────────────────────────
-  const renderPriceDetails = (basePrice = 0) => {
+  // ─── Load Selected Car from localStorage ───────────────
+  const selectedCar = JSON.parse(localStorage.getItem('selectedCar') || '{}');
+  const carId = selectedCar?.id;
+
+  if (!carId) {
+    console.warn("No car selected in localStorage");
+    // Show warning in UI
+    document.getElementById('your-car-section').innerHTML = `
+      <h2>No Car Selected</h2>
+      <p>Please go back and select a vehicle.</p>
+      <a href="result.html" class="btn btn-outline-primary">← Back to Cars</a>
+    `;
+  }
+
+  // ─── Render Your Car Section ───────────────────────────
+  const renderYourCar = () => {
+    const section = document.getElementById('your-car-section');
+    if (!section || !carId) return;
+
+    section.innerHTML = `
+      <img src="${selectedCar.imageUrl || 'img/placeholder-car.jpg'}" alt="${selectedCar.name}" style="width:100%; height:auto; object-fit:cover; border-radius:8px;">
+      <h2>Your Car</h2>
+      <hr>
+      <strong>${selectedCar.name}</strong>
+      <p>${selectedCar.display_category || 'Similar vehicle'}</p>
+      <div style="font-size:0.9em; color:#555; margin-top:10px;">
+        ${selectedCar.features?.map(f => `<span class="badge bg-light text-dark me-1">${f.value}</span>`).join('') || ''}
+      </div>
+    `;
+  };
+
+
+
+
+
+  // ─── Load & Render Add-ons for the Selected Car ────────────────
+  const loadAndRenderAddons = async () => {
+    if (!carId) {
+      console.warn("No car ID available — skipping add-on loading");
+      return;
+    }
+
+    const container = document.getElementById('addons-container');
+    if (!container) {
+      console.error("Container #addons-container not found");
+      return;
+    }
+
+    const loadingEl = document.getElementById('addons-loading');
+    if (loadingEl) loadingEl.style.display = 'block';
+
+    try {
+      const url = `${API_BASE}cars/${carId}/`;
+      console.log("Fetching from:", url);
+
+      const response = await fetch(url);
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+
+      const data = await response.json();
+      console.log("Full car response:", data);
+
+      // Extract addons and convert price to number
+      const addons = Array.isArray(data.addons) ? data.addons.map(addon => ({
+        ...addon,
+        price: addon.price !== null ? parseFloat(addon.price) : null  // Convert to number or null
+      })) : [];
+
+      console.log(`Successfully loaded ${addons.length} add-on(s) for car ID ${carId}`);
+
+      // Hide loading
+      if (loadingEl) loadingEl.style.display = 'none';
+      container.innerHTML = '';
+
+      if (addons.length === 0) {
+        container.innerHTML = '<p class="text-center py-5 text-muted">No add-ons available for this vehicle.</p>';
+        return;
+      }
+
+      // Group into rows of 2
+      for (let i = 0; i < addons.length; i += 2) {
+        const row = document.createElement('div');
+        row.className = 'extra-all row';
+
+        const group = addons.slice(i, i + 2);
+
+        group.forEach(addon => {
+          const cart = loadCart();
+          const inCart = cart.some(item => item.id === addon.id);
+
+          // Use numeric price for display
+          const displayPrice = isPriceKnown(addon.price)
+            ? `${formatPrice(addon.price)} ${addon.type === 'day' ? '/ Day' : 'per rental'}`
+            : 'Price at counter';
+
+          const modalId = `addon-modal-${addon.id}`;
+
+          const modalHTML = `
+          <div class="modal fade" id="${modalId}" tabindex="-1" aria-labelledby="${modalId}Label" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="${modalId}Label">${addon.name}</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4">
+                  ${addon.image_url ? `
+                    <img src="${addon.image_url}" alt="${addon.name}" class="img-fluid mb-4 rounded shadow-sm" style="max-height:350px; width:100%; object-fit:cover;">
+                  ` : ''}
+                  <p class="lead mb-4">${addon.brief_description || '<em>No brief description available</em>'}</p>
+                  <div class="detailed-description mb-4">
+                    ${safeHTML(addon.detailed_description || '<p>No detailed information provided.</p>')}
+                  </div>
+                  <hr class="my-4">
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                      <strong class="fs-5">${displayPrice}</strong>
+                      <small class="text-muted d-block">Type: ${addon.type || 'N/A'}</small>
+                    </div>
+                    <small class="text-muted">Updated: ${new Date(addon.updated_at).toLocaleDateString()}</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        `;
+
+          const addonCard = `
+          <div class="addon-services col-lg-6 ${inCart ? 'addon-selected' : ''}">
+            ${addon.image_url
+              ? `<img src="${addon.image_url}" alt="${addon.name}" />`
+              : '<img src="img/placeholder-addon.jpg" alt="Add-on" />'}
+            
+            <h2>${addon.name}</h2>
+            <p>${addon.brief_description || 'No short description available'}</p>
+            
+            <a style="cursor: pointer;" data-bs-toggle="modal" data-bs-target="#${modalId}">
+              More Details
+            </a>
+            
+            <strong>${displayPrice}</strong>
+            
+            <button class="addon-btn ${inCart ? 'btn-outline-danger' : 'btn-outline-primary'}" 
+                    data-id="${addon.id}"
+                    data-name="${addon.name.replace(/"/g, '&quot;')}"
+                    data-price="${addon.price !== null ? addon.price : 0}"
+                    data-type="${addon.type || 'rental'}">
+              ${inCart ? 'Remove' : 'Add'}
+            </button>
+          </div>
+          ${modalHTML}
+        `;
+
+          row.insertAdjacentHTML('beforeend', addonCard);
+        });
+
+        container.appendChild(row);
+      }
+
+      // Re-attach listeners and refresh totals
+      attachAddonListeners();
+      renderPriceDetails();
+
+    } catch (err) {
+      console.error("Failed to load add-ons:", err);
+      container.innerHTML = `
+      <div class="alert alert-danger text-center py-5">
+        <strong>Error loading add-ons</strong><br>
+        ${err.message}<br>
+        <button class="btn btn-outline-danger mt-3" onclick="location.reload()">Retry</button>
+      </div>
+    `;
+    }
+  };
+
+
+
+  // ─── Add/Remove Logic ──────────────────────────────────
+
+  const toggleAddon = (btn) => {
+    const id = btn.dataset.id;
+    const name = btn.dataset.name;
+    const price = parseFloat(btn.dataset.price) || 0;  // always number
+    const type = btn.dataset.type || 'rental';
+
+    if (!id) return alert('Add-on information missing.');
+
+    let cart = loadCart();
+    const index = cart.findIndex(item => item.id === id);
+
+    if (index === -1) {
+      cart.push({ id, name, price, type });
+      btn.textContent = 'Remove';
+      btn.classList.replace('btn-outline-primary', 'btn-outline-danger');
+    } else {
+      cart.splice(index, 1);
+      btn.textContent = 'Add';
+      btn.classList.replace('btn-outline-danger', 'btn-outline-primary');
+    }
+
+    saveCart(cart);
+    renderPriceDetails();
+  };
+
+  const attachAddonListeners = () => {
+    document.querySelectorAll('.addon-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        toggleAddon(btn);
+      });
+    });
+
+    // Remove from price list
+    document.addEventListener('click', e => {
+      if (e.target.closest('.remove-addon')) {
+        const btn = e.target.closest('.remove-addon');
+        const id = btn.dataset.id;
+        let cart = loadCart();
+        cart = cart.filter(item => item.id !== id);
+        saveCart(cart);
+        renderPriceDetails();
+
+        // Sync original button
+        const original = document.querySelector(`.addon-btn[data-id="${id}"]`);
+        if (original) {
+          original.textContent = 'Add';
+          original.classList.replace('btn-outline-danger', 'btn-outline-primary');
+        }
+      }
+    });
+  };
+
+  // ─── Price Rendering ───────────────────────────────────
+
+  const renderPriceDetails = () => {
     const cart = loadCart();
     const listEl = document.getElementById('addons-list');
     const totalEl = document.getElementById('grand-total');
@@ -653,471 +933,57 @@ document.addEventListener('DOMContentLoaded', () => {
 
     listEl.innerHTML = '';
 
-    let knownAddonsTotal = 0;
+    let addonsTotal = 0;
 
     cart.forEach(item => {
-      const known = isPriceKnown(item.price);
-      // const displayPrice = known
-      //   ? (item.type === 'day' ? item.price * days : item.price)
-      //   : '—';
+      // Ensure price is always a number
+      const price = isPriceKnown(item.price) ? parseFloat(item.price) : 0;
+      const calcPrice = item.type === 'day' ? price * days : price;
+      addonsTotal += calcPrice;
 
-      // if (known) knownAddonsTotal += Number(displayPrice);
+      const display = isPriceKnown(item.price) ? formatPrice(calcPrice) : 'TBD';
 
-      let calculatedPrice = 0;
-
-      if (known) {
-        calculatedPrice =
-          item.type === 'day'
-            ? item.price * days
-            : item.price;
-
-        knownAddonsTotal += calculatedPrice;
-      }
-
-      const displayPrice = known ? formatPrice(calculatedPrice) : '—';
-
-
-      const row = document.createElement('div');
-      row.className = 'dtl addon-row';
-      row.innerHTML = `
+      listEl.innerHTML += `
+      <div class="dtl addon-row">
         <span>${item.name} ${item.type === 'day' ? `× ${days} days` : '(per rental)'}</span>
-        <strong>${displayPrice}${known ? ' USD' : ''}</strong>
-
-  ${
-    !isPayNowPage
-      ? `
-        <button
-          class="remove-addon btn btn-sm text-danger ms-2"
-          data-id="${item.id}"
-          title="Remove add-on"
-        >
-          <i class="fas fa-minus-circle fa-lg"></i>
+        <strong>${display} USD</strong>
+        <button class="remove-addon btn btn-sm text-danger ms-2" data-id="${item.id}">
+          <i class="fas fa-minus-circle"></i>
         </button>
-      `
-      : ''
-  }
-
-      `;
-      listEl.appendChild(row);
+      </div>
+    `;
     });
 
-    const grandTotal = basePrice + knownAddonsTotal;
-    totalEl.textContent = `${formatPrice(grandTotal)} USD`;
+    const grand = parseFloat(selectedCar.priceTotal || 0) + addonsTotal;
+    totalEl.textContent = `${formatPrice(grand)} USD`;
   };
 
-  // ─── Toggle Add / Remove ─────────────────────────────
-  const toggleAddon = (btn) => {
-    const id = btn.dataset.id;
-    const name = btn.dataset.name || 'Unnamed Add-on';
-    const price = parseFloat(btn.dataset.price) || 0;
-    const type = btn.dataset.type || 'rental';
-
-    if (!id) {
-      alert('Add-on is missing required information.');
-      return;
-    }
-
-    let cart = loadCart();
-    const index = cart.findIndex(item => item.id === id);
-
-    if (index === -1) {
-      // Add
-      cart.push({ id, name, price, type });
-      btn.textContent = 'Remove';
-      btn.classList.remove('btn-outline-primary');
-      btn.classList.add('btn-outline-danger');
-    } else {
-      // Remove
-      cart.splice(index, 1);
-      btn.textContent = 'Add';
-      btn.classList.remove('btn-outline-danger');
-      btn.classList.add('btn-outline-primary');
-    }
-
-    saveCart(cart);
-    renderPriceDetails(basePriceFromCar);
-  };
-
-  // ─── Init ────────────────────────────────────────────
-  const basePriceFromCar = renderYourCarAndBasePrice();
-  renderPriceDetails(basePriceFromCar);
-
-  // Set correct initial button states
-  document.querySelectorAll('.addon-btn').forEach(btn => {
-    const id = btn.dataset.id;
-    if (!id) return;
-
-    const inCart = loadCart().some(item => item.id === id);
-    btn.textContent = inCart ? 'Remove' : 'Add';
-    btn.classList.toggle('btn-outline-danger', inCart);
-    btn.classList.toggle('btn-outline-primary', !inCart);
-
-    btn.addEventListener('click', () => toggleAddon(btn));
-  });
-
-  // Delegate remove clicks
-  // document.addEventListener('click', e => {
-  //   if (!e.target.classList.contains('remove-addon')) return;
-  //   const id = e.target.dataset.id;
-  //   if (!id) return;
-
-  //   let cart = loadCart();
-  //   cart = cart.filter(item => item.id !== id);
-  //   saveCart(cart);
-
-  //   renderPriceDetails(basePriceFromCar);
-
-  //   const originalBtn = document.querySelector(`.addon-btn[data-id="${id}"]`);
-  //   if (originalBtn) {
-  //     originalBtn.textContent = 'Add';
-  //     originalBtn.classList.remove('btn-outline-danger');
-  //     originalBtn.classList.add('btn-outline-primary');
-  //   }
-  // });
-
-
-  document.addEventListener('click', e => {
-    const removeBtn = e.target.closest('.remove-addon');
-    if (!removeBtn) return;
-
-    const id = removeBtn.dataset.id;
-    if (!id) return;
-
-    let cart = loadCart();
-    cart = cart.filter(item => item.id !== id);
-    saveCart(cart);
-
-    renderPriceDetails(basePriceFromCar);
-
-    const originalBtn = document.querySelector(`.addon-btn[data-id="${id}"]`);
-    if (originalBtn) {
-      originalBtn.textContent = 'Add';
-      originalBtn.classList.remove('btn-outline-danger');
-      originalBtn.classList.add('btn-outline-primary');
-    }
-  });
-
-
-
-  // Continue button logic (if you have the button)
+  // ─── Continue Button ───────────────────────────────────
   const continueBtn = document.getElementById('continue-to-payment');
   if (continueBtn) {
     continueBtn.addEventListener('click', () => {
       const cart = loadCart();
-      if (cart.length === 0 && !confirm('No extras selected. Proceed anyway?')) return;
+      if (cart.length === 0 && !confirm('No add-ons selected. Continue?')) return;
 
       const finalData = {
-        search: JSON.parse(localStorage.getItem('lastCarRentalSearch') || '{}'),
-        car: JSON.parse(localStorage.getItem('selectedCar') || '{}'),
+        car: selectedCar,
         addons: cart,
-        basePrice: basePriceFromCar,
-        pricedAddonsTotal: parseFloat(document.getElementById('grand-total')?.textContent?.replace(/[^0-9.]/g, '') || 0) - basePriceFromCar,
-        displayedTotal: document.getElementById('grand-total')?.textContent || '0.00 USD',
-        note: "Some protections have price to be confirmed at pickup",
-        createdAt: new Date().toISOString()
+        days,
+        basePrice: parseFloat(selectedCar.priceTotal || 0),
+        addonsTotal: parseFloat(document.getElementById('grand-total')?.textContent?.replace(/[^0-9.]/g, '') || 0) - parseFloat(selectedCar.priceTotal || 0),
+        total: document.getElementById('grand-total')?.textContent || '0.00 USD',
+        timestamp: new Date().toISOString()
       };
 
       localStorage.setItem('bookingSummary', JSON.stringify(finalData));
-      window.location.href = 'payment.html'; // ← your next page
+      window.location.href = 'payment.html'; // or your next step
     });
   }
+
+  // ─── Start Everything ──────────────────────────────────
+  renderYourCar();
+  loadAndRenderAddons();
 });
-
-
-
-
-
-// // Payment Page Logic
-// document.addEventListener('DOMContentLoaded', () => {
-//   console.log("Payment page loaded. Checking localStorage...");
-
-//   // Debug: show what's actually stored
-//   console.log("lastCarRentalSearch:", localStorage.getItem('lastCarRentalSearch'));
-//   console.log("selectedCar:", localStorage.getItem('selectedCar'));
-//   console.log("addonCart:", localStorage.getItem('addonCart'));
-
-//   // ─── Helpers ───────────────────────────────────────────────
-//   const formatPrice = (num) => (typeof num === 'number' && !isNaN(num)) ? num.toFixed(2) : '—';
-
-//   const daysBetween = (startStr, endStr) => {
-//     if (!startStr || !endStr) return 7;
-//     try {
-//       const start = new Date(startStr);
-//       const end = new Date(endStr);
-//       if (isNaN(start) || isNaN(end)) return 7;
-//       const diff = end - start;
-//       return Math.max(1, Math.ceil(diff / (1000 * 60 * 60 * 24)));
-//     } catch (e) {
-//       console.warn("Date parsing failed:", e);
-//       return 7;
-//     }
-//   };
-
-//   // ─── Load & Display Data ───────────────────────────────────
-//   const displayBookingSummary = () => {
-//     let search = {};
-//     let car = {};
-//     let addons = [];
-
-//     try {
-//       search = JSON.parse(localStorage.getItem('lastCarRentalSearch') || '{}');
-//       car = JSON.parse(localStorage.getItem('selectedCar') || '{}');
-//       addons = JSON.parse(localStorage.getItem('addonCart') || '[]');
-//     } catch (err) {
-//       console.error("Failed to parse localStorage data:", err);
-//     }
-
-//     if (search) {
-//       document.getElementById('pickup-location-text').textContent =
-//         search.pickupLocation || '—';
-
-//       document.getElementById('pickup-time-text').textContent =
-//         search.pickupDateTime
-//           ? new Date(search.pickupDateTime).toLocaleString()
-//           : '—';
-
-//       document.getElementById('dropoff-time-text').textContent =
-//         search.dropoffDateTime
-//           ? new Date(search.dropoffDateTime).toLocaleString()
-//           : '—';
-
-//       // document.getElementById('driver-age-text').textContent =
-//       //   search.driverAge || '—';
-//     }
-
-
-//     // 2. Your Car section
-//     const carSection = document.getElementById('your-car-section');
-//     if (carSection) {
-//       if (car.name || car.id) {
-//         carSection.innerHTML = `
-//           <img src="${car.imageUrl || 'img/tesla.jpg'}" alt="${car.name || 'Vehicle'}">
-//           <h2>Your Car</h2>
-//           <hr>
-//           <strong>${car.name || 'Selected Vehicle'} ${car.category ? `(${car.category})` : ''}</strong>
-//           <p>${car.description || car.category || 'Similar vehicle'}</p>
-//         `;
-//       } else {
-//         carSection.innerHTML = '<p><strong>No car selected.</strong> Please go back and choose a vehicle.</p>';
-//       }
-//     }
-
-//     // 3. Price Details
-//     const days = daysBetween(search.pickupDateTime, search.dropoffDateTime);
-
-//     let basePrice = 0;
-//     if (car.pricePerWeek && Number(car.pricePerWeek) > 0) {
-//       const daily = Number(car.pricePerWeek) / 7;
-//       basePrice = daily * days;
-//     }
-
-//     let pricedAddonsTotal = 0;
-//     const addonsListEl = document.getElementById('addons-list');
-//     if (addonsListEl) {
-//       addonsListEl.innerHTML = '';
-
-//       if (addons.length === 0) {
-//         addonsListEl.innerHTML = '<div class="dtl"><span>No extras selected</span><strong>—</strong></div>';
-//       }
-
-//       addons.forEach(item => {
-//         const isKnown = Number(item.price) > 0;
-//         const itemPrice = isKnown
-//           ? (item.type === 'day' ? Number(item.price) * days : Number(item.price))
-//           : 0;
-
-//         if (isKnown) pricedAddonsTotal += itemPrice;
-
-//         const row = document.createElement('div');
-//         row.className = 'dtl';
-//         row.innerHTML = `
-//           <span>${item.name || 'Unnamed Add-on'} ${item.type === 'day' ? `× ${days} days` : '(per rental)'}</span>
-//           <strong>${isKnown ? formatPrice(itemPrice) + ' USD' : '—'}</strong>
-//         `;
-//         addonsListEl.appendChild(row);
-//       });
-//     }
-
-//     // Base price row
-//     const baseRow = document.getElementById('base-price-row');
-//     if (baseRow) {
-//       baseRow.innerHTML = basePrice > 0
-//         ? `<span>Base Rental (${days} days)</span><strong>${formatPrice(basePrice)} USD</strong>`
-//         : `<span>Base Rental Price</span><strong>To be confirmed</strong>`;
-//     }
-
-//     // Grand total
-//     const grandTotalEl = document.getElementById('grand-total');
-//     if (grandTotalEl) {
-//       const total = basePrice + pricedAddonsTotal;
-//       grandTotalEl.textContent = formatPrice(total) + ' USD';
-//     }
-//   };
-
-//   // ─── Pay Now Handler ───────────────────────────────────────
-//   const handlePayment = async () => {
-//     const payBtn = document.getElementById('pay-now-btn');
-//     if (!payBtn) return;
-
-//     payBtn.disabled = true;
-//     payBtn.textContent = 'Processing...';
-
-//     // Get data from localStorage
-//     let searchData = {};
-//     let carData = {};
-//     let addonsData = [];
-
-//     try {
-//       searchData = JSON.parse(localStorage.getItem('lastCarRentalSearch') || '{}');
-//       carData = JSON.parse(localStorage.getItem('selectedCar') || '{}');
-//       addonsData = JSON.parse(localStorage.getItem('addonCart') || '[]');
-//     } catch (err) {
-//       console.error("Failed to parse localStorage:", err);
-//     }
-
-//     // Collect form data + flatten required backend fields
-//     const formData = {
-//       firstName: document.querySelector('input[placeholder="First Name"]')?.value.trim() || '',
-//       lastName: document.querySelector('input[placeholder="Last Name"]')?.value.trim() || '',
-//       email: document.querySelector('input[placeholder="Email"]')?.value.trim() || '',
-//       phone: document.querySelector('input[placeholder="Phone Number"]')?.value.trim() || '',
-//       drivingLicense: document.querySelector('input[placeholder="Driving License"]')?.value.trim() || '',
-
-//       cardHolder: document.querySelector('input[placeholder="Full Name on card"]')?.value.trim() || '',
-//       cardNumber: document.querySelector('input[placeholder="XXXX XXXX XXXX XXXX"]')?.value.trim() || '',
-
-
-//       expiryMonth: (() => {
-
-//         const monthSelect = document.querySelector('#expiryMonth') ||
-//           document.querySelector('select[name="expiryMonth"]') ||
-//           document.querySelector('.month select'); // fallback
-
-//         const val = monthSelect?.value?.trim();
-//         return val && !isNaN(val) ? Number(val) : null;
-//       })(),
-
-//       expiryYear: (() => {
-//         const yearSelect = document.getElementById('expiryYear'); // ← use the id!
-
-//         const val = yearSelect?.value?.trim();
-//         return val && !isNaN(val) ? Number(val) : null;
-//       })(),
-
-//       cvv: document.querySelector('input[placeholder="CVV"]')?.value.trim() || '',
-
-//       // ─── FLATTENED FIELDS REQUIRED BY BACKEND ─────────────────────
-//       pickupLocation: searchData.pickupLocation || '',
-//       dropoffLocation: searchData.dropoffLocation || '',
-//       pickupDateTime: searchData.pickupDateTime || '',
-//       dropoffDateTime: searchData.dropoffDateTime || '',
-//       sameLocation: searchData.sameDropoff === true,
-
-//       carCategoryCode: carData.id || carData.categoryCode || carData.category || '',
-//       carName: carData.name || '',
-//       carDisplayCategory: carData.category || '',
-//       pricePerWeek: Number(carData.pricePerWeek) || 0,
-//       currency: carData.currency || 'USD',
-//       seats: Number(carData.seats) || null,
-//       doors: Number(carData.doors) || null,
-//       transmission: carData.transmission || null,
-//       fuelType: carData.fuel || carData.features?.find(f => f.type === 'fuel')?.value || null,
-//       carImageUrl: carData.imageUrl || '',
-
-
-//       // Keep full booking object (backend will ignore it, but useful for logging)
-//       booking: {
-//         search: searchData,
-//         car: carData,
-//         addons: addonsData
-//       },
-
-//       timestamp: new Date().toISOString()
-//     };
-
-//     // Simple client-side validation
-//     if (!formData.firstName || !formData.lastName || !formData.email || !formData.phone) {
-//       alert('Please fill in required personal details (name, email, phone).');
-//       payBtn.disabled = false;
-//       payBtn.textContent = 'Pay Now';
-//       return;
-//     }
-
-//     if (!formData.carCategoryCode || !formData.carName) {
-//       alert('Car information is missing. Please go back and select a vehicle again.');
-//       payBtn.disabled = false;
-//       payBtn.textContent = 'Pay Now';
-//       return;
-//     }
-
-//     console.log("Sending to backend:", formData);
-
-//     try {
-//       const response = await fetch('/api/CarRentalEnquiries', {
-//         method: 'POST',
-//         headers: { 'Content-Type': 'application/json' },
-//         body: JSON.stringify(formData)
-//       });
-
-//       console.log("Server response status:", response.status);
-//       console.log("Server response:", response);
-
-//       if (!response.ok) {
-//         const errorBody = await response.json().catch(() => ({}));
-//         console.error("Error details from server:", errorBody);
-//         throw new Error(`Server error: ${response.status} - ${errorBody.title || 'Validation failed'}`);
-//       }
-
-//       const result = await response.json();
-//       alert('Booking successful! Reference: ' + (result.id || result.bookingId || '—'));
-
-//       // Optional: cleanup
-//       localStorage.removeItem('addonCart');
-//       localStorage.removeItem('selectedCar');
-
-//       window.location.href = 'index.html';
-
-//     } catch (err) {
-//       console.error("Payment/Booking error:", err);
-//       alert('Error: ' + err.message);
-//       payBtn.disabled = false;
-//       payBtn.textContent = 'Pay Now';
-//     }
-//   };
-
-//   // ─── Run ──────────────────────────────────────────────────
-//   displayBookingSummary();
-
-
-
-
-//   const form = document.getElementById('payment-form');
-
-// form.addEventListener('submit', (e) => {
-//   e.preventDefault();
-
-//   if (!form.checkValidity()) {
-//     console.log('Invalid fields:');
-//     [...form.elements].forEach(el => {
-//       if (!el.checkValidity()) {
-//         console.warn(el.id || el.name, el.validationMessage);
-//       }
-//     });
-
-//     form.reportValidity();
-//     return;
-//   }
-
-//   handlePayment();
-// });
-
-
-
-
-
-
-// });
-
 
 
 
@@ -1153,6 +1019,27 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   };
 
+  // Date in MM/DD/YYYY + Time in 24-hour format
+  function formatUSDate24Hour(isoString) {
+    if (!isoString) return '—';
+    const date = new Date(isoString);
+    if (isNaN(date.getTime())) return '—';
+
+    const usDate = date.toLocaleDateString('en-US', {
+      month: 'numeric',
+      day: 'numeric',
+      year: 'numeric'
+    });
+
+    const time24 = date.toLocaleTimeString('en-US', {
+      hour12: false,
+      hour: '2-digit',
+      minute: '2-digit'
+    });
+
+    return `${usDate} ${time24}`;
+  }
+
   // ─── Load & Display Data ───────────────────────────────────
   const displayBookingSummary = () => {
     let search = {};
@@ -1167,46 +1054,112 @@ document.addEventListener('DOMContentLoaded', () => {
       console.error("Failed to parse localStorage data:", err);
     }
 
+
     if (search) {
+      // Pick-up location (always shown)
       document.getElementById('pickup-location-text').textContent =
         search.pickupLocation || '—';
 
+      // Pick-up & Drop-off times (always shown)
       document.getElementById('pickup-time-text').textContent =
-        search.pickupDateTime
-          ? new Date(search.pickupDateTime).toLocaleString()
-          : '—';
-
+        formatUSDate24Hour(search.pickupDateTime);
       document.getElementById('dropoff-time-text').textContent =
-        search.dropoffDateTime
-          ? new Date(search.dropoffDateTime).toLocaleString()
-          : '—';
+        formatUSDate24Hour(search.dropoffDateTime);
 
-      // document.getElementById('driver-age-text').textContent =
-      //   search.driverAge || '—';
+      // ─── Handle Drop-off Location conditionally ────────────────────────
+      const dropoffGroup = document.getElementById('dropoff-location-group');
+      const dropoffText = document.getElementById('dropoff-location-text');
+
+      if (search.sameDropoff === false && search.dropoffLocation) {
+        console.log("Different drop-off location detected:", search.dropoffLocation);
+        // Different drop-off → show it
+        dropoffGroup.style.display = 'block';
+        dropoffText.textContent = search.dropoffLocation;
+      } else {
+        // Same location or missing data → hide the drop-off location row
+        dropoffGroup.style.display = 'none';
+        dropoffText.textContent = '—'; // optional cleanup
+      }
     }
 
 
-    // 2. Your Car section
+    function getFeatureIcon(feature) {
+      switch (feature.type) {
+        case 'seats':
+          return 'img/person.png';
+
+        case 'luggage':
+          return 'img/feature_suitcase.png';
+
+        case 'transmission':
+          return 'img/feature_transmission.png';
+
+        case 'fuel':
+          return 'img/feature_fuel.png';
+
+        case 'battery':
+          return 'img/feature_battery.png';
+
+        case 'mileage':
+          return 'img/feature_fuel.png';
+
+        default:
+          return '';
+      }
+    }
+
+
+    function renderCarFeatures(features = []) {
+      if (!Array.isArray(features) || features.length === 0) {
+        return '';
+      }
+
+      return `
+          <div class="person-all" >
+            ${features.map(f => `
+              <span>
+                <img src="${getFeatureIcon(f)}" alt="" />
+                ${f.display || `${f.value}${f.unit ? ' ' + f.unit : ''}`}
+              </span>
+            `).join('')}
+          </div>
+        `;
+    }
+
+
     const carSection = document.getElementById('your-car-section');
+
+
     if (carSection) {
       if (car.name || car.id) {
         carSection.innerHTML = `
-          <img src="${car.imageUrl || 'img/tesla.jpg'}" alt="${car.name || 'Vehicle'}">
-          <h2>Your Car</h2>
-          <hr>
-          <strong>${car.name || 'Selected Vehicle'} ${car.category ? `(${car.category})` : ''}</strong>
-          <p>${car.description || car.category || 'Similar vehicle'}</p>
-        `;
+            <img src="${car.imageUrl || 'img/tesla.jpg'}" alt="${car.name || 'Vehicle'}">
+
+            <h2>Your Car</h2>
+            <hr>
+
+            <strong>${car.name || 'Selected Vehicle'}</strong>
+            <p>${car.description || car.category || 'Similar vehicle'}</p>
+
+            ${renderCarFeatures(car.features)}
+          `;
       } else {
-        carSection.innerHTML = '<p><strong>No car selected.</strong> Please go back and choose a vehicle.</p>';
+        carSection.innerHTML = `
+            <p>
+              <strong>No car selected.</strong>
+              Please go back and choose a vehicle.
+            </p>`;
       }
     }
+
 
     // 3. Price Details
     const days = daysBetween(search.pickupDateTime, search.dropoffDateTime);
 
-    let basePrice = 0;
-    if (car.pricePerWeek && Number(car.pricePerWeek) > 0) {
+    let basePrice = Number(car.priceTotal) || Number(car.totalPrice) || 0;
+
+    // Fallback (only if you really don't have pre-calculated total)
+    if (basePrice === 0 && car.pricePerWeek > 0) {
       const daily = Number(car.pricePerWeek) / 7;
       basePrice = daily * days;
     }
@@ -1238,11 +1191,12 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
 
+
     // Base price row
     const baseRow = document.getElementById('base-price-row');
     if (baseRow) {
       baseRow.innerHTML = basePrice > 0
-        ? `<span>Base Rental (${days} days)</span><strong>${formatPrice(basePrice)} USD</strong>`
+        ? `<span>Car Rent Cost(${days} days)</span><strong>${formatPrice(basePrice)} USD</strong>`
         : `<span>Base Rental Price</span><strong>To be confirmed</strong>`;
     }
 
@@ -1252,6 +1206,18 @@ document.addEventListener('DOMContentLoaded', () => {
       const total = basePrice + pricedAddonsTotal;
       grandTotalEl.textContent = formatPrice(total) + ' USD';
     }
+
+
+
+    window.__pricing = {
+  days,
+  basePrice,
+  addonsTotal: pricedAddonsTotal,
+  grandTotal: basePrice + pricedAddonsTotal,
+  currency: car.currency || 'USD'
+};
+
+
   };
 
   // ─── Custom JS Validation ──────────────────────────────────
@@ -1368,6 +1334,48 @@ document.addEventListener('DOMContentLoaded', () => {
       console.error("Failed to parse localStorage:", err);
     }
 
+
+    let seats = null;
+    let doors = null;
+    let transmission = null;
+    let fuelType = null;
+    let mileage = null;
+    let luggage = null;
+
+    (carData.features || []).forEach(f => {
+      switch (f.type) {
+        case 'seats':
+          seats = Number(f.value) || null;
+          break;
+
+        case 'doors':
+          doors = Number(f.value) || null;
+          break;
+
+        case 'transmission':
+          transmission = f.value || null;
+          break;
+
+        case 'fuel':
+          fuelType = f.value || null;
+          break;
+
+        case 'luggage':
+          luggage = f.value || null;
+          break;
+
+
+        case 'battery':
+        case 'mileage':
+          // 🔥 battery range OR fuel mileage → single mileage field
+          mileage = f.unit ? `${f.value} ${f.unit}` : f.value;
+          break;
+      }
+    });
+
+
+
+
     // Collect form data using IDs
     const formData = {
       firstName: document.getElementById('firstName')?.value.trim() || '',
@@ -1375,11 +1383,12 @@ document.addEventListener('DOMContentLoaded', () => {
       email: document.getElementById('email')?.value.trim() || '',
       countryCode: document.getElementById('countryCode')?.value.trim() || '',  // Added country code
       phone: document.getElementById('phone')?.value.trim() || '',
-      drivingLicense: document.getElementById('drivingLicense')?.value.trim() || '',
+      drivingLicenseNumber: document.getElementById('drivingLicense')?.value.trim() || '',
       driverAge: parseInt(document.getElementById('driverAge')?.value, 10) || null,  // Added driver age
 
-      cardHolder: document.getElementById('cardHolder')?.value.trim() || '',
+      cardHolderName: document.getElementById('cardHolder')?.value.trim() || '',
       cardNumber: document.getElementById('cardNumber')?.value.trim().replace(/\s/g, '') || '',  // Clean spaces
+      cardBrand: 'VISA',
 
       expiryMonth: (() => {
         const val = document.getElementById('expiryMonth')?.value.trim();
@@ -1405,21 +1414,37 @@ document.addEventListener('DOMContentLoaded', () => {
       carDisplayCategory: carData.category || '',
       pricePerWeek: Number(carData.pricePerWeek) || 0,
       currency: carData.currency || 'USD',
-      seats: Number(carData.seats) || null,
-      doors: Number(carData.doors) || null,
-      transmission: carData.transmission || null,
-      fuelType: carData.fuel || carData.features?.find(f => f.type === 'fuel')?.value || null,
       carImageUrl: carData.imageUrl || '',
 
-      // Keep full booking object (backend will ignore it, but useful for logging)
-      booking: {
-        search: searchData,
-        car: carData,
-        addons: addonsData
-      },
+      // ✅ MAPPED FEATURES
+      seats: seats,
+      doors: doors,
+      transmission: transmission,
+      fuelType: fuelType,
+      mileage: mileage,   // ← battery OR mileage
+      luggage: luggage,
+
+
+
+      addons: addonsData.map(addon => ({
+        id: addon.id,
+        name: addon.name,
+        price: Number(addon.price) || 0,
+        type: addon.type || 'rental'
+      })),
+
+
 
       timestamp: new Date().toISOString()
     };
+
+      const pricing = window.__pricing || {};
+
+      formData.rentalDays = pricing.days || 0;
+      formData.basePrice = pricing.basePrice || 0;
+      formData.addonsTotal = pricing.addonsTotal || 0;
+      formData.totalPrice = pricing.grandTotal || 0;
+      formData.currency = pricing.currency || 'USD';
 
     // Simple client-side validation for required fields (expanded)
     if (!formData.firstName || !formData.lastName || !formData.email || !formData.phone || !formData.countryCode || !formData.driverAge) {
@@ -1445,8 +1470,8 @@ document.addEventListener('DOMContentLoaded', () => {
         body: JSON.stringify(formData)
       });
 
-      console.log("Server response status:", response.status);
-      console.log("Server response:", response);
+      // console.log("Server response status:", response.status);
+      // console.log("Server response:", response);
 
       if (!response.ok) {
         const errorBody = await response.json().catch(() => ({}));
@@ -1455,13 +1480,20 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       const result = await response.json();
-      alert('Booking successful! Reference: ' + (result.id || result.bookingId || '—'));
+      // alert('Booking successful! Reference: ' + (result.id || result.bookingId || '—'));
+
+      sessionStorage.setItem(
+        'carRentalEnquiry',
+        JSON.stringify(result)
+      );
 
       // Optional: cleanup
       localStorage.removeItem('addonCart');
       localStorage.removeItem('selectedCar');
+      localStorage.removeItem('bookingSummary');
+      localStorage.removeItem('lastCarRentalSearch');
 
-      window.location.href = 'index.html';
+      window.location.href = 'thankyou.html';
 
     } catch (err) {
       console.error("Payment/Booking error:", err);

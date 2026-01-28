@@ -1,263 +1,410 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-    <meta charset="utf-8">
+  <head>
+    <meta charset="utf-8" />
     <title>Car Rent Website Template</title>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="" name="keywords">
-    <meta content="" name="description">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="" name="keywords" />
+    <meta content="" name="description" />
 
     <!-- Google Web Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-        href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
-        rel="stylesheet">
+      href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
 
     <!-- Icon Font Stylesheet -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
 
     <!-- Libraries Stylesheet -->
-    <link href="lib/animate/animate.min.css" rel="stylesheet">
-    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-
+    <link href="lib/animate/animate.min.css" rel="stylesheet" />
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet" />
 
     <!-- Customized Bootstrap Stylesheet -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
 
     <!-- Template Stylesheet -->
-    <link href="css/style.css" rel="stylesheet">
-    <link href="css/mobile-responsive.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet" />
+    <link href="css/mobile-responsive.css" rel="stylesheet" />
+  </head>
 
-</head>
-
-<body>
-
+  <body>
     <!-- Spinner Start -->
-    <div id="spinner"
-        class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
-        <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
-            <span class="sr-only">Loading...</span>
-        </div>
+    <div
+      id="spinner"
+      class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center"
+    >
+      <div
+        class="spinner-border text-primary"
+        style="width: 3rem; height: 3rem"
+        role="status"
+      >
+        <span class="sr-only">Loading...</span>
+      </div>
     </div>
     <!-- Spinner End -->
 
-
-
-    <!-- Navbar & Hero Start -->
-    <div class="container-fluid nav-bar sticky-top px-0 px-lg-4 py-2 py-lg-0">
-        <div class="container">
-            <nav class="navbar navbar-expand-lg navbar-light">
-                <a href="" class="navbar-brand p-0">
-                    <!--<h1 class="display-6 text-primary"><i class="fas fa-car-alt me-3"></i></i>Cental</h1>-->
-                    <img src="img/logo.jpeg" alt="Logo">
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-                    <span class="fa fa-bars"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarCollapse">
-                    <div class="navbar-nav mx-auto py-0">
-                        <a href="index.html" class="nav-item nav-link active">Home</a>
-                        <a href="about.html" class="nav-item nav-link">About</a>
-                        <a href="https://us.adamvacations.com/travel-agencies" class="nav-item nav-link">Travel
-                            Agencies</a>
-                        <a href="https://us.adamvacations.com/corporate-concierge" class="nav-item nav-link">Corporate
-                            Concierge</a>
-                        <a href="https://us.adamvacations.com/destinations" class="nav-item nav-link">Destinations</a>
-                    </div>
-                    <a href="tel:1-844-539-0014" class="phone-txt py-2 px-4"><i class="fas fa-phone me-2"></i>
-                        1-844-539-0014</a>
-                </div>
-            </nav>
+  <!-- Navbar & Hero Start -->
+  <div class="container-fluid nav-bar sticky-top px-0 px-lg-4 py-2 py-lg-0">
+    <div class="container">
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <a href="index.html" class="navbar-brand p-0">
+          <!--<h1 class="display-6 text-primary"><i class="fas fa-car-alt me-3"></i></i>Cental</h1>-->
+          <img src="img/logo.jpeg" alt="Logo">
+        </a>
+        <div class="mobile-phone">
+           <a href="tel:+44-800-316-2929"><i class="fas fa-phone me-2"></i></a>
         </div>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+          <span class="fa fa-bars"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <div class="navbar-nav mx-auto py-0">
+            <a href="index.html" class="nav-item nav-link active">Home</a>
+            <a href="about.html" class="nav-item nav-link">About</a>
+            <a href="https://us.adamvacations.com/travel-agencies" class="nav-item nav-link">Travel
+              Agencies</a>
+            <a href="https://us.adamvacations.com/corporate-concierge" class="nav-item nav-link">Corporate
+              Concierge</a>
+            <a href="https://us.adamvacations.com/destinations" class="nav-item nav-link">Destinations</a>
+          </div>
+          <a href="tel:+44-800-316-2929" class="phone-txt py-2 px-4"><i class="fas fa-phone me-2"></i>
+            +44-800-316-2929</a>
+        </div>
+      </nav>
     </div>
-    <!-- Navbar & Hero End -->
+  </div>
+  <!-- Navbar & Hero End -->
 
     <!-- Header Start -->
     <div class="container-fluid bg-breadcrumb mb-5">
-        <div class="container text-center py-5" style="max-width: 900px;">
-            <h4 class="text-white display-4 mb-4 wow fadeInDown" data-wow-delay="0.1s">Contact Us</h4>
-            <ol class="breadcrumb d-flex justify-content-center mb-0 wow fadeInDown" data-wow-delay="0.3s">
-                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                <li class="breadcrumb-item active text-primary">Contact</li>
-            </ol>
-        </div>
+      <div class="container text-center py-5" style="max-width: 900px">
+        <h4
+          class="text-white display-4 mb-4 wow fadeInDown"
+          data-wow-delay="0.1s"
+        >
+          Contact Us
+        </h4>
+        <ol
+          class="breadcrumb d-flex justify-content-center mb-0 wow fadeInDown"
+          data-wow-delay="0.3s"
+        >
+          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+          <li class="breadcrumb-item active text-primary">Contact</li>
+        </ol>
+      </div>
     </div>
     <!-- Header End -->
 
     <!-- Contact Start -->
     <div class="container-fluid contact py-5">
-        <div class="container">
-            <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 800px;">
-                <h1 class="display-5 text-capitalize text-primary mb-3">Contact Us</h1>
-                <!-- <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut amet nemo expedita
+      <div class="container">
+        <div
+          class="text-center mx-auto pb-5 wow fadeInUp"
+          data-wow-delay="0.1s"
+          style="max-width: 800px"
+        >
+          <h1 class="display-5 text-capitalize text-primary mb-3">
+            Contact Us
+          </h1>
+          <!-- <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut amet nemo expedita
                     asperiores commodi accusantium at cum harum, excepturi, quia tempora cupiditate! Adipisci facilis
                     modi quisquam quia distinctio,</p> -->
-            </div>
-            <div class="row g-5">
-                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="bg-secondary p-5 rounded">
-                        <h5 class="text-white lh-base mb-4">Need Assistance? We’re here to help.</h5>
-                        <form>
-                            <div class="row g-4">
-                                <div class="col-lg-12 col-xl-6">
-                                    <div class="form-floating">
-                                        <input type="text" class="form-control" id="name" placeholder="Your Name">
-                                        <label for="name">Your Name</label>
-                                    </div>
-                                </div>
-                                <div class="col-lg-12 col-xl-6">
-                                    <div class="form-floating">
-                                        <input type="email" class="form-control" id="email" placeholder="Your Email">
-                                        <label for="email">Your Email</label>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="form-floating">
-                                        <input type="text" class="form-control" id="subject" placeholder="Subject">
-                                        <label for="subject">Subject</label>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="form-floating">
-                                        <textarea class="form-control" placeholder="Leave a message here" id="message"
-                                            style="height: 160px"></textarea>
-                                        <label for="message">Message</label>
-                                    </div>
-
-                                </div>
-                                <div class="col-12">
-                                    <button class="btn btn-light w-100 py-3">Send Message</button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.3s">
-                    <div class="rounded">
-                        <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3527.874513275666!2d-82.64076472452773!3d27.844394676104358!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88c2e6a2b7eab4db%3A0x251ced89c2d75cc7!2s7901%204th%20St%20N%20Suite%20300%2C%20St.%20Petersburg%2C%20FL%2033702%2C%20USA!5e0!3m2!1sen!2sin!4v1769096968598!5m2!1sen!2sin"
-                            width="100%" height="580" style="border:0;" allowfullscreen="" loading="lazy"
-                            referrerpolicy="no-referrer-when-downgrade"></iframe>
-                    </div>
-                </div>
-
-            </div>
         </div>
+        <div class="row g-5">
+          <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
+            <div class="bg-secondary p-5 rounded">
+              <h5 class="text-white lh-base mb-4">
+                Need Assistance? We’re here to help.
+              </h5>
+<form id="contactForm">
+  <div class="row g-4">
+
+    <div class="col-lg-12">
+      <div class="form-floating">
+        <input
+          type="text"
+          class="form-control"
+          id="name"
+          placeholder="Your Name"
+          required
+          minlength="2"
+        />
+        <label for="name">Your Name</label>
+      </div>
+    </div>
+
+    <div class="col-lg-12">
+      <div class="input-group" style="height:58px;">
+        <select
+          id="countryCode"
+          class="form-select"
+          style="max-width: 120px"
+          required
+        >
+          <option value="">Code</option>
+          <option value="+1" selected>+1 (USA)</option>
+          <option value="+44">+44 (UK)</option>
+          <option value="+91">+91 (India)</option>
+        </select>
+
+        <input
+          id="phone"
+          type="tel"
+          class="form-control"
+          placeholder="Phone Number"
+          required
+          pattern="[0-9]{7,15}"
+          maxlength="15"
+        />
+      </div>
+    </div>
+
+    <div class="col-lg-12 col-xl-6">
+      <div class="form-floating">
+        <input
+          type="email"
+          class="form-control"
+          id="email"
+          placeholder="Your Email"
+          required
+        />
+        <label for="email">Your Email</label>
+      </div>
+    </div>
+
+    <div class="col-12 col-xl-6">
+      <div class="form-floating">
+        <select
+          id="preferredTime"
+          class="form-select"
+          required
+        >
+          <option value="">Select Callback Time</option>
+          <option value="Immediately">Immediately</option>
+          <option value="Within 15 minutes">Within 15 minutes</option>
+          <option value="Within 1 hour">Within 1 hour</option>
+        </select>
+        <label for="preferredTime">Preferred Time To Call</label>
+      </div>
+    </div>
+
+    <div class="col-12">
+      <div class="form-floating">
+        <textarea
+          class="form-control"
+          id="message"
+          placeholder="Leave a message here"
+          style="height: 160px"
+          required
+          minlength="10"
+        ></textarea>
+        <label for="message">Message</label>
+      </div>
+    </div>
+
+    <div class="col-12">
+      <button type="submit" class="btn btn-light w-100 py-3">
+        Send Message
+      </button>
+    </div>
+
+  </div>
+</form>
+
+            </div>
+          </div>
+          <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.3s">
+            <div class="rounded">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3527.874513275666!2d-82.64076472452773!3d27.844394676104358!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88c2e6a2b7eab4db%3A0x251ced89c2d75cc7!2s7901%204th%20St%20N%20Suite%20300%2C%20St.%20Petersburg%2C%20FL%2033702%2C%20USA!5e0!3m2!1sen!2sin!4v1769096968598!5m2!1sen!2sin"
+                width="100%"
+                height="580"
+                style="border: 0"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+              ></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
     <!-- Contact End -->
 
     <!-- Footer Start -->
-    <div class="container-fluid footer py-4 mt-4 wow fadeIn" data-wow-delay="0.2s">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="addressnew">
-                        <ul>
-                            <li>
-                                <img src="img/phone-icon-us.png">
-                                <span>USA Toll Free<a href="tel:+1-844-539-0014">+1-844-539-0014</a></span>
-                            </li>
-                            <li style="color:#8792AA;" class="mob-hide">|</li>
-                            <li>
-                                <img src="img/email-icon-us.png">
-                                <span>Email to us<br> <a
-                                        href="mailto:car@adamvacations.com">car@adamvacations.com</a></span>
-                            </li>
-                            <li style="color:#8792AA;" class="mob-hide">|</li>
-                            <li>
-                                <img src="img/address-icon-us.png">
-                                <span>
-                                    7901 4TH ST N STE 300,<br>
-                                    ST PETERSBURG, FL 33702
-                                </span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+    <div
+      class="container-fluid footer py-4 mt-4 wow fadeIn"
+      data-wow-delay="0.2s"
+    >
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="addressnew">
+              <ul>
+                <li>
+                  <img src="img/phone-icon-us.png" />
+                  <span
+                    >USA Toll Free<a href="tel:+1-844-539-0014"
+                      >+1-844-539-0014</a
+                    ></span
+                  >
+                </li>
+                <li style="color: #8792aa" class="mob-hide">|</li>
+                <li>
+                  <img src="img/email-icon-us.png" />
+                  <span
+                    >Email to us<br />
+                    <a href="mailto:car@adamvacations.com"
+                      >car@adamvacations.com</a
+                    ></span
+                  >
+                </li>
+                <li style="color: #8792aa" class="mob-hide">|</li>
+                <li>
+                  <img src="img/address-icon-us.png" />
+                  <span>
+                    7901 4TH ST N STE 300,<br />
+                    ST PETERSBURG, FL 33702
+                  </span>
+                </li>
+              </ul>
             </div>
-            <div class="row py-3 mt-3">
-                <div class="col-md-6 col-lg-6 col-xl-4">
-                    <div class="footer-item d-flex flex-column">
-                        <div class="footer-item">
-                            <h4 class="text-white mb-4">About Us</h4>
-                            <p class="mb-3">Adam Vacations is an Online Travel Agency & Airline Consolidator. Positioned
-                                itself as one of the leading companies, providing great offers, competitive airfares,
-                                exclusive discounts, and a seamless online booking experience to many of its customers.
-                            </p>
-                            <strong class="mr0 hidden-xs">
-                                <span><b>Country:</b> <a href="http://us.adamvacations.com/" target="_blank">USA</a>, <a
-                                        href="https://www.adamvacations.com/" target="_blank">INDIA</a>, <a
-                                        href="http://es.adamvacations.com/" target="_blank">SPAIN</a>, <a
-                                        href="http://ca.adamvacations.com/" target="_blank">CANADA</a> , <a
-                                        href="http://ae.adamvacations.com/" target="_blank"> UAE</a> &amp; UK</span>
-                            </strong>
-                        </div>
-
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-6 col-xl-4">
-                    <div class="footer-item d-flex flex-column">
-                        <h4 class="text-white mb-4">Quick Links</h4>
-                        <a href="about.html"><i class="fas fa-angle-right me-2"></i> About</a>
-                        <!-- <a href="#"><i class="fas fa-angle-right me-2"></i> Cars</a>
+          </div>
+        </div>
+        <div class="row py-3 mt-3">
+          <div class="col-md-6 col-lg-6 col-xl-4">
+            <div class="footer-item d-flex flex-column">
+              <div class="footer-item">
+                <h4 class="text-white mb-4">About Us</h4>
+                <p class="mb-3">
+                  Adam Vacations is an Online Travel Agency & Airline
+                  Consolidator. Positioned itself as one of the leading
+                  companies, providing great offers, competitive airfares,
+                  exclusive discounts, and a seamless online booking experience
+                  to many of its customers.
+                </p>
+                <strong class="mr0 hidden-xs">
+                  <span
+                    ><b>Country:</b>
+                    <a href="http://us.adamvacations.com/" target="_blank"
+                      >USA</a
+                    >,
+                    <a href="https://www.adamvacations.com/" target="_blank"
+                      >INDIA</a
+                    >,
+                    <a href="http://es.adamvacations.com/" target="_blank"
+                      >SPAIN</a
+                    >,
+                    <a href="http://ca.adamvacations.com/" target="_blank"
+                      >CANADA</a
+                    >
+                    ,
+                    <a href="http://ae.adamvacations.com/" target="_blank">
+                      UAE</a
+                    >
+                    &amp; UK</span
+                  >
+                </strong>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-6 col-xl-4">
+            <div class="footer-item d-flex flex-column">
+              <h4 class="text-white mb-4">Quick Links</h4>
+              <a href="about.html"
+                ><i class="fas fa-angle-right me-2"></i> About</a
+              >
+              <!-- <a href="#"><i class="fas fa-angle-right me-2"></i> Cars</a>
                             <a href="#"><i class="fas fa-angle-right me-2"></i> Car Types</a>
                             <a href="#"><i class="fas fa-angle-right me-2"></i> Team</a> -->
-                        <a href="contact.html"><i class="fas fa-angle-right me-2"></i> Contact us</a>
-                        <a href="Cookies.html"><i class="fas fa-angle-right me-2"></i> Cookies Policy</a>
-                        <a href="disclaimer.html"><i class="fas fa-angle-right me-2"></i> Disclaimer</a>
-
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-6 col-xl-4">
-                    <div class="footer-item d-flex flex-column">
-                        <h4 class="text-white mb-4">Our Policy</h4>
-                        <a href="booking-policy.html"><i class="fas fa-angle-right me-2"></i>Booking Policy</a>
-                        <a href="privacy-policy.html"><i class="fas fa-angle-right me-2"></i> Privacy policy</a>
-
-                        <a href="terms-conditions.html"><i class="fas fa-angle-right me-2"></i> Terms & Conditions</a>
-                        <a href="Cancellation-policy.html"><i class="fas fa-angle-right me-2"></i> Cancellation & Refund
-                            Policy</a>
-
-                    </div>
-                </div>
+              <a href="contact.html"
+                ><i class="fas fa-angle-right me-2"></i> Contact us</a
+              >
+              <a href="Cookies.html"
+                ><i class="fas fa-angle-right me-2"></i> Cookies Policy</a
+              >
+              <a href="disclaimer.html"
+                ><i class="fas fa-angle-right me-2"></i> Disclaimer</a
+              >
             </div>
+          </div>
+          <div class="col-md-6 col-lg-6 col-xl-4">
+            <div class="footer-item d-flex flex-column">
+              <h4 class="text-white mb-4">Our Policy</h4>
+              <a href="booking-policy.html"
+                ><i class="fas fa-angle-right me-2"></i>Booking Policy</a
+              >
+              <a href="privacy-policy.html"
+                ><i class="fas fa-angle-right me-2"></i> Privacy policy</a
+              >
+
+              <a href="terms-conditions.html"
+                ><i class="fas fa-angle-right me-2"></i> Terms & Conditions</a
+              >
+              <a href="Cancellation-policy.html"
+                ><i class="fas fa-angle-right me-2"></i> Cancellation & Refund
+                Policy</a
+              >
+            </div>
+          </div>
         </div>
+      </div>
     </div>
     <!-- Footer End -->
 
     <!-- Copyright Start -->
     <div class="container-fluid copyright py-2">
-        <div class="container">
-            <div class="row g-4 align-items-center">
-                <div class="col-md-6 text-center text-md-start mb-md-0">
-                    <span class="text-body-1">2026 Adam Vacations. All rights reserved.</span>
-                </div>
-                <div class="col-md-6 text-center text-md-end text-body">
-                    <div class="pull-right  contect-adam">
-                        <div class="social-links">
-                            <span class="text-body-1">Follow us on</span>
-                            <a href="https://www.facebook.com/people/Adamvacation/100065127787909/" target="_blank"><i
-                                    class="fab bi bi-facebook"></i></a>
-                            <a href="https://www.instagram.com/adam.vacations/" target="_blank"><i
-                                    class="fab bi bi-instagram"></i></a>
+      <div class="container">
+        <div class="row g-4 align-items-center">
+          <div class="col-md-6 text-center text-md-start mb-md-0">
+            <span class="text-body-1"
+              >2026 Adam Vacations. All rights reserved.</span
+            >
+          </div>
+          <div class="col-md-6 text-center text-md-end text-body">
+            <div class="pull-right contect-adam">
+              <div class="social-links">
+                <span class="text-body-1">Follow us on</span>
+                <a
+                  href="https://www.facebook.com/people/Adamvacation/100065127787909/"
+                  target="_blank"
+                  ><i class="fab bi bi-facebook"></i
+                ></a>
+                <a
+                  href="https://www.instagram.com/adam.vacations/"
+                  target="_blank"
+                  ><i class="fab bi bi-instagram"></i
+                ></a>
 
-                            <a href="https://in.linkedin.com/company/adam-vacations" target="_blank"><i
-                                    class="fab bi bi-linkedin"></i></a>
-                        </div>
-                    </div>
-                </div>
+                <a
+                  href="https://in.linkedin.com/company/adam-vacations"
+                  target="_blank"
+                  ><i class="fab bi bi-linkedin"></i
+                ></a>
+              </div>
             </div>
+          </div>
         </div>
+      </div>
     </div>
     <!-- Copyright End -->
 
-
     <!-- Back to Top -->
-    <a href="#" class="btn btn-secondary btn-lg-square rounded-circle back-to-top"><i class="fa fa-arrow-up"></i></a>
-
+    <a
+      href="#"
+      class="btn btn-secondary btn-lg-square rounded-circle back-to-top"
+      ><i class="fa fa-arrow-up"></i
+    ></a>
 
     <!-- JavaScript Libraries -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
@@ -267,9 +414,58 @@
     <script src="lib/waypoints/waypoints.min.js"></script>
     <script src="lib/owlcarousel/owl.carousel.min.js"></script>
 
-
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
-</body>
 
+
+    <script>
+document.getElementById('contactForm').addEventListener('submit', async function (e) {
+  e.preventDefault();
+
+  if (!this.checkValidity()) {
+    this.reportValidity();
+    return;
+  }
+
+  const name = document.getElementById('name').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const countryCode = document.getElementById('countryCode').value;
+  const phone = document.getElementById('phone').value.trim();
+  const preferredTime = document.getElementById('preferredTime').value;
+  const message = document.getElementById('message').value.trim();
+
+  const phoneDigits = phone.replace(/\D/g, '');
+
+  const payload = {
+    name,
+    email,
+    phone: `${countryCode}${phoneDigits}`,
+    phoneDigits,
+    preferredTime,
+    userMessage: message
+  };
+
+  try {
+    const res = await fetch('/api/CarRentalMessages', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+
+    if (!res.ok) {
+      throw new Error('Failed to submit message');
+    }
+
+    alert('Message sent successfully!');
+    this.reset();
+     window.location.href = "index.html";
+
+  } catch (err) {
+    console.error(err);
+    alert('Something went wrong. Please try again.');
+  }
+});
+</script>
+
+  </body>
 </html>

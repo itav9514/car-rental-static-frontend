@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Thank You</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/mobile-responsive.css" rel="stylesheet" />
+
+</head>
+
+<body>
+
+    <!-- Spinner Start -->
+    <div id="spinner"
+        class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+    <!-- Spinner End -->
+
+
+
+    <!-- Navbar & Hero Start -->
+  <!-- Navbar & Hero Start -->
+  <div class="container-fluid nav-bar sticky-top px-0 px-lg-4 py-2 py-lg-0">
+    <div class="container">
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <a href="index.html" class="navbar-brand p-0">
+          <!--<h1 class="display-6 text-primary"><i class="fas fa-car-alt me-3"></i></i>Cental</h1>-->
+          <img src="img/logo.jpeg" alt="Logo">
+        </a>
+        <div class="mobile-phone">
+           <a href="tel:+44-800-316-2929"><i class="fas fa-phone me-2"></i></a>
+        </div>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+          <span class="fa fa-bars"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <div class="navbar-nav mx-auto py-0">
+            <a href="index.html" class="nav-item nav-link active">Home</a>
+            <a href="about.html" class="nav-item nav-link">About</a>
+            <a href="https://us.adamvacations.com/travel-agencies" class="nav-item nav-link">Travel
+              Agencies</a>
+            <a href="https://us.adamvacations.com/corporate-concierge" class="nav-item nav-link">Corporate
+              Concierge</a>
+            <a href="https://us.adamvacations.com/destinations" class="nav-item nav-link">Destinations</a>
+          </div>
+          <a href="tel:+44-800-316-2929" class="phone-txt py-2 px-4"><i class="fas fa-phone me-2"></i>
+            +44-800-316-2929</a>
+        </div>
+      </nav>
+    </div>
+  </div>
+  <!-- Navbar & Hero End -->
+
+
+    <!-- Contact Start -->
+    <div class="container-fluid contact py-5">
+        <div class="container">
+
+            <div class="row g-5">
+                <div class="col-lg-12 cookies-txt wow fadeInUp" data-wow-delay="0.1s">
+                    <section class="thankyou">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <h2>Thank You For Reaching Out!</h2>
+                                    <p>Your request has been successfully submitted, and our team is already reviewing
+                                        the details. One of our representatives will get back to you shortly to discuss
+                                        your requirements and provide the best solution. </p>
+
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="booking-summary">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <h2>Your Booking Summary</h2>
+
+        <table class="table table-bordered">
+          <tbody>
+            <tr><th>Booking Reference</th><td id="ref"></td></tr>
+            <tr><th>Name</th><td id="name"></td></tr>
+            <tr><th>Email</th><td id="email"></td></tr>
+            <tr><th>Phone</th><td id="phone"></td></tr>
+
+            <tr><th>Car</th><td id="car"></td></tr>
+            <tr><th>Category</th><td id="category"></td></tr>
+
+            <tr><th>Pickup</th><td id="pickup"></td></tr>
+            <tr><th>Dropoff</th><td id="dropoff"></td></tr>
+
+            <tr><th>Add-ons</th><td id="addons"></td></tr>
+
+            <tr><th>Base Price</th><td id="basePrice"></td></tr>
+            <tr><th>Add-ons Total</th><td id="addonsTotal"></td></tr>
+            <tr><th><strong>Total Price</strong></th><td id="totalPrice"></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+                   
+                    <section class="get-in-touch">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-12 text-center">
+                                    <h2>
+                                        Get In Touch
+
+                                    </h2>
+                                    <img src="img/line-3.png">
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="progress-new">
+                                        <ul>
+                                            <li>
+                                                <span class="point active"><img src="img/bred-icon-1.png"></span>
+
+                                                <h2>Office Address</h2>
+                                                <p>
+                                                    7901 4TH ST N STE 300,<br>
+                                                    ST PETERSBURG, FL 33702
+
+                                                </p>
+                                            </li>
+                                            <li>
+                                                <span class="point"><img src="img/bred-icon-2.png"></span>
+                                                <h2>Call Us</h2>
+                                                <p>
+                                                    1-844-539-0014
+                                                </p>
+                                            </li>
+                                            <li>
+                                                <span class="point"><img src="img/bred-icon-3.png"></span>
+                                                <h2>Email</h2>
+                                                <p>
+                                                    car@adamvacations.com
+                                                </p>
+                                            </li>
+                                            <li>
+                                                <span class="point"><img src="img/bred-icon-4.png"></span>
+                                                <h2>Open Time</h2>
+                                                <p>
+                                                    24/7 Support
+                                                </p>
+                                            </li>
+                                        </ul>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="wide-choice">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-8">
+                                    <h3>Book Cheap Ferries<br> with Confidence
+                                    </h3>
+                                    <p>
+                                        Welcome to ferry.adamvacations-your trusted destination for affordable ferry
+                                        travel across Europe and beyond. Instantly compare routes and prices from over
+                                        50 leading operators, including DFDS Seaways, Eurotunnel, Brittany Ferries,
+                                        Stena Line, Irish Ferries, P&O Ferries, and Condor Ferries, all in one place.
+                                        <br><br>
+                                        Whether you’re planning a trip to France, Ireland, or virtually anywhere in the
+                                        world, ferry.adamvacations makes it easy to find the best deals and book your
+                                        ferry at the lowest price. Start your journey with us and save on every
+                                        crossing!
+                                    </p>
+                                </div>
+                                <div class="col-lg-4">
+                                    <img src="img/banner-thankyou.png" class="rounded-circle">
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="your-mind">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="questions">
+                                        <span>
+                                            Questions On Your Mind? <br><br>
+                                            Share Them with Us.
+                                        </span>
+                                        <button>
+                                            <a href="contact.html">
+                                            Connect with us.
+                                            </a
+                                        </button>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </section>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- Contact End -->
+
+    <!-- Footer Start -->
+    <div class="container-fluid footer py-4 mt-4 wow fadeIn" data-wow-delay="0.2s">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="addressnew">
+                        <ul>
+                            <li>
+                                <img src="img/phone-icon-us.png">
+                                <span>USA Toll Free<a href="tel:+1-872-244-6776">+1-872-244-6776</a></span>
+                            </li>
+                            <li style="color:#8792AA;" class="mob-hide">|</li>
+                            <li>
+                                <img src="img/email-icon-us.png">
+                                <span>Email to us<br> <a
+                                        href="mailto:car@adamvacations.com">car@adamvacations.com</a></span>
+                            </li>
+                            <li style="color:#8792AA;" class="mob-hide">|</li>
+                            <li>
+                                <img src="img/address-icon-us.png">
+                                <span>
+                                    7901 4TH ST N STE 300,<br>
+                                    ST PETERSBURG, FL 33702
+                                </span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="row py-3 mt-3">
+                <div class="col-md-6 col-lg-6 col-xl-4">
+                    <div class="footer-item d-flex flex-column">
+                        <div class="footer-item">
+                            <h4 class="text-white mb-4">About Us</h4>
+                            <p class="mb-3">Adam Vacations is an Online Travel Agency & Airline Consolidator. Positioned
+                                itself as one of the leading companies, providing great offers, competitive airfares,
+                                exclusive discounts, and a seamless online booking experience to many of its customers.
+                            </p>
+                            <strong class="mr0 hidden-xs">
+                                <span><b>Country:</b> <a href="http://us.adamvacations.com/" target="_blank">USA</a>, <a
+                                        href="https://www.adamvacations.com/" target="_blank">INDIA</a>, <a
+                                        href="http://es.adamvacations.com/" target="_blank">SPAIN</a>, <a
+                                        href="http://ca.adamvacations.com/" target="_blank">CANADA</a> , <a
+                                        href="http://ae.adamvacations.com/" target="_blank"> UAE</a> &amp; UK</span>
+                            </strong>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-6 col-xl-4">
+                    <div class="footer-item d-flex flex-column">
+                        <h4 class="text-white mb-4">Quick Links</h4>
+                        <a href="about.html"><i class="fas fa-angle-right me-2"></i> About</a>
+                        <!-- <a href="#"><i class="fas fa-angle-right me-2"></i> Cars</a>
+                            <a href="#"><i class="fas fa-angle-right me-2"></i> Car Types</a>
+                            <a href="#"><i class="fas fa-angle-right me-2"></i> Team</a> -->
+                        <a href="contact.html"><i class="fas fa-angle-right me-2"></i> Contact us</a>
+                        <a href="Cookies.html"><i class="fas fa-angle-right me-2"></i> Cookies</a>
+                        <a href="disclaimer.html"><i class="fas fa-angle-right me-2"></i> Disclaimer</a>
+
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-6 col-xl-4">
+                    <div class="footer-item d-flex flex-column">
+                        <h4 class="text-white mb-4">Our Policy</h4>
+                        <a href="booking-policy.html"><i class="fas fa-angle-right me-2"></i>Booking Policy</a>
+                        <a href="privacy-policy.html"><i class="fas fa-angle-right me-2"></i> Privacy policy</a>
+
+                        <a href="terms-conditions.html"><i class="fas fa-angle-right me-2"></i> Terms & Conditions</a>
+                        <a href="Cancellation-policy.html"><i class="fas fa-angle-right me-2"></i> Cancellation & Refund
+                            Policy</a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer End -->
+
+    <!-- Copyright Start -->
+    <div class="container-fluid copyright py-2">
+        <div class="container">
+            <div class="row g-4 align-items-center">
+                <div class="col-md-6 text-center text-md-start mb-md-0">
+                    <span class="text-body-1">2026 Adam Vacations. All rights reserved.</span>
+                </div>
+                <div class="col-md-6 text-center text-md-end text-body">
+                    <div class="pull-right  contect-adam">
+                        <div class="social-links">
+                            <span class="text-body-1">Follow us on</span>
+                            <a href="https://www.facebook.com/people/Adamvacation/100065127787909/" target="_blank"><i
+                                    class="fab bi bi-facebook"></i></a>
+                            <a href="https://www.instagram.com/adam.vacations/" target="_blank"><i
+                                    class="fab bi bi-instagram"></i></a>
+
+                            <a href="https://in.linkedin.com/company/adam-vacations" target="_blank"><i
+                                    class="fab bi bi-linkedin"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Copyright End -->
+
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-secondary btn-lg-square rounded-circle back-to-top"><i class="fa fa-arrow-up"></i></a>
+
+
+    <!-- JavaScript Libraries -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+
+    <script>
+  const data = sessionStorage.getItem('carRentalEnquiry');
+
+  if (!data) {
+    // Prevent direct access
+    window.location.href = 'index.html';
+  }
+
+  const booking = JSON.parse(data);
+
+  document.getElementById('ref').textContent = `AVC${booking.id.toString().padStart(4, '0')}`;
+  document.getElementById('name').textContent = booking.name;
+  document.getElementById('email').textContent = booking.email;
+  document.getElementById('phone').textContent = booking.phone;
+  
+
+  document.getElementById('car').textContent = booking.carName;
+  document.getElementById('category').textContent = booking.carDisplayCategory || '—';
+
+  document.getElementById('pickup').textContent =
+    `${booking.pickupLocation} – ${new Date(booking.pickupDateTime).toLocaleString()}`;
+
+  document.getElementById('dropoff').textContent =
+    `${booking.dropoffLocation} – ${new Date(booking.dropoffDateTime).toLocaleString()}`;
+
+  document.getElementById('addons').textContent =
+    booking.addOns.length
+      ? booking.addOns.map(a => `${a.name} (${a.type} - ${booking.currency} ${a.price})`).join(', ')
+      : 'None';
+
+  document.getElementById('basePrice').textContent =
+    `${booking.currency} ${booking.basePrice.toFixed(2)}`;
+
+  document.getElementById('addonsTotal').textContent =
+    `${booking.currency} ${booking.addonsTotal.toFixed(2)}`;
+
+  document.getElementById('totalPrice').textContent =
+    `${booking.currency} ${booking.totalPrice.toFixed(2)}`;
+</script>
+
+
+<script>
+  document
+    .getElementById("contactForm")
+    .addEventListener("submit", async function (e) {
+      e.preventDefault();
+
+      if (!this.checkValidity()) {
+        this.reportValidity();
+        return;
+      }
+
+      const name = document.getElementById("name").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const countryCode = document.getElementById("countryCode").value;
+      const phone = document.getElementById("phone").value.trim();
+      const preferredTime = document.getElementById("preferredTime").value;
+      const message = document.getElementById("message").value.trim();
+
+      const phoneDigits = phone.replace(/\D/g, "");
+
+      const payload = {
+        name,
+        email,
+        phone: `${countryCode}${phoneDigits}`,
+        phoneDigits,
+        preferredTime,
+        userMessage: message,
+      };
+
+      try {
+        const res = await fetch(
+          "https://localhost:32769/api/CarRentalMessages",
+          {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload),
+          }
+        );
+
+        if (!res.ok) {
+          throw new Error("Failed to submit message");
+        }
+
+        // Mark success & redirect
+        sessionStorage.setItem("contactSubmitted", "true");
+        window.location.href = "thankyou.html";
+
+      } catch (err) {
+        console.error(err);
+        alert("Something went wrong. Please try again.");
+      }
+    });
+</script>
+
+
+
+</body>
+
+</html>

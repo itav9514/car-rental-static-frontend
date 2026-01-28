@@ -53,55 +53,41 @@
     </div>
     <!-- Spinner End -->
 
-    <!-- Navbar & Hero Start -->
-    <div class="container-fluid nav-bar sticky-top px-0 px-lg-4 py-2 py-lg-0">
-      <div class="container">
-        <nav class="navbar navbar-expand-lg navbar-light">
-          <a href="" class="navbar-brand p-0">
-            <!--<h1 class="display-6 text-primary"><i class="fas fa-car-alt me-3"></i></i>Cental</h1>-->
-            <img src="img/logo.jpeg" alt="Logo" />
-          </a>
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarCollapse"
-          >
-            <span class="fa fa-bars"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarCollapse">
-            <div class="navbar-nav mx-auto py-0">
-              <a href="index.html" class="nav-item nav-link active">Home</a>
-              <a href="about.html" class="nav-item nav-link">About</a>
-              <a
-                href="https://us.adamvacations.com/travel-agencies"
-                class="nav-item nav-link"
-                >Travel Agencies</a
-              >
-              <a
-                href="https://us.adamvacations.com/corporate-concierge"
-                class="nav-item nav-link"
-                >Corporate Concierge</a
-              >
-              <a
-                href="https://us.adamvacations.com/destinations"
-                class="nav-item nav-link"
-                >Destinations</a
-              >
-            </div>
-            <a href="tel:1-844-539-0014" class="phone-txt py-2 px-4"
-              ><i class="fas fa-phone me-2"></i> 1-844-539-0014</a
-            >
+  <!-- Navbar & Hero Start -->
+  <div class="container-fluid nav-bar sticky-top px-0 px-lg-4 py-2 py-lg-0">
+    <div class="container">
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <a href="index.html" class="navbar-brand p-0">
+          <!--<h1 class="display-6 text-primary"><i class="fas fa-car-alt me-3"></i></i>Cental</h1>-->
+          <img src="img/logo.jpeg" alt="Logo">
+        </a>
+        <div class="mobile-phone">
+           <a href="tel:+44-800-316-2929"><i class="fas fa-phone me-2"></i></a>
+        </div>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+          <span class="fa fa-bars"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <div class="navbar-nav mx-auto py-0">
+            <a href="index.html" class="nav-item nav-link active">Home</a>
+            <a href="about.html" class="nav-item nav-link">About</a>
+            <a href="https://us.adamvacations.com/travel-agencies" class="nav-item nav-link">Travel
+              Agencies</a>
+            <a href="https://us.adamvacations.com/corporate-concierge" class="nav-item nav-link">Corporate
+              Concierge</a>
+            <a href="https://us.adamvacations.com/destinations" class="nav-item nav-link">Destinations</a>
           </div>
-        </nav>
-      </div>
+          <a href="tel:+44-800-316-2929" class="phone-txt py-2 px-4"><i class="fas fa-phone me-2"></i>
+            +44-800-316-2929</a>
+        </div>
+      </nav>
     </div>
-    <!-- Navbar & Hero End -->
+  </div>
+  <!-- Navbar & Hero End -->
 
     <!-- Result Start -->
     <div class="container-fluid overflow-hidden about py-5">
       <div class="container">
-        <!--
         <form id="payment-form">
           <div class="row">
             <div class="col-lg-8">
@@ -116,260 +102,14 @@
                   <label>Pick-up Time</label>
                   <p id="pickup-time-text">Wed, 18 Mar, 2026 at 17:30</p>
                 </div>
+
                 <div class="loc-1 mob-hide">|</div>
-                <div class="loc-1">
-                  <label>Drop-off Time</label>
-                  <p id="dropoff-time-text">Thu, 26 Mar, 2026 at 17:00</p>
-                </div>
-              </div>
-
-              <div class="Personal">
-                <h2>Personal Details</h2>
-                <hr />
-
-                <div class="deatls">
-                  <div class="data-1">
-                    <label>First Name</label>
-                    <input
-                      id="firstName"
-                      type="text"
-                      placeholder="First Name"
-                      class="form-control"
-                      required
-                      maxlength="100"
-                      pattern="[A-Za-z\s]+"
-                      title="First name should contain letters and spaces only."
-                    />
-                  </div>
-                  <div class="data-1">
-                    <label>Last Name</label>
-                    <input
-                      id="lastName"
-                      type="text"
-                      placeholder="Last Name"
-                      class="form-control"
-                      required
-                      maxlength="100"
-                      pattern="[A-Za-z\s]+"
-                      title="Last name should contain letters and spaces only."
-                    />
-                  </div>
-                </div>
-                <div class="deatls">
-                  <div class="data-1">
-                    <label>Email</label>
-                    <input
-                      id="email"
-                      type="email"
-                      placeholder="Email"
-                      class="form-control"
-                      required
-                      title="Please enter a valid email address."
-                    />
-                  </div>
-                  <div class="data-1">
-                    <label>Phone Number</label>
-                    <div class="input-group">
-                      <select
-                        id="countryCode"
-                        class="form-select"
-                        style="max-width: 100px"
-                        required
-                        title="Please select a country code."
-                      >
-                        <option value="">Code</option>
-                        <option value="+1" selected>+1 (USA)</option>
-                        <option value="+44">+44 (UK)</option>
-                        <option value="+91">+91 (India)</option>
-                        <option value="+49">+49 (Germany)</option>
-                        <option value="+33">+33 (France)</option>
-                        <option value="+81">+81 (Japan)</option>
-                        <option value="+86">+86 (China)</option>
-                        <option value="+61">+61 (Australia)</option>
-                        <option value="+55">+55 (Brazil)</option>
-                        <option value="+7">+7 (Russia)</option>
-                      </select>
-                      <input
-                        id="phone"
-                        type="tel"
-                        placeholder="Phone Number"
-                        class="form-control"
-                        required
-                        pattern="[0-9]{7,15}"
-                        maxlength="15"
-                        title="Phone number should be 7-15 digits."
-                      />
-                    </div>
-                  </div>
-                </div>
-                <div class="deatls">
-                  <div class="data-1">
-                    <label>Driving License</label>
-                    <input
-                      id="drivingLicense"
-                      type="text"
-                      placeholder="Driving License"
-                      class="form-control"
-                      required
-                      pattern="[A-Za-z0-9 \-]+"
-                      maxlength="20"
-                      title="Driving license should contain letters, numbers, spaces, or hyphens."
-                    />
+                  <div class="loc-1" id="dropoff-location-group" style="display: none;">
+                    <label>Drop-off Location</label>
+                    <p id="dropoff-location-text">—</p>
                   </div>
 
-                  <div class="data-1">
-                    <label>Driver Age</label>
-                    <input
-                      id="driverAge"
-                      type="number"
-                      placeholder="Driver Age"
-                      class="form-control"
-                      required
-                      min="18"
-                      max="100"
-                      step="1"
-                      title="Driver age must be a number between 18 and 100."
-                    />
-                  </div>
-                </div>
-              </div>
 
-              <div class="Personal">
-                <h2>Card Holder Details</h2>
-                <hr />
-
-                <div class="card-deatls">
-                  <div class="data-1">
-                    <label>Card Holder Name</label>
-                    <input
-                      id="cardHolder"
-                      type="text"
-                      placeholder="Full Name on card"
-                      class="form-control"
-                      required
-                      maxlength="100"
-                      pattern="[A-Za-z\s]+"
-                      title="Card holder name should contain letters and spaces only."
-                    />
-                  </div>
-                </div>
-                <div class="card-deatls">
-                  <div class="data-1">
-                    <label>Card Details</label>
-                    <input
-                      id="cardNumber"
-                      type="text"
-                      placeholder="XXXX XXXX XXXX XXXX"
-                      class="form-control"
-                      required
-                      pattern="\d{4}\s?\d{4}\s?\d{4}\s?\d{4}"
-                      maxlength="16"
-                      title="Card number should be 16 digits (spaces optional)."
-                    />
-                  </div>
-                </div>
-
-                <div class="month">
-                  <div class="data-1">
-                    <label>Month</label>
-                    <select
-                      id="expiryMonth"
-                      class="form-select"
-                      required
-                      title="Please select expiry month."
-                    >
-                      <option value="">Select</option>
-                      <option value="01">01 (January)</option>
-                      <option value="02">02 (February)</option>
-                      <option value="03">03 (March)</option>
-                      <option value="04">04 (April)</option>
-                      <option value="05">05 (May)</option>
-                      <option value="06">06 (June)</option>
-                      <option value="07">07 (July)</option>
-                      <option value="08">08 (August)</option>
-                      <option value="09">09 (September)</option>
-                      <option value="10">10 (October)</option>
-                      <option value="11">11 (November)</option>
-                      <option value="12">12 (December)</option>
-                    </select>
-                  </div>
-                  <div class="data-1">
-                    <label>Year</label>
-                    <select
-                      id="expiryYear"
-                      class="form-select"
-                      required
-                      title="Please select expiry year."
-                    >
-                      <option value="">Select</option>
-                      <option value="2026">2026</option>
-                      <option value="2027">2027</option>
-                      <option value="2028">2028</option>
-                      <option value="2029">2029</option>
-                      <option value="2030">2030</option>
-                      <option value="2031">2031</option>
-                      <option value="2032">2032</option>
-                      <option value="2033">2033</option>
-                      <option value="2034">2034</option>
-                      <option value="2035">2035</option>
-                    </select>
-                  </div>
-                  <div class="data-1">
-                    <label>CVV</label>
-                    <input
-                      id="cvv"
-                      type="text"
-                      placeholder="CVV"
-                      class="form-control"
-                      required
-                      pattern="\d{3,4}"
-                      maxlength="4"
-                      title="CVV should be 3 or 4 digits."
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4">
-              <div class="your-car" id="your-car-section">
-                <img src="img/tesla.jpg" />
-                <h2>Your Car</h2>
-                <hr />
-                <p>Loading car details...</p>
-              </div>
-              <div class="Price-details">
-                <h2>Price Details</h2>
-                <hr />
-                <div id="base-price-row"></div>
-                <div id="addons-list"></div>
-                <div class="dtl total-row">
-                  <strong>Total Price</strong>
-                  <strong id="grand-total">Calculating...</strong>
-                </div>
-              </div>
-
-              <button type="submit" id="pay-now-btn" class="conti-btn">
-                Pay Now
-              </button>
-            </div>
-          </div>
-        </form>
-        -->
-
-        <form id="payment-form">
-          <div class="row">
-            <div class="col-lg-8">
-              <h2 class="chk-txt">Checkout</h2>
-              <div class="pickup">
-                <div class="loc-1">
-                  <label>Pick-up Location</label>
-                  <p id="pickup-location-text">Newark International Airport</p>
-                </div>
-                <div class="loc-1 mob-hide">|</div>
-                <div class="loc-1">
-                  <label>Pick-up Time</label>
-                  <p id="pickup-time-text">Wed, 18 Mar, 2026 at 17:30</p>
-                </div>
                 <div class="loc-1 mob-hide">|</div>
                 <div class="loc-1">
                   <label>Drop-off Time</label>
@@ -653,14 +393,23 @@
                 <hr />
                 <p>Loading car details...</p>
               </div>
-              <div class="Price-details">
+              <div class="Price-details" id="price-details">
                 <h2>Price Details</h2>
                 <hr />
-                <div id="base-price-row"></div>
-                <div id="addons-list"></div>
+
+                <div id="addons-list">
+                  <!-- Selected add-ons appear here -->
+                </div>
+
+                <div class="dtl" id="base-price-row">
+                  <!-- Base price row filled by JS -->
+                </div>
+
+                <hr />
+
                 <div class="dtl total-row">
                   <strong>Total Price</strong>
-                  <strong id="grand-total">Calculating...</strong>
+                  <strong id="grand-total">0.00 USD</strong>
                 </div>
               </div>
               <button type="submit" id="pay-now-btn" class="conti-btn">

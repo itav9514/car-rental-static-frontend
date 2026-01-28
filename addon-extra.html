@@ -57,50 +57,37 @@
     </div>
     <!-- Spinner End -->
 
-    <!-- Navbar & Hero Start -->
-    <div class="container-fluid nav-bar sticky-top px-0 px-lg-4 py-2 py-lg-0">
-      <div class="container">
-        <nav class="navbar navbar-expand-lg navbar-light">
-          <a href="" class="navbar-brand p-0">
-            <!--<h1 class="display-6 text-primary"><i class="fas fa-car-alt me-3"></i></i>Cental</h1>-->
-            <img src="img/logo.jpeg" alt="Logo" />
-          </a>
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarCollapse"
-          >
-            <span class="fa fa-bars"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarCollapse">
-            <div class="navbar-nav mx-auto py-0">
-              <a href="index.html" class="nav-item nav-link active">Home</a>
-              <a href="about.html" class="nav-item nav-link">About</a>
-              <a
-                href="https://us.adamvacations.com/travel-agencies"
-                class="nav-item nav-link"
-                >Travel Agencies</a
-              >
-              <a
-                href="https://us.adamvacations.com/corporate-concierge"
-                class="nav-item nav-link"
-                >Corporate Concierge</a
-              >
-              <a
-                href="https://us.adamvacations.com/destinations"
-                class="nav-item nav-link"
-                >Destinations</a
-              >
-            </div>
-            <a href="tel:1-844-539-0014" class="phone-txt py-2 px-4"
-              ><i class="fas fa-phone me-2"></i> 1-844-539-0014</a
-            >
+  <!-- Navbar & Hero Start -->
+  <div class="container-fluid nav-bar sticky-top px-0 px-lg-4 py-2 py-lg-0">
+    <div class="container">
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <a href="index.html" class="navbar-brand p-0">
+          <!--<h1 class="display-6 text-primary"><i class="fas fa-car-alt me-3"></i></i>Cental</h1>-->
+          <img src="img/logo.jpeg" alt="Logo">
+        </a>
+        <div class="mobile-phone">
+           <a href="tel:+44-800-316-2929"><i class="fas fa-phone me-2"></i></a>
+        </div>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+          <span class="fa fa-bars"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <div class="navbar-nav mx-auto py-0">
+            <a href="index.html" class="nav-item nav-link active">Home</a>
+            <a href="about.html" class="nav-item nav-link">About</a>
+            <a href="https://us.adamvacations.com/travel-agencies" class="nav-item nav-link">Travel
+              Agencies</a>
+            <a href="https://us.adamvacations.com/corporate-concierge" class="nav-item nav-link">Corporate
+              Concierge</a>
+            <a href="https://us.adamvacations.com/destinations" class="nav-item nav-link">Destinations</a>
           </div>
-        </nav>
-      </div>
+          <a href="tel:+44-800-316-2929" class="phone-txt py-2 px-4"><i class="fas fa-phone me-2"></i>
+            +44-800-316-2929</a>
+        </div>
+      </nav>
     </div>
-    <!-- Navbar & Hero End -->
+  </div>
+  <!-- Navbar & Hero End -->
 
     <!-- Result Start -->
     <div class="container-fluid overflow-hidden about py-5">
@@ -108,33 +95,40 @@
         <div class="pickup">
           <div class="loc-1">
             <label>Pick-up Location</label>
-            <p>Newark International Airport</p>
+            <p id="pickup-location-text">Newark International Airport</p>
           </div>
           <div class="loc-1 mob-hide">|</div>
           <div class="loc-1">
             <label>Pick-up Time</label>
-            <p>Wed, 18 Mar, 2026 at 17:30</p>
+            <p id="pickup-time-text">Wed, 18 Mar, 2026 at 17:30</p>
           </div>
+
+                <div class="loc-1 mob-hide">|</div>
+                  <div class="loc-1" id="dropoff-location-group" style="display: none;">
+                    <label>Drop-off Location</label>
+                    <p id="dropoff-location-text">—</p>
+                  </div>
+
+
           <div class="loc-1 mob-hide">|</div>
           <div class="loc-1">
             <label>Drop-off Time</label>
-            <p>Thu, 26 Mar, 2026 at 17:00</p>
+            <p id="dropoff-time-text">Thu, 26 Mar, 2026 at 17:00</p>
           </div>
+
           <div class="loc-1 mob-hide">|</div>
 
           <div class="loc-1">
-          <button
-            type="button"
-            class="btn btn-danger"
-            data-bs-toggle="modal"
-            data-bs-target="#tripDetailsModal"
-          >
-          Edit Trip Details
-        </button>
+            <button
+              type="button"
+              class="btn btn-danger"
+              data-bs-toggle="modal"
+              data-bs-target="#tripDetailsModal"
+            >
+              Edit Trip Details
+            </button>
           </div>
         </div>
-
-
 
         <div
           class="modal fade"
@@ -332,768 +326,39 @@
             <h1 class="vehicle-txt">
               You have planned your trip, now protect it!
             </h1>
-            <div class="extra-all">
-              <div class="addon-services">
-                <img src="img/pers-tile.jpg" />
-                <h2>Drive with total peace of mind</h2>
-                <p>
-                  Reduce your financial liability for non-mechanical car issues
-                  such as missing key, lockout, dead battery, spare tires, empty
-                  fuel tank and more when you add Personal Emergency Roadside
-                  Assistance (PERS).*
-                </p>
-                <a data-bs-toggle="modal" data-bs-target="#staticBackdrop"
-                  >More Details</a
-                >
-                <strong>9.99 <span>/ Day</span></strong>
-                <button
-                  class="addon-btn"
-                  data-id="pers"
-                  data-name="Personal Emergency Roadside Assistance (PERS)"
-                  data-price="9.99"
-                  data-type="day"
-                >
-                  Add
-                </button>
 
-                <!-- Modal -->
-                <div
-                  class="modal fade"
-                  id="staticBackdrop"
-                  data-bs-backdrop="static"
-                  data-bs-keyboard="false"
-                  tabindex="-1"
-                  aria-labelledby="staticBackdropLabel"
-                  aria-hidden="true"
-                >
-                  <div class="modal-dialog">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <span
-                          class="btn-close"
-                          data-bs-dismiss="modal"
-                          aria-label="Close"
-                        ></span>
-                      </div>
-                      <div class="modal-body">
-                        <div class="driver-informer">
-                          <h3>Drive with total peace of mind</h3>
-                          <img src="img/VAS-Offering.jpg" />
-                          <h4>Drive with total peace of mind</h4>
-                          <p>
-                            Premium Emergency Roadside Service
-                            <br /><br />
-                            Reduce your financial liability for non-mechanical
-                            car issues and unexpected roadside service costs
-                            such as missing key, lockout, dead battery, spare
-                            tires, empty fuel tank, and more when you add
-                            Premium Emergency Roadside Service (PERS).
-                          </p>
-                          <p>Emergency Roadside Service (PERS) benefits:</p>
-                          <ul>
-                            <li>Lock-out service – maximum $250 per rental</li>
-                            <li>Remote unlock – maximum $105 per rental</li>
-                            <li>
-                              Damaged/broken key, fob, key card – maximum $500
-                              per rental
-                            </li>
-                            <li>
-                              Lost/missing key, fob, key card – maximum $500 per
-                              rental
-                            </li>
-                            <li>
-                              Keys, fob, key card (Delivery/Towing) – maximum
-                              $300 per rental
-                            </li>
-                            <li>
-                              Spare tire mounting service – maximum $250 per
-                              rental
-                            </li>
-                            <li>
-                              No spare tire (Towing) – maximum $500 per rental
-                            </li>
-                            <li>
-                              Dead battery (Left light/accessory on) – maximum
-                              $250 per rental
-                            </li>
-                            <li>
-                              Out of EV range/charge service (Towing to a
-                              charging station)* – maximum $350 per rental
-                            </li>
-                            <li>
-                              Out of EV range/charge service (EV range delivery)
-                              – maximum $250 per rental
-                            </li>
-                            <li>
-                              Out of gas fuel service – maximum $250 per rental
-                            </li>
-                            <li>
-                              Car stuck/winch service – maximum $500 per rental
-                            </li>
-                            <li>
-                              Missing/stolen/damaged EV charging cable/adapter
-                            </li>
-                          </ul>
-                          <p>
-                            If costs exceed the maximum amounts described above,
-                            the renter will be responsible for such excess. The
-                            cost, coverage, provider, availability and terms of
-                            Emergency Roadside Service may vary by location.
-                            Please inquire at the counter for additional
-                            information. Requirements for corporate account
-                            customers may vary. Please contact the appropriate
-                            department.
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <!-- Modal End -->
-              </div>
-              <div class="addon-services">
-                <img src="img/InfantSeat.jpg" />
-                <h2>Infant Child Seat</h2>
-                <p>
-                  For infants less than one year and weigh up to 20 pounds or up
-                  to 9 kgs.
-                </p>
-                <a data-bs-toggle="modal" data-bs-target="#staticBackdrop1"
-                  >More Details</a
-                >
-                <strong>98.00 <span>USD / Item per rental</span></strong>
-
-                <button
-                  class="addon-btn"
-                  data-id="infant-child-seat"
-                  data-name="Infant Child Seat"
-                  data-price="98.00"
-                  data-type="rental"
-                >
-                  Add
-                </button>
-
-                <!-- Modal -->
-                <div
-                  class="modal fade"
-                  id="staticBackdrop1"
-                  data-bs-backdrop="static"
-                  data-bs-keyboard="false"
-                  tabindex="-1"
-                  aria-labelledby="staticBackdropLabel"
-                  aria-hidden="true"
-                >
-                  <div class="modal-dialog">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <span
-                          class="btn-close"
-                          data-bs-dismiss="modal"
-                          aria-label="Close"
-                        ></span>
-                      </div>
-                      <div class="modal-body">
-                        <div class="driver-informer">
-                          <h3>Infant Child Seat</h3>
-                          <img src="img/InfantSeat.jpg" />
-                          <h4>Infant Child Seat</h4>
-                          <p>
-                            Avoid airline baggage charges and have our seats
-                            waiting for you. Hertz can provide you with an
-                            infant car seat to be used for infants who are less
-                            than one year old and weigh up to 20 pounds or up to
-                            9 kgs. Children are too large for this type of car
-                            seat if they weigh over 20 pounds/9 kgs or are
-                            longer than 26 inches/66 cms. Infant seats must be
-                            installed rear-facing. These seats are desgined to
-                            support a child's neck, back and spinal cord.
-                          </p>
-                          <p>
-                            Hawaii Only: Under 2 years of age, rear facing child
-                            passenger restraint system with harness is required.
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <!-- Modal End -->
-              </div>
-              <div class="addon-services">
-                <img src="img/ChildSeat.jpg" />
-                <h2>Child Seat</h2>
-                <p>
-                  Forward facing for children weighing 20-40 pounds or 8kgs-18
-                  kgs and up to 40 inches/101 cms in height.
-                </p>
-                <a data-bs-toggle="modal" data-bs-target="#staticBackdrop2"
-                  >More Details</a
-                >
-                <strong>98.00 <span>USD / Item per rental</span></strong>
-
-                <button
-                  class="addon-btn"
-                  data-id="child-seat"
-                  data-name="Child Seat"
-                  data-price="98.00"
-                  data-type="rental"
-                >
-                  Add
-                </button>
-
-                <!-- Modal -->
-                <div
-                  class="modal fade"
-                  id="staticBackdrop2"
-                  data-bs-backdrop="static"
-                  data-bs-keyboard="false"
-                  tabindex="-1"
-                  aria-labelledby="staticBackdropLabel"
-                  aria-hidden="true"
-                >
-                  <div class="modal-dialog">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <span
-                          class="btn-close"
-                          data-bs-dismiss="modal"
-                          aria-label="Close"
-                        ></span>
-                      </div>
-                      <div class="modal-body">
-                        <div class="driver-informer">
-                          <h3>Child Seat</h3>
-                          <img src="img/ChildSeat.jpg" />
-                          <h4>Child Seat</h4>
-                          <p>
-                            Avoid airline baggage charges and have our seats
-                            waiting for you. Hertz can provide you with a
-                            convertible car seat to be used forward facing for
-                            children weighing 20-40 pounds or 8kgs-18 kgs and up
-                            to 40 inches/101 cms in height. Parents of children
-                            who have outgrown an infant car seat are encouraged
-                            to use these seats rear-facing until the child
-                            reaches the upper height and weight limits of the
-                            seat for rear-facing use.
-                          </p>
-                          <p>
-                            Hawaii Only: Age 2 but less than 4, rear or forward
-                            facing child passenger restraint system with harness
-                            is required.
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <!-- Modal End -->
-              </div>
-            </div>
-            <div class="extra-all">
-              <div class="addon-services">
-                <img src="img/BoosterSeat.jpg" />
-                <h2>Booster Seat</h2>
-                <p>For children weighing 40 to 80 lbs or 18kg-36kgs.</p>
-                <a data-bs-toggle="modal" data-bs-target="#staticBackdrop3"
-                  >More Details</a
-                >
-                <strong>98.00 <span>USD / Item per rental</span></strong>
-
-                <button
-                  class="addon-btn btn btn-outline-primary"
-                  data-id="booster-seat"
-                  data-name="Booster Seat"
-                  data-price="98.00"
-                  data-type="rental"
-                >
-                  Add
-                </button>
-
-                <!-- Modal -->
-                <div
-                  class="modal fade"
-                  id="staticBackdrop3"
-                  data-bs-backdrop="static"
-                  data-bs-keyboard="false"
-                  tabindex="-1"
-                  aria-labelledby="staticBackdropLabel"
-                  aria-hidden="true"
-                >
-                  <div class="modal-dialog">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <span
-                          class="btn-close"
-                          data-bs-dismiss="modal"
-                          aria-label="Close"
-                        ></span>
-                      </div>
-                      <div class="modal-body">
-                        <div class="driver-informer">
-                          <h3>Booster Seat</h3>
-                          <img src="img/BoosterSeat.jpg" />
-                          <h4>Booster Seat</h4>
-                          <p>
-                            Avoid airline baggage charges and have our seats
-                            waiting for you. Hertz can provide you with a
-                            belt-positioning high back booster seat to be used
-                            in the back seat for children who have outgrown a
-                            convertible car seat. The belt-positioning booster
-                            seat must be used in seating positions equipped with
-                            lap and shoulder belts. Children weighing 40-80
-                            pounds or 18kg-36kgs should use these seats.
-                          </p>
-                          <p>
-                            Hawaii Only: 4 or older but no less than 10 or under
-                            4’9”, children must be in a child passenger
-                            restraint system with harness or booster is
-                            required.
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <!-- Modal End -->
-              </div>
-              <div class="addon-services">
-                <img src="img/protect-car.jpg" />
-                <h2>Protect the Car</h2>
-                <p>
-                  Don’t pay a thing and don’t file an insurance claim if your
-                  rental gets damaged or stolen when you add Loss Damage Waiver
-                  (LDW).
-                </p>
-                <a data-bs-toggle="modal" data-bs-target="#staticBackdrop5"
-                  >More Details</a
-                >
-                <!-- <strong>98.00 <span>USD / Item per rental</span></strong> -->
-
-                <div class="clearfix"></div>
-                <sub class="green">169,611 added last month *</sub>
-                <div class="clearfix"></div>
-
-                <button
-                  class="addon-btn btn btn-outline-primary"
-                  data-id="ldw"
-                  data-name="Loss Damage Waiver (LDW)"
-                  data-type="day"
-                >
-                  Add
-                </button>
-
-                <!-- Modal -->
-                <div
-                  class="modal fade"
-                  id="staticBackdrop5"
-                  data-bs-backdrop="static"
-                  data-bs-keyboard="false"
-                  tabindex="-1"
-                  aria-labelledby="staticBackdropLabel"
-                  aria-hidden="true"
-                >
-                  <div class="modal-dialog">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <span
-                          class="btn-close"
-                          data-bs-dismiss="modal"
-                          aria-label="Close"
-                        ></span>
-                      </div>
-                      <div class="modal-body">
-                        <div class="driver-informer">
-                          <h3>Protect the Car</h3>
-                          <img src="img/protect-car.jpg" />
-                          <h4>Protect the Car</h4>
-
-                          <ul>
-                            <li>
-                              Your financial liability for vehicle damage will
-                              be reduced only if the loss or damage does not
-                              result from using the vehicle in violation of the
-                              rental terms or for a prohibited use as specified
-                              in the agreement.
-                            </li>
-
-                            <li>
-                              If booking is made pursuant to a pre-existing
-                              agreement between Hertz and a commercial customer
-                              for negotiated rates and liability reductions, the
-                              negotiated rates and reductions shall apply to the
-                              booking such that this product may not reduce
-                              liability for loss or damage to $0.
-                            </li>
-                          </ul>
-                          <p>
-                            Loss Damage Waiver is not an insurance product.
-                            <br /><br />
-                            The price for Loss Damage Waiver may vary from the
-                            price quoted online if Loss Damage Waiver is not
-                            selected at the time of booking.
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <!-- Modal End -->
-              </div>
-              <div class="addon-services">
-                <img src="img/Protect-banner.jpg" />
-                <h2>Protect yourself from liability</h2>
-                <p>
-                  Protect yourself and authorized drivers from accident
-                  liability. Plus, get uninsured or under-insured motorist
-                  protection.
-                </p>
-                <a data-bs-toggle="modal" data-bs-target="#staticBackdrop4"
-                  >More Details</a
-                >
-                <!-- <strong>98.00 <span>USD / Item per rental</span></strong> -->
-
-                <div class="clearfix"></div>
-                <sub class="green">180,611 added last month *</sub>
-                <div class="clearfix"></div>
-
-                <button
-                  class="addon-btn btn btn-outline-primary"
-                  data-id="lis"
-                  data-name="Liability Insurance Supplement (LIS)"
-                  data-type="day"
-                >
-                  Add
-                </button>
-
-                <!-- Modal -->
-                <div
-                  class="modal fade"
-                  id="staticBackdrop4"
-                  data-bs-backdrop="static"
-                  data-bs-keyboard="false"
-                  tabindex="-1"
-                  aria-labelledby="staticBackdropLabel"
-                  aria-hidden="true"
-                >
-                  <div class="modal-dialog">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <span
-                          class="btn-close"
-                          data-bs-dismiss="modal"
-                          aria-label="Close"
-                        ></span>
-                      </div>
-                      <div class="modal-body">
-                        <div class="driver-informer">
-                          <h3>Protect yourself from liability</h3>
-                          <img src="img/Protect-banner.jpg" />
-                          <h4>Protect yourself from liability</h4>
-
-                          <ul>
-                            <li>
-                              Liability Insurance Supplement (LIS) covers
-                              third-party automobile liability claims for bodily
-                              injury and property damage for rentals in the U.S.
-                            </li>
-
-                            <li>
-                              If purchased, LIS will provide coverage before
-                              your personal policy and covers your liability to
-                              third parties, resulting from an auto accident in
-                              the rented vehicle, for bodily injury and property
-                              damage (other than to the rental vehicle).
-                            </li>
-                            <li>
-                              Maximum LIS protection up to $300,000* for each
-                              accident for bodily injury and property damage in
-                              excess of minimum underlying state statutory
-                              limits and, up to $100,000 for uninsured and
-                              underinsured motorist coverage for bodily injury
-                              per accident in excess of minimum underlying state
-                              statutory limits. For rentals commencing in
-                              California, no uninsured/underinsured motorist
-                              coverage will be provided with the purchase of
-                              LIS. There is no coverage for an
-                              uninsured/underinsured motorist claim as a result
-                              of negligence by the rental driver.
-                            </li>
-                            <li>
-                              *LIS limits may vary in certain states, and terms
-                              and conditions apply. Ask your rental
-                              representative. Pricing of LIS for a specific
-                              rental will be provided at time of reservation.
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <!-- Modal End -->
-              </div>
-            </div>
-            <div class="extra-all">
-              <div class="addon-services">
-                <img src="img/Protect-banner-2.jpg" />
-                <h2>Protect yourself, passengers & belongings</h2>
-                <p>
-                  Protect yourself and passengers from medical expenses during
-                  the rental period. Plus protect your belongings from loss or
-                  damage.
-                </p>
-                <a data-bs-toggle="modal" data-bs-target="#staticBackdrop6"
-                  >More Details</a
-                >
-                <strong>7.51 <span>/ Day</span></strong>
-
-                <button
-                  class="addon-btn btn btn-outline-primary"
-                  data-id="ppp"
-                  data-name="Personal Protection Package (PPP)"
-                  data-price="7.51"
-                  data-type="day"
-                >
-                  Add
-                </button>
-
-                <!-- Modal -->
-                <div
-                  class="modal fade"
-                  id="staticBackdrop6"
-                  data-bs-backdrop="static"
-                  data-bs-keyboard="false"
-                  tabindex="-1"
-                  aria-labelledby="staticBackdropLabel"
-                  aria-hidden="true"
-                >
-                  <div class="modal-dialog">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <span
-                          class="btn-close"
-                          data-bs-dismiss="modal"
-                          aria-label="Close"
-                        ></span>
-                      </div>
-                      <div class="modal-body">
-                        <div class="driver-informer">
-                          <h3>Protect yourself, passengers & belongings</h3>
-                          <img src="img/Protect-banner-2.jpg" />
-                          <h4>Protect yourself, passengers & belongings</h4>
-                          <p>
-                            Medical & Theft Protection Personal Protection
-                            Package (PPP) includes Personal Accident Insurance
-                            (PAI) and Personal Effects Coverage, which during
-                            the rental period provide you and in certain
-                            circumstances passengers with accidental death
-                            benefits and limited medical expense benefits, as
-                            well as limited reimbursement for loss, theft or
-                            damage to covered items. Payments are made in
-                            addition to other policies you carry with similar
-                            coverage. Exclusions and limitations apply, and
-                            terms and conditions may vary by state.
-                          </p>
-
-                          <ul>
-                            <li>
-                              PAI provides accidental death benefits of up to
-                              $175,000 for the renter ($100,000 in MN) and up to
-                              $17,500 for passengers ($10,000 in MN), and
-                              medical expense coverage of $2,500 for the renter
-                              and passengers ($3,500 in MN), including up to
-                              $250 in ambulance expenses ($150 in MN). Total
-                              benefits for any accident are limited to $225,000
-                              ($130,000 in MN). Not available in NY.
-                            </li>
-
-                            <li>
-                              PEC provides up to $650 per person for loss, theft
-                              or damage to personal effects, with the maximum
-                              coverage for all claims during any rental limited
-                              to $1,950
-                            </li>
-                          </ul>
-                          <p>
-                            PPP limits may vary in certain states, and terms and
-                            conditions apply. Ask your rental representative
-                            <br /><br />
-                            Protect the Car
-                          </p>
-                          <ul>
-                            <li>
-                              Your financial liability for vehicle damage will
-                              be reduced only if the loss or damage does not
-                              result from using the vehicle in violation of the
-                              rental terms or for a prohibited use as specified
-                              in the agreement.
-                            </li>
-                            <li>
-                              If booking is made pursuant to a pre-existing
-                              agreement between Hertz and a commercial customer
-                              for negotiated rates and liability reductions, the
-                              negotiated rates and reductions shall apply to the
-                              booking such that this product may not reduce
-                              liability for loss or damage to $0.
-                            </li>
-                          </ul>
-                          <p>
-                            Loss Damage Waiver is not an insurance product.
-                            <br /><br />
-                            The price for Loss Damage Waiver may vary from the
-                            price quoted online if Loss Damage Waiver is not
-                            selected at the time of booking.
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <!-- Modal End -->
-              </div>
-              <div class="addon-services">
-                <img src="img/tole.jpg" />
-                <h2>Bypass toll booths with ease.</h2>
-                <p>
-                  Toll roads? Travel assured. Save money, bypass toll booths and
-                  drive seamlessly through electronic toll lanes when you add
-                  our all-inclusive PlatePass® option.*
-                </p>
-                <a data-bs-toggle="modal" data-bs-target="#staticBackdrop7"
-                  >More Details</a
-                >
-                <strong>25.99 <span>/ Day</span></strong>
-
-                <button
-                  class="addon-btn btn btn-outline-primary"
-                  data-id="platepass"
-                  data-name="PlatePass® (All-Inclusive Tolling)"
-                  data-price="25.99"
-                  data-type="day"
-                >
-                  Add
-                </button>
-                <!-- Modal -->
-                <div
-                  class="modal fade"
-                  id="staticBackdrop7"
-                  data-bs-backdrop="static"
-                  data-bs-keyboard="false"
-                  tabindex="-1"
-                  aria-labelledby="staticBackdropLabel"
-                  aria-hidden="true"
-                >
-                  <div class="modal-dialog">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <span
-                          class="btn-close"
-                          data-bs-dismiss="modal"
-                          aria-label="Close"
-                        ></span>
-                      </div>
-                      <div class="modal-body">
-                        <div class="driver-informer">
-                          <h3>Bypass toll booths with ease.</h3>
-                          <img src="img/tole.jpg" />
-                          <h4>Bypass toll booths with ease.</h4>
-                          <p>
-                            Toll roads? Travel assured. Save money, bypass toll
-                            booths and drive seamlessly through electronic toll
-                            lanes when you add our all-inclusive PlatePass®
-                            option.*
-                          </p>
-                          <p>All-inclusive PlatePass tolling benefits:</p>
-
-                          <ul>
-                            <li>
-                              Unlimited, 24-7 toll usage throughout the extent
-                              of your rental for a low daily rate (rate varies
-                              by state).
-                            </li>
-
-                            <li>
-                              No waiting in long lines searching for coins, cash
-                              or waiting for receipts.
-                            </li>
-                            <li>
-                              No paying tolls during or after your rental.
-                            </li>
-                            <li>
-                              Ability to use most electronic tollways and
-                              bridges, without using a personal transponder or
-                              paying the toll authority directly.
-                            </li>
-                            <li>
-                              Convenient as many toll roads no longer provide
-                              traffic booths to pay tolls in person.
-                            </li>
-                            <li>
-                              PlatePass all-inclusive tolling is available in
-                              California, Colorado, Delaware, Florida, Georgia,
-                              Illinois, Indiana, Kentucky, Maine, Massachusetts,
-                              Maryland, New Hampshire, New Jersey, New York,
-                              North Carolina, Ohio, Oklahoma, Pennsylvania,
-                              Rhode Island, Tennessee, Texas, Vermont, Virginia,
-                              Washington State and West Virginia.
-                            </li>
-                          </ul>
-                          <p>
-                            Customers can opt into the optional PlatePass
-                            service in 3 ways:
-                          </p>
-                          <ul>
-                            <li>
-                              At the commencement of the rental with an
-                              all-inclusive rate per day or per week that covers
-                              the cost of tolls
-                            </li>
-                            <li>At return</li>
-                            <li>
-                              By opening the transponder shield box (E-Z Pass
-                              pass transponder region only) when applicable.
-                            </li>
-                          </ul>
-                          <p>
-                            If you decline optional all-inclusive tolling
-                            PlatePass service at the start of your rental period
-                            but still use electronic toll roads and/or bridges
-                            during the rental period (including “cashless” or
-                            “all electronic” toll roads and bridges) you will be
-                            liable for and we will charge you for: (a) all tolls
-                            incurred for such use at the highest, undiscounted
-                            applicable toll rate; (b) a $9.99 usage day fee and
-                            (c) all other applicable toll charges or fees, if
-                            any.
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <!-- Modal End -->
+            <!-- This is where dynamic add-ons will be inserted -->
+            <div id="addons-container">
+              <!-- JavaScript will populate .extra-all rows here -->
+              <div class="text-center py-5" id="addons-loading">
+                <div class="spinner-border text-primary" role="status"></div>
+                <p class="mt-3">Loading available protections...</p>
               </div>
             </div>
           </div>
 
           <div class="col-lg-4">
+            
             <div class="your-car" id="your-car-section">
-              <!--<img src="img/tesla.jpg">-->
               <h2>Your Car</h2>
               <hr />
-              <strong>Tesla Model 3 (Group E7) JCAE</strong>
-              <p>(E7)Tesla Model 3 Standard Range or similar</p>
+              <!-- Car details will be filled by JS -->
             </div>
+
             <div class="Price-details" id="price-details">
               <h2>Price Details</h2>
               <hr />
 
-              <div id="addons-list"></div>
-              <!-- dynamic add-ons go here -->
-              <div class="dtl" id="base-price-row">
-                <!-- Optional: base car price if you have it -->
+              <div id="addons-list">
+                <!-- Selected add-ons appear here -->
               </div>
+
+              <div class="dtl" id="base-price-row">
+                <!-- Base price row filled by JS -->
+              </div>
+
               <hr />
+
               <div class="dtl total-row">
                 <strong>Total Price</strong>
                 <strong id="grand-total">0.00 USD</strong>

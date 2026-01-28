@@ -57,600 +57,292 @@
     </div>
     <!-- Spinner End -->
 
-    <!-- Navbar & Hero Start -->
-    <div class="container-fluid nav-bar sticky-top px-0 px-lg-4 py-2 py-lg-0">
-      <div class="container">
-        <nav class="navbar navbar-expand-lg navbar-light">
-          <a href="" class="navbar-brand p-0">
-            <!--<h1 class="display-6 text-primary"><i class="fas fa-car-alt me-3"></i></i>Cental</h1>-->
-            <img src="img/logo.jpeg" alt="Logo" />
-          </a>
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarCollapse"
-          >
-            <span class="fa fa-bars"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarCollapse">
-            <div class="navbar-nav mx-auto py-0">
-              <a href="index.html" class="nav-item nav-link active">Home</a>
-              <a href="about.html" class="nav-item nav-link">About</a>
-              <a
-                href="https://us.adamvacations.com/travel-agencies"
-                class="nav-item nav-link"
-                >Travel Agencies</a
-              >
-              <a
-                href="https://us.adamvacations.com/corporate-concierge"
-                class="nav-item nav-link"
-                >Corporate Concierge</a
-              >
-              <a
-                href="https://us.adamvacations.com/destinations"
-                class="nav-item nav-link"
-                >Destinations</a
-              >
-            </div>
-            <a href="tel:1-844-539-0014" class="phone-txt py-2 px-4"
-              ><i class="fas fa-phone me-2"></i> 1-844-539-0014</a
-            >
+  <!-- Navbar & Hero Start -->
+  <div class="container-fluid nav-bar sticky-top px-0 px-lg-4 py-2 py-lg-0">
+    <div class="container">
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <a href="index.html" class="navbar-brand p-0">
+          <!--<h1 class="display-6 text-primary"><i class="fas fa-car-alt me-3"></i></i>Cental</h1>-->
+          <img src="img/logo.jpeg" alt="Logo">
+        </a>
+        <div class="mobile-phone">
+           <a href="tel:+44-800-316-2929"><i class="fas fa-phone me-2"></i></a>
+        </div>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+          <span class="fa fa-bars"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <div class="navbar-nav mx-auto py-0">
+            <a href="index.html" class="nav-item nav-link active">Home</a>
+            <a href="about.html" class="nav-item nav-link">About</a>
+            <a href="https://us.adamvacations.com/travel-agencies" class="nav-item nav-link">Travel
+              Agencies</a>
+            <a href="https://us.adamvacations.com/corporate-concierge" class="nav-item nav-link">Corporate
+              Concierge</a>
+            <a href="https://us.adamvacations.com/destinations" class="nav-item nav-link">Destinations</a>
           </div>
-        </nav>
-      </div>
+          <a href="tel:+44-800-316-2929" class="phone-txt py-2 px-4"><i class="fas fa-phone me-2"></i>
+            +44-800-316-2929</a>
+        </div>
+      </nav>
     </div>
-    <!-- Navbar & Hero End -->
+  </div>
+  <!-- Navbar & Hero End -->
 
     <!-- Result Start -->
     <div class="container-fluid overflow-hidden about py-5">
       <div class="container">
-        <div class="row">
-          <div class="col-lg-4">
-            <div class="bg-secondary rounded p-2">
-              <div class="bg-white rounded shadow p-4 text-dark">
-                <!-- Radio toggle -->
-                <div class="row justify-content-center mb-4">
-                  <div class="col-auto">
-                    <div class="btn-group" role="group">
-                      <input
-                        type="radio"
-                        class="btn-check"
-                        name="dropoffOption"
-                        id="sameDropoff"
-                        value="same"
-                        checked
-                        autocomplete="off"
-                      />
-                      <label class="btn btn-outline-danger" for="sameDropoff"
-                        >Same Drop-off Location</label
-                      >
-
-                      <input
-                        type="radio"
-                        class="btn-check"
-                        name="dropoffOption"
-                        id="differentDropoff"
-                        value="different"
-                        autocomplete="off"
-                      />
-                      <label
-                        class="btn btn-outline-danger"
-                        for="differentDropoff"
-                        >Different Drop-off Location</label
-                      >
-                    </div>
-                  </div>
-                </div>
-
-                <form id="searchForm">
-                  <div class="row g-3 mb-4 align-items-end">
-                    <!-- Pickup Location -->
-                    <div class="col-md-12">
-                      <label class="form-label fw-bold small mb-1"
-                        >Pickup Location</label
-                      >
-                      <div class="input-group">
-                        <span class="input-group-text bg-light"
-                          ><i class="fas fa-map-marker-alt"></i
-                        ></span>
-                        <input
-                          id="pickup-location"
-                          class="form-control"
-                          type="text"
-                          placeholder="City or Airport"
-                          value="Indira Gandhi International Airport, New Delhi, Delhi 110037, India"
-                          required
-                          autocomplete="off"
-                        />
-                      </div>
-                    </div>
-
-                    <!-- Pickup Date & Time – now takes more space -->
-                    <div class="col-md-12">
-                      <label class="form-label fw-bold small mb-1"
-                        >Pick-up & Dropoff Date</label
-                      >
-                      <div class="input-group">
-                        <span class="input-group-text bg-light"
-                          ><i class="fas fa-calendar-alt"></i
-                        ></span>
-                        <input
-                          id="pickup-date-display"
-                          class="form-control"
-                          type="text"
-                          placeholder="Pick-up date"
-                          readonly
-                          required
-                        />
-                      </div>
-                    </div>
-
-                    <!-- Drop-off Time (only time remains) -->
-                    <div class="col-md-12">
-                      <label class="form-label fw-bold small mb-1"
-                        >Pick-up Time</label
-                      >
-                      <div class="input-group">
-                        <span class="input-group-text bg-light"
-                          ><i class="fas fa-clock"></i
-                        ></span>
-                        <input
-                          id="pickup-time"
-                          class="form-control"
-                          type="time"
-                          value="09:00"
-                          required
-                          step="60"
-                          placeholder="HH:mm (24h)"
-                          onfocus="this.showPicker()"
-                        />
-                      </div>
-                    </div>
-
-                    <div class="col-md-12">
-                      <label class="form-label fw-bold small mb-1"
-                        >Drop-off Time</label
-                      >
-                      <div class="input-group">
-                        <span class="input-group-text bg-light"
-                          ><i class="fas fa-clock"></i
-                        ></span>
-                        <input
-                          id="dropoff-time"
-                          class="form-control"
-                          type="time"
-                          value="17:00"
-                          required
-                          step="60"
-                          placeholder="HH:mm (24h)"
-                          onfocus="this.showPicker()"
-                        />
-                      </div>
-                    </div>
+        <div class="pickup">
+          <div class="loc-1">
+            <label>Pick-up Location</label>
+            <p id="pickup-location-text">Newark International Airport</p>
+          </div>
+          <div class="loc-1 mob-hide">|</div>
+          <div class="loc-1">
+            <label>Pick-up Time</label>
+            <p id="pickup-time-text">Wed, 18 Mar, 2026 at 17:30</p>
+          </div>
+                          <div class="loc-1 mob-hide">|</div>
+                  <div class="loc-1" id="dropoff-location-group" style="display: none;">
+                    <label>Drop-off Location</label>
+                    <p id="dropoff-location-text">—</p>
                   </div>
 
-                  <!-- Conditional Drop-off location -->
-                  <div
-                    class="row g-3 mb-4"
-                    id="dropoff-group"
-                    style="display: none"
-                  >
-                    <div class="col-md-12">
-                      <label class="form-label fw-bold small mb-1"
-                        >Drop-off Location</label
-                      >
-                      <div class="input-group">
-                        <span class="input-group-text bg-light"
-                          ><i class="fas fa-map-marker-alt"></i
-                        ></span>
-                        <input
-                          id="dropoff-location"
-                          class="form-control"
-                          type="text"
-                          placeholder="Different drop-off city or airport"
-                          value="Cyber City, Gurugram, Haryana 122002, India"
-                          autocomplete="off"
-                        />
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="row">
-                    <button
-                      type="submit"
-                      class="btn btn-danger btn-lg py-3 fw-bold"
-                    >
-                      Search & Book
-                    </button>
-                  </div>
-                </form>
-              </div>
-            </div>
+          <div class="loc-1 mob-hide">|</div>
+          <div class="loc-1">
+            <label>Drop-off Time</label>
+            <p id="dropoff-time-text">Thu, 26 Mar, 2026 at 17:00</p>
           </div>
 
-          <div class="col-lg-8">
-            <h1 class="vehicle-txt">Showing All Vehicle Results</h1>
+          <div class="loc-1 mob-hide">|</div>
 
-            <!-- Tesla Model 3 -->
-            <div
-              class="car-result"
-              id="car-tesla-model3"
-              data-car-id="tesla-model3"
+          <div class="loc-1">
+            <button
+              type="button"
+              class="btn btn-danger"
+              data-bs-toggle="modal"
+              data-bs-target="#tripDetailsModal"
             >
-              <div class="rst-1">
-                <img src="img/tesla.jpg" alt="Tesla Model 3" />
-              </div>
-              <div class="rst-2">
-                <h2>Tesla Model 3</h2>
-                <p>(E7) Tesla Model 3 Standard Range or similar</p>
-                <div class="person-all">
-                  <span><img src="img/person.png" alt="" /> 5</span>
-                  <span><img src="img/feature_suitcase.png" alt="" /> 3</span>
-                  <span
-                    ><img src="img/feature_transmission.png" alt="" /> A</span
-                  >
-                  <span
-                    ><img src="img/feature_battery.png" alt="" /> 418 km
-                    range</span
-                  >
-                </div>
-              </div>
-              <div class="rst-3">
-                <strong>358.14 <span>USD/Week</span></strong>
-                <button class="continue-btn">Continue</button>
-              </div>
-            </div>
+              Edit Trip Details
+            </button>
+          </div>
+        </div>
 
-            <!-- Large Sedan -->
-            <div
-              class="car-result"
-              id="car-large-sedan"
-              data-car-id="large-sedan"
-            >
-              <div class="rst-1">
-                <img src="img/Large-Sedan.jpg" alt="Large Sedan" />
+        <div
+          class="modal fade"
+          id="tripDetailsModal"
+          tabindex="-1"
+          aria-hidden="true"
+        >
+          <div
+            class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable"
+          >
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title fw-bold">Update Trip Details</h5>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                ></button>
               </div>
-              <div class="rst-2">
-                <h2>Large Sedan</h2>
-                <p>(F) Chevrolet Malibu or similar</p>
-                <div class="person-all">
-                  <span><img src="img/person.png" alt="" /> 5</span>
-                  <span><img src="img/feature_suitcase.png" alt="" /> 3</span>
-                  <span
-                    ><img src="img/feature_transmission.png" alt="" /> A</span
-                  >
-                  <span
-                    ><img src="img/feature_fuel.png" alt="" /> 8.4 l/100km</span
-                  >
-                </div>
-              </div>
-              <div class="rst-3">
-                <strong>476.25 <span>USD/Week</span></strong>
-                <button class="continue-btn">Continue</button>
-              </div>
-            </div>
 
-            <!-- Midsize SUV 2WD -->
-            <div
-              class="car-result"
-              id="car-midsize-suv"
-              data-car-id="midsize-suv"
-            >
-              <div class="rst-1">
-                <img src="img/midsize.jpg" alt="Midsize SUV" />
-              </div>
-              <div class="rst-2">
-                <h2>Midsize SUV 2WD</h2>
-                <p>(Q4) Nissan Rogue or similar</p>
-                <div class="person-all">
-                  <span><img src="img/person.png" alt="" /> 5</span>
-                  <span><img src="img/feature_suitcase.png" alt="" /> 4</span>
-                  <span
-                    ><img src="img/feature_transmission.png" alt="" /> A</span
-                  >
-                  <span
-                    ><img src="img/feature_fuel.png" alt="" /> 9.1 l/100km</span
-                  >
-                </div>
-              </div>
-              <div class="rst-3">
-                <strong>558.12 <span>USD/Week</span></strong>
-                <button class="continue-btn">Continue</button>
-              </div>
-            </div>
+              <div class="modal-body p-0">
+                <!-- 👇 YOUR EXISTING DIV GOES HERE -->
+                <div class="mb-0">
+                  <div class="bg-white rounded shadow p-4 text-dark">
+                    <!-- Radio toggle -->
+                    <div class="row justify-content-start mb-4">
+                      <div class="col-auto">
+                        <div class="btn-group" role="group">
+                          <input
+                            type="radio"
+                            class="btn-check"
+                            name="dropoffOption"
+                            id="sameDropoff"
+                            value="same"
+                            checked
+                            autocomplete="off"
+                          />
+                          <label
+                            class="btn btn-outline-danger"
+                            for="sameDropoff"
+                            >Same Drop-off Location</label
+                          >
 
-            <!-- Standard 5 Passenger 2WD SUV -->
-            <div
-              class="car-result"
-              id="car-standard5-passenger-2wd-suv"
-              data-car-id="standard5-passenger-2wd-suv"
-            >
-              <div class="rst-1">
-                <img src="img/2WD.jpg" alt="Standard 5 Passenger 2WD SUV" />
-              </div>
-              <div class="rst-2">
-                <h2>Standard 5 Passenger 2WD SUV</h2>
-                <p>(L) Chevrolet Equinox or similar</p>
-                <div class="person-all">
-                  <span><img src="img/person.png" alt="" /> 5</span>
-                  <span><img src="img/feature_suitcase.png" alt="" /> 4</span>
-                  <span
-                    ><img src="img/feature_transmission.png" alt="" /> A</span
-                  >
-                  <span
-                    ><img src="img/feature_fuel.png" alt="" /> 11.1
-                    l/100km</span
-                  >
-                </div>
-              </div>
-              <div class="rst-3">
-                <strong>428.45 <span>USD/Week</span></strong>
-                <button class="continue-btn">Continue</button>
-              </div>
-            </div>
+                          <input
+                            type="radio"
+                            class="btn-check"
+                            name="dropoffOption"
+                            id="differentDropoff"
+                            value="different"
+                            autocomplete="off"
+                          />
+                          <label
+                            class="btn btn-outline-danger"
+                            for="differentDropoff"
+                            >Different Drop-off Location</label
+                          >
+                        </div>
+                      </div>
+                    </div>
 
-            <!-- 7 Passenger Standard 4WD/AWD SUV -->
-            <div
-              class="car-result"
-              id="7-passenger-standard-4wd-awd-suv"
-              data-car-id="7-passenger-standard-4wd-awd-suv"
-            >
-              <div class="rst-1">
-                <img src="img/ZEUSFRAR999.jpg" alt="7 Passenger SUV" />
-              </div>
-              <div class="rst-2">
-                <h2>7 Passenger Standard 4WD/AWD SUV</h2>
-                <p>(L4) Nissan Pathfinder or similar</p>
-                <div class="person-all">
-                  <span><img src="img/person.png" alt="" /> 7</span>
-                  <span><img src="img/feature_suitcase.png" alt="" /> 2</span>
-                  <span
-                    ><img src="img/feature_transmission.png" alt="" /> A</span
-                  >
-                  <span
-                    ><img src="img/feature_fuel.png" alt="" /> 8.3 l/100km</span
-                  >
-                </div>
-              </div>
-              <div class="rst-3">
-                <strong>550.99 <span>USD/Week</span></strong>
-                <button class="continue-btn">Continue</button>
-              </div>
-            </div>
+                    <form id="searchForm">
+                      <div class="row g-3 mb-4 align-items-end">
+                        <!-- Pickup Location -->
+                        <div class="col-md-4">
+                          <label class="form-label fw-bold small mb-1"
+                            >Pickup Location</label
+                          >
+                          <div class="input-group">
+                            <span class="input-group-text bg-light"
+                              ><i class="fas fa-map-marker-alt"></i
+                            ></span>
+                            <input
+                              id="pickup-location"
+                              class="form-control"
+                              type="text"
+                              placeholder="City or Airport"
+                              value="Indira Gandhi International Airport, New Delhi, Delhi 110037, India"
+                              required
+                              autocomplete="off"
+                            />
+                          </div>
+                        </div>
 
-            <!-- Minivan -->
-            <div class="car-result" id="car-minivan" data-car-id="minivan">
-              <div class="rst-1">
-                <img src="img/suv.jpg" alt="Minivan" />
-              </div>
-              <div class="rst-2">
-                <h2>Minivan</h2>
-                <p>(R) Chrysler Pacifica or similar</p>
-                <div class="person-all">
-                  <span><img src="img/person.png" alt="" /> 7</span>
-                  <span><img src="img/feature_suitcase.png" alt="" /> 5</span>
-                  <span
-                    ><img src="img/feature_transmission.png" alt="" /> A</span
-                  >
-                  <span
-                    ><img src="img/feature_fuel.png" alt="" /> 10.0
-                    l/100km</span
-                  >
-                </div>
-              </div>
-              <div class="rst-3">
-                <strong>576.12 <span>USD/Week</span></strong>
-                <button class="continue-btn">Continue</button>
-              </div>
-            </div>
+                        <!-- Pickup Date & Time – now takes more space -->
+                        <div class="col-md-4">
+                          <label class="form-label fw-bold small mb-1"
+                            >Pick-up & Dropoff Date</label
+                          >
+                          <div class="input-group">
+                            <span class="input-group-text bg-light"
+                              ><i class="fas fa-calendar-alt"></i
+                            ></span>
+                            <input
+                              id="pickup-date-display"
+                              class="form-control"
+                              type="text"
+                              placeholder="Pick-up date"
+                              readonly
+                              required
+                            />
+                          </div>
+                        </div>
 
-            <!-- Large SUV -->
-            <div class="car-result" id="car-large-suv" data-car-id="large-suv">
-              <div class="rst-1">
-                <img src="img/4wd.jpg" alt="Large SUV" />
-              </div>
-              <div class="rst-2">
-                <h2>Large SUV</h2>
-                <p>(T) Chevrolet Tahoe or similar</p>
-                <div class="person-all">
-                  <span><img src="img/person.png" alt="" /> 7</span>
-                  <span><img src="img/feature_suitcase.png" alt="" /> 4</span>
-                  <span
-                    ><img src="img/feature_transmission.png" alt="" /> A</span
-                  >
-                  <span
-                    ><img src="img/feature_fuel.png" alt="" /> 12.5
-                    l/100km</span
-                  >
-                </div>
-              </div>
-              <div class="rst-3">
-                <strong>608.02 <span>USD/Week</span></strong>
-                <button class="continue-btn">Continue</button>
-              </div>
-            </div>
+                        <!-- Drop-off Time (only time remains) -->
+                        <div class="col-md-2">
+                          <label class="form-label fw-bold small mb-1"
+                            >Pick-up Time</label
+                          >
+                          <div class="input-group">
+                            <span class="input-group-text bg-light"
+                              ><i class="fas fa-clock"></i
+                            ></span>
+                            <input
+                              id="pickup-time"
+                              class="form-control"
+                              type="time"
+                              value="09:00"
+                              required
+                              step="60"
+                              placeholder="HH:mm (24h)"
+                              onfocus="this.showPicker()"
+                            />
+                          </div>
+                        </div>
 
-            <!-- Extra Capacity Large SUV -->
-            <div
-              class="car-result"
-              id="car-extra-capacity-large-suv"
-              data-car-id="extra-capacity-large-suv"
-            >
-              <div class="rst-1">
-                <img
-                  src="img/extra-capacity.jpg"
-                  alt="Extra Capacity Large SUV"
-                />
-              </div>
-              <div class="rst-2">
-                <h2>Extra Capacity Large SUV</h2>
-                <p>(T6) Chevrolet Suburban or similar</p>
-                <div class="person-all">
-                  <span><img src="img/person.png" alt="" /> 7</span>
-                  <span><img src="img/feature_suitcase.png" alt="" /> 6</span>
-                  <span
-                    ><img src="img/feature_transmission.png" alt="" /> A</span
-                  >
-                  <span
-                    ><img src="img/feature_fuel.png" alt="" /> 12.5
-                    l/100km</span
-                  >
-                </div>
-              </div>
-              <div class="rst-3">
-                <strong>608.02 <span>USD/Week</span></strong>
-                <button class="continue-btn">Continue</button>
-              </div>
-            </div>
+                        <div class="col-md-2">
+                          <label class="form-label fw-bold small mb-1"
+                            >Drop-off Time</label
+                          >
+                          <div class="input-group">
+                            <span class="input-group-text bg-light"
+                              ><i class="fas fa-clock"></i
+                            ></span>
+                            <input
+                              id="dropoff-time"
+                              class="form-control"
+                              type="time"
+                              value="17:00"
+                              required
+                              step="60"
+                              placeholder="HH:mm (24h)"
+                              onfocus="this.showPicker()"
+                            />
+                          </div>
+                        </div>
+                      </div>
 
-            <!-- Small SUV 2WD -->
-            <div
-              class="car-result"
-              id="car-small-suv-2wd"
-              data-car-id="small-suv-2wd"
-            >
-              <div class="rst-1">
-                <img src="img/2WD.jpg" alt="Small SUV 2WD" />
-              </div>
-              <div class="rst-2">
-                <h2>Small SUV 2WD</h2>
-                <p>(B4) Chevrolet Trax or similar</p>
-                <div class="person-all">
-                  <span><img src="img/person.png" alt="" /> 5</span>
-                  <span><img src="img/feature_suitcase.png" alt="" /> 2</span>
-                  <span
-                    ><img src="img/feature_transmission.png" alt="" /> A</span
-                  >
-                  <span
-                    ><img src="img/feature_fuel.png" alt="" /> 7.8 l/100km</span
-                  >
-                </div>
-              </div>
-              <div class="rst-3">
-                <strong>608.02 <span>USD/Week</span></strong>
-                <button class="continue-btn">Continue</button>
-              </div>
-            </div>
+                      <!-- Conditional Drop-off location -->
+                      <div
+                        class="row g-3 mb-4"
+                        id="dropoff-group"
+                        style="display: none"
+                      >
+                        <div class="col-12 col-lg-4">
+                          <label class="form-label fw-bold small mb-1"
+                            >Drop-off Location</label
+                          >
+                          <div class="input-group">
+                            <span class="input-group-text bg-light"
+                              ><i class="fas fa-map-marker-alt"></i
+                            ></span>
+                            <input
+                              id="dropoff-location"
+                              class="form-control"
+                              type="text"
+                              placeholder="Different drop-off city or airport"
+                              value="Cyber City, Gurugram, Haryana 122002, India"
+                              autocomplete="off"
+                            />
+                          </div>
+                        </div>
+                      </div>
 
-            <!-- Small SUV AWD -->
-            <div
-              class="car-result"
-              id="car-small-suv-awd"
-              data-car-id="small-suv-awd"
-            >
-              <div class="rst-1">
-                <img src="img/AWD.jpg" alt="Small SUV AWD" />
-              </div>
-              <div class="rst-2">
-                <h2>Small SUV AWD</h2>
-                <p>(B5) Buick Encore GX or similar</p>
-                <div class="person-all">
-                  <span><img src="img/person.png" alt="" /> 5</span>
-                  <span><img src="img/feature_suitcase.png" alt="" /> 2</span>
-                  <span
-                    ><img src="img/feature_transmission.png" alt="" /> A</span
-                  >
-                  <span
-                    ><img src="img/feature_fuel.png" alt="" /> 9.1 l/100km</span
-                  >
+                      <div class="row">
+                        <div class="col-md-3 col-8 mx-auto">
+                          <button
+                            type="submit"
+                            class="btn btn-danger btn-lg py-1 fw-bold"
+                            onclick="window.location.reload()"
+                          >
+                            Update Trip Details
+                          </button>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
                 </div>
-              </div>
-              <div class="rst-3">
-                <strong>558.02 <span>USD/Week</span></strong>
-                <button class="continue-btn">Continue</button>
-              </div>
-            </div>
-
-            <!-- Midsize SUV AWD -->
-            <div
-              class="car-result"
-              id="car-midsize-suv-awd"
-              data-car-id="midsize-suv-awd"
-            >
-              <div class="rst-1">
-                <img src="img/AWD.jpg" alt="Midsize SUV AWD" />
-              </div>
-              <div class="rst-2">
-                <h2>Midsize SUV AWD</h2>
-                <p>(Q5) Jeep Compass or similar</p>
-                <div class="person-all">
-                  <span><img src="img/person.png" alt="" /> 5</span>
-                  <span><img src="img/feature_suitcase.png" alt="" /> 3</span>
-                  <span
-                    ><img src="img/feature_transmission.png" alt="" /> A</span
-                  >
-                  <span
-                    ><img src="img/feature_fuel.png" alt="" /> 9.1 l/100km</span
-                  >
-                </div>
-              </div>
-              <div class="rst-3">
-                <strong>586.12 <span>USD/Week</span></strong>
-                <button class="continue-btn">Continue</button>
-              </div>
-            </div>
-
-            <!-- Medium Luxury SUV -->
-            <div
-              class="car-result"
-              id="car-medium-luxury-suv"
-              data-car-id="medium-luxury-suv"
-            >
-              <div class="rst-1">
-                <img src="img/medium-elite-sedan.jpg" alt="Medium Luxury SUV" />
-              </div>
-              <div class="rst-2">
-                <h2>Medium Luxury SUV</h2>
-                <p>(H4) Volvo XC60 Hybrid Prestige or similar</p>
-                <div class="person-all">
-                  <span><img src="img/person.png" alt="" /> 5</span>
-                  <span><img src="img/feature_suitcase.png" alt="" /> 4</span>
-                  <span
-                    ><img src="img/feature_transmission.png" alt="" /> A</span
-                  >
-                  <span
-                    ><img src="img/feature_fuel.png" alt="" /> 8.2 l/100km</span
-                  >
-                </div>
-              </div>
-              <div class="rst-3">
-                <strong>631.40 <span>USD/Week</span></strong>
-                <button class="continue-btn">Continue</button>
-              </div>
-            </div>
-
-            <!-- 12 Passenger Van -->
-            <div
-              class="car-result"
-              id="car-12-passenger-van"
-              data-car-id="12-passenger-van"
-            >
-              <div class="rst-1">
-                <img src="img/van.jpg" alt="12 Passenger Van" />
-              </div>
-              <div class="rst-2">
-                <h2>12 Passenger Van</h2>
-                <p>(M) Ford Transit 12 psgr or similar</p>
-                <div class="person-all">
-                  <span><img src="img/person.png" alt="" /> 12</span>
-                  <span><img src="img/feature_suitcase.png" alt="" /> 8</span>
-                  <span
-                    ><img src="img/feature_transmission.png" alt="" /> A</span
-                  >
-                  <span
-                    ><img src="img/feature_fuel.png" alt="" /> 14.3
-                    l/100km</span
-                  >
-                </div>
-              </div>
-              <div class="rst-3">
-                <strong>585.99 <span>USD/Week</span></strong>
-                <button class="continue-btn">Continue</button>
               </div>
             </div>
           </div>
         </div>
+
+  
+
+
+        <!-- result.html -->
+<div class="row">
+  <div class="col-lg-12">
+    <h1 class="vehicle-txt">Showing All Vehicle Results</h1>
+
+    <!-- Loading indicator -->
+    <div id="loading" style="text-align:center; padding: 40px;">
+      <p>Loading available vehicles...</p>
+    </div>
+
+    <!-- Cars will be inserted here -->
+    <div id="car-container" style="display:none;"></div>
+
+    <!-- No results message -->
+    <div id="no-results" style="display:none; text-align:center; padding: 40px; color:#666;">
+      <h3>No vehicles available for your search</h3>
+      <p>Please try different dates or locations.</p>
+    </div>
+  </div>
+</div>
+
       </div>
     </div>
     <!-- Result End -->

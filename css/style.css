@@ -1116,8 +1116,8 @@
 }
 
 .extra-all .addon-services {
-    width: 32%;
-    min-height: 429px;
+    width: 48%;
+    min-height: 400px;
     border: 1px solid #c4c6cc;
     position: relative;
 }
@@ -1163,7 +1163,7 @@
 }
 
 .extra-all .addon-services button {
-    background-color: #0c0249;
+    /* background-color: #0c0249;
     font-weight: 700;
     padding: 8px 0;
     margin-bottom: 0;
@@ -1176,7 +1176,7 @@
     font-size: 1.0em;
     width: 100%;
     position: absolute;
-    bottom: 0;
+    bottom: 0; */
 }
 
 .driver-informer {
@@ -1453,6 +1453,8 @@
 
 /*** Payment page  End ***/
 
+/* Akhil CSS */
+
 /* Search page */
 #dropoff-group {
     transition: height 0.4s ease-out, opacity 0.4s ease-out;
@@ -1469,3 +1471,95 @@ input[type="time"]::-webkit-calendar-picker-indicator {
 input[type="time"] {
     cursor: pointer;
 }
+
+
+.extra-all.row {
+  margin-bottom: 2rem; /* Space between rows */
+}
+
+
+
+/* Base card style */
+.addon-services {
+  background: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  padding: 10px;
+  transition: all 0.25s ease;
+  /* box-shadow: 0 4px 12px rgba(0,0,0,0.06); */
+}
+
+/* Selected (added) card — light red background */
+.addon-services.addon-selected {
+  background: #fff5f5 !important;           /* Light red */
+  border-color: #f5c6cb !important;
+  box-shadow: 0 6px 16px rgba(220, 53, 69, 0.15) !important;
+}
+
+/* Hover on selected card */
+.addon-services.addon-selected:hover {
+  background: #ffebee !important;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(220, 53, 69, 0.2) !important;
+}
+
+/* Button styles — make sure they override Bootstrap */
+.addon-btn {
+  margin-top: 12px;
+  font-weight: 500;
+  padding: 10px 24px;
+  transition: all 0.2s;
+}
+
+/* Add state (blue) */
+.addon-btn.btn-outline-primary {
+  color: #0d6efd;
+  border-color: #0d6efd;
+  background: transparent;
+}
+
+.addon-btn.btn-outline-primary:hover {
+  background: #0d6efd;
+  color: white;
+}
+
+/* Remove state (red) — force solid red when selected */
+.addon-services.addon-selected .addon-btn {
+  background-color: #dc3545 !important;
+  color: white !important;
+  border-color: #dc3545 !important;
+}
+
+.addon-services.addon-selected .addon-btn:hover {
+  background-color: #c82333 !important;
+  border-color: #bd2130 !important;
+}
+
+/* Card height & layout */
+.addon-services.col-lg-6 {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.addon-services.col-lg-6:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+}
+
+
+.mobile-phone {
+  width: 30px;
+    height: 30px;
+    background-color: #fd1001;
+    border-radius: 100%;
+    text-align: center;
+    padding: 3px 6px 0;
+    display: none;
+}
+.mobile-phone a{color:#fff;}
