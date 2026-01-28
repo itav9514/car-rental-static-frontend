@@ -91,9 +91,9 @@
                             <div class="row">
                                 <div class="col-lg-12">
                                     <h2>Thank You For Reaching Out!</h2>
-                                    <p>Your request has been successfully submitted, and our team is already reviewing
-                                        the details. One of our representatives will get back to you shortly to discuss
-                                        your requirements and provide the best solution. </p>
+                                    <p> 
+                                        We have received your booking request. Our team is currently processing it and will share your car rental confirmation shortly.
+                                    </p>
 
                                 </div>
                             </div>
@@ -159,8 +159,13 @@
                                                 <span class="point"><img src="img/bred-icon-2.png"></span>
                                                 <h2>Call Us</h2>
                                                 <p>
-                                                    1-844-539-0014
+                                                    <a style="color:black;" href="tel:+44-800-316-2929">+44-800-316-2929</a></span>
+                                                    <br/>
+                                                    <a style="color:black" href="tel:+1-855-663-3181">+1-855-663-3181</a></span>
+                                                    <br/>
                                                 </p>
+
+
                                             </li>
                                             <li>
                                                 <span class="point"><img src="img/bred-icon-3.png"></span>
@@ -188,18 +193,12 @@
                         <div class="container">
                             <div class="row">
                                 <div class="col-lg-8">
-                                    <h3>Book Cheap Ferries<br> with Confidence
+                                    <h3>Book Affordable Car Rentals<br> with Confidence
                                     </h3>
                                     <p>
-                                        Welcome to ferry.adamvacations-your trusted destination for affordable ferry
-                                        travel across Europe and beyond. Instantly compare routes and prices from over
-                                        50 leading operators, including DFDS Seaways, Eurotunnel, Brittany Ferries,
-                                        Stena Line, Irish Ferries, P&O Ferries, and Condor Ferries, all in one place.
-                                        <br><br>
-                                        Whether you’re planning a trip to France, Ireland, or virtually anywhere in the
-                                        world, ferry.adamvacations makes it easy to find the best deals and book your
-                                        ferry at the lowest price. Start your journey with us and save on every
-                                        crossing!
+Welcome to car.adamvacations.com — your trusted platform for reliable and budget-friendly car rentals across India and worldwide. Easily compare prices, vehicle options, and services from multiple verified car rental partners, all in one place.
+
+Whether you’re planning a business trip, family vacation, airport transfer, or a local city ride, car.adamvacations helps you find the best car at the lowest price—quickly and hassle-free. Book with confidence and enjoy a smooth journey from start to finish.
                                     </p>
                                 </div>
                                 <div class="col-lg-4">
@@ -247,7 +246,7 @@
                         <ul>
                             <li>
                                 <img src="img/phone-icon-us.png">
-                                <span>USA Toll Free<a href="tel:+1-872-244-6776">+1-872-244-6776</a></span>
+                                <span>USA Toll Free<a href="tel:+44-800-316-2929">+44-800-316-2929</a></span>
                             </li>
                             <li style="color:#8792AA;" class="mob-hide">|</li>
                             <li>
@@ -363,10 +362,10 @@
     <script>
   const data = sessionStorage.getItem('carRentalEnquiry');
 
-  if (!data) {
+  {% comment %} if (!data) {
     // Prevent direct access
     window.location.href = 'index.html';
-  }
+  } {% endcomment %}
 
   const booking = JSON.parse(data);
 
