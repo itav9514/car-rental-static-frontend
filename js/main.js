@@ -164,25 +164,6 @@ function initGooglePlaces() {
 }
 
 
-// document.addEventListener('DOMContentLoaded', () => {
-
-//   document.getElementById('pickup-time').addEventListener('change', function () {
-//   const [h, m] = this.value.split(':').map(Number);
-//   const rounded = Math.round(m / 15) * 15;
-//   this.value = `${String(h).padStart(2, '0')}:${String(rounded % 60).padStart(2, '0')}`;
-// });
-
-//   document.getElementById('dropoff-time').addEventListener('change', function () {
-//   const [h, m] = this.value.split(':').map(Number);
-//   const rounded = Math.round(m / 15) * 15;
-//   this.value = `${String(h).padStart(2, '0')}:${String(rounded % 60).padStart(2, '0')}`;
-// });
-
-// });
-
-
-
-
 
 
 
@@ -300,7 +281,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Load previous search
     function loadPreviousSearch() {
-      const saved = localStorage.getItem('lastCarRentalSearch');
+      const saved = sessionStorage.getItem('lastCarRentalSearch');
       if (!saved) return;
       try {
         const data = JSON.parse(saved);
@@ -386,7 +367,7 @@ document.addEventListener('DOMContentLoaded', () => {
       };
 
       try {
-        localStorage.setItem('lastCarRentalSearch', JSON.stringify(bookingData));
+        sessionStorage.setItem('lastCarRentalSearch', JSON.stringify(bookingData));
 
         // ── CHANGED: pass parameters in URL ────────────────────────────────
         const params = new URLSearchParams({
@@ -460,7 +441,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // ── Fetch cars from backend ───────────────────────────────
     async function loadCars() {
       try {
-        const response = await fetch('/cms/cms/car_cms/cars/');
+        const response = await fetch('https://car.adamvacations.com/cms/cms/car_cms/cars/');
         if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
 
         const cars = await response.json();
@@ -627,7 +608,7 @@ document.addEventListener('DOMContentLoaded', () => {
           };
 
           try {
-            localStorage.setItem('selectedCar', JSON.stringify(selectedCar));
+            sessionStorage.setItem('selectedCar', JSON.stringify(selectedCar));
             setTimeout(() => {
               window.location.href = 'addon-extra.html';
             }, 400);
@@ -660,12 +641,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const isPayNowPage = document.getElementById('pay-now-btn') !== null;
 
   // ─── API Endpoints ─────────────────────────────────────
-  const API_BASE = '/cms/cms/car_cms/';  // Change if your API prefix is different
+  const API_BASE = 'https://car.adamvacations.com/cms/cms/car_cms/';  // Change if your API prefix is different
   const ADDON_API = `${API_BASE}cars/`;
 
   // ─── Helpers ───────────────────────────────────────────
   const getDays = () => {
-    const search = JSON.parse(localStorage.getItem('lastCarRentalSearch') || '{}');
+    const search = JSON.parse(sessionStorage.getItem('lastCarRentalSearch') || '{}');
     if (!search.pickupDateTime || !search.dropoffDateTime) return 7;
     const start = new Date(search.pickupDateTime);
     const end = new Date(search.dropoffDateTime);
@@ -678,8 +659,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const parsed = parseFloat(num);
     return isNaN(parsed) ? '0.00' : parsed.toFixed(2);
   };
-  const saveCart = (cart) => localStorage.setItem('addonCart', JSON.stringify(cart));
-  const loadCart = () => JSON.parse(localStorage.getItem('addonCart') || '[]');
+  const saveCart = (cart) => sessionStorage.setItem('addonCart', JSON.stringify(cart));
+  const loadCart = () => JSON.parse(sessionStorage.getItem('addonCart') || '[]');
 
   const isPriceKnown = (price) => price !== null && price > 0;
 
@@ -690,12 +671,12 @@ document.addEventListener('DOMContentLoaded', () => {
     return div.innerHTML;  // or use DOMPurify if you include it
   };
 
-  // ─── Load Selected Car from localStorage ───────────────
-  const selectedCar = JSON.parse(localStorage.getItem('selectedCar') || '{}');
+  // ─── Load Selected Car from sessionStorage ───────────────
+  const selectedCar = JSON.parse(sessionStorage.getItem('selectedCar') || '{}');
   const carId = selectedCar?.id;
 
   if (!carId) {
-    console.warn("No car selected in localStorage");
+    console.warn("No car selected in sessionStorage");
     // Show warning in UI
     document.getElementById('your-car-section').innerHTML = `
       <h2>No Car Selected</h2>
@@ -975,7 +956,7 @@ document.addEventListener('DOMContentLoaded', () => {
         timestamp: new Date().toISOString()
       };
 
-      localStorage.setItem('bookingSummary', JSON.stringify(finalData));
+      sessionStorage.setItem('bookingSummary', JSON.stringify(finalData));
       window.location.href = 'payment.html'; // or your next step
     });
   }
@@ -995,12 +976,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Payment Page Logic
 document.addEventListener('DOMContentLoaded', () => {
-  console.log("Payment page loaded. Checking localStorage...");
+  console.log("Payment page loaded. Checking sessionStorage...");
 
   // Debug: show what's actually stored
-  console.log("lastCarRentalSearch:", localStorage.getItem('lastCarRentalSearch'));
-  console.log("selectedCar:", localStorage.getItem('selectedCar'));
-  console.log("addonCart:", localStorage.getItem('addonCart'));
+  console.log("lastCarRentalSearch:", sessionStorage.getItem('lastCarRentalSearch'));
+  console.log("selectedCar:", sessionStorage.getItem('selectedCar'));
+  console.log("addonCart:", sessionStorage.getItem('addonCart'));
 
   // ─── Helpers ───────────────────────────────────────────────
   const formatPrice = (num) => (typeof num === 'number' && !isNaN(num)) ? num.toFixed(2) : '—';
@@ -1047,11 +1028,11 @@ document.addEventListener('DOMContentLoaded', () => {
     let addons = [];
 
     try {
-      search = JSON.parse(localStorage.getItem('lastCarRentalSearch') || '{}');
-      car = JSON.parse(localStorage.getItem('selectedCar') || '{}');
-      addons = JSON.parse(localStorage.getItem('addonCart') || '[]');
+      search = JSON.parse(sessionStorage.getItem('lastCarRentalSearch') || '{}');
+      car = JSON.parse(sessionStorage.getItem('selectedCar') || '{}');
+      addons = JSON.parse(sessionStorage.getItem('addonCart') || '[]');
     } catch (err) {
-      console.error("Failed to parse localStorage data:", err);
+      console.error("Failed to parse sessionStorage data:", err);
     }
 
 
@@ -1321,17 +1302,17 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
-    // Get data from localStorage
+    // Get data from sessionStorage
     let searchData = {};
     let carData = {};
     let addonsData = [];
 
     try {
-      searchData = JSON.parse(localStorage.getItem('lastCarRentalSearch') || '{}');
-      carData = JSON.parse(localStorage.getItem('selectedCar') || '{}');
-      addonsData = JSON.parse(localStorage.getItem('addonCart') || '[]');
+      searchData = JSON.parse(sessionStorage.getItem('lastCarRentalSearch') || '{}');
+      carData = JSON.parse(sessionStorage.getItem('selectedCar') || '{}');
+      addonsData = JSON.parse(sessionStorage.getItem('addonCart') || '[]');
     } catch (err) {
-      console.error("Failed to parse localStorage:", err);
+      console.error("Failed to parse sessionStorage:", err);
     }
 
 
@@ -1464,7 +1445,7 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log("Sending to backend:", formData);
 
     try {
-      const response = await fetch('/api/CarRentalEnquiries', {
+      const response = await fetch('https://localhost:32769/api/CarRentalEnquiries', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData)
@@ -1488,10 +1469,10 @@ document.addEventListener('DOMContentLoaded', () => {
       );
 
       // Optional: cleanup
-      localStorage.removeItem('addonCart');
-      localStorage.removeItem('selectedCar');
-      localStorage.removeItem('bookingSummary');
-      localStorage.removeItem('lastCarRentalSearch');
+      sessionStorage.removeItem('addonCart');
+      sessionStorage.removeItem('selectedCar');
+      sessionStorage.removeItem('bookingSummary');
+      sessionStorage.removeItem('lastCarRentalSearch');
 
       window.location.href = 'thankyou.html';
 

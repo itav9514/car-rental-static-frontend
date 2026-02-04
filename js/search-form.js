@@ -102,7 +102,7 @@ document.addEventListener('DOMContentLoaded', () => {
   updateDateDisplay();
 
   // ────────────────────────────────────────────────
-  // Form submission → localStorage + redirect
+  // Form submission → sessionStorage + redirect
   // ────────────────────────────────────────────────
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -183,10 +183,10 @@ document.addEventListener('DOMContentLoaded', () => {
       searchTimestamp: new Date().toISOString(),
     };
 
-    // Save to localStorage
+    // Save to sessionStorage
     try {
-      localStorage.setItem('lastCarRentalSearch', JSON.stringify(bookingData));
-      console.log('Search data saved to localStorage:', bookingData);
+      sessionStorage.setItem('lastCarRentalSearch', JSON.stringify(bookingData));
+      console.log('Search data saved to sessionStorage:', bookingData);
 
       // Optional: still try to send to backend (fire-and-forget style)
       fetch('https://your-domain.com/api/CarRentalEnquiries/', {
