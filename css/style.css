@@ -239,7 +239,7 @@
 .top-serch {
     position: relative;
     margin-top: -41px;
-    z-index: 99999;
+    z-index: 9;
 }
 
 .carousel .carousel-indicators {
