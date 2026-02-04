@@ -237,8 +237,8 @@ document.addEventListener('DOMContentLoaded', () => {
       format: 'DD MMM YYYY',
       delimiter: ' → ',
       autoApply: true,
-      numberOfColumns: 2,
-      numberOfMonths: 2,
+      numberOfColumns: 1,
+      numberOfMonths: 1,
       minDate: today,
       maxDate: maxDate,
       allowRepick: true,
@@ -1210,12 +1210,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     window.__pricing = {
-  days,
-  basePrice,
-  addonsTotal: pricedAddonsTotal,
-  grandTotal: basePrice + pricedAddonsTotal,
-  currency: car.currency || 'USD'
-};
+      days,
+      basePrice,
+      addonsTotal: pricedAddonsTotal,
+      grandTotal: basePrice + pricedAddonsTotal,
+      currency: car.currency || 'USD'
+    };
 
 
   };
@@ -1438,13 +1438,13 @@ document.addEventListener('DOMContentLoaded', () => {
       timestamp: new Date().toISOString()
     };
 
-      const pricing = window.__pricing || {};
+    const pricing = window.__pricing || {};
 
-      formData.rentalDays = pricing.days || 0;
-      formData.basePrice = pricing.basePrice || 0;
-      formData.addonsTotal = pricing.addonsTotal || 0;
-      formData.totalPrice = pricing.grandTotal || 0;
-      formData.currency = pricing.currency || 'USD';
+    formData.rentalDays = pricing.days || 0;
+    formData.basePrice = pricing.basePrice || 0;
+    formData.addonsTotal = pricing.addonsTotal || 0;
+    formData.totalPrice = pricing.grandTotal || 0;
+    formData.currency = pricing.currency || 'USD';
 
     // Simple client-side validation for required fields (expanded)
     if (!formData.firstName || !formData.lastName || !formData.email || !formData.phone || !formData.countryCode || !formData.driverAge) {
