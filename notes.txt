@@ -1,0 +1,20 @@
+<section>
+  <h2>Child Seat</h2>
+
+  <p>
+    Avoid airline baggage charges and have a child seat ready and waiting for you.
+    A convertible car seat can be provided for children weighing 20–40 pounds
+    (8–18 kg) and up to 40 inches (101 cm) in height when used in a forward-facing position.
+  </p>
+
+  <p>
+    Parents of children who have outgrown an infant car seat are encouraged to continue
+    using these seats in a rear-facing position until the child reaches the maximum
+    height and weight limits allowed for rear-facing use by the seat manufacturer.
+  </p>
+
+  <p>
+    <strong>Hawaii Only:</strong> Children age 2 but under 4 years old must use a rear-facing
+    or forward-facing child passenger restraint system with a harness.
+  </p>
+</section>
