@@ -205,7 +205,7 @@ document.addEventListener('DOMContentLoaded', () => {
       try {
         sessionStorage.setItem('lastCarRentalSearch', JSON.stringify(bookingData));
         // Optional backend call (fire-and-forget)
-        fetch('https://your-domain.com/api/CarRentalEnquiries/', {
+        fetch('/api/CarRentalEnquiries/', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(bookingData)

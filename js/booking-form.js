@@ -130,7 +130,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // 4. Send to backend
         try {
-            const response = await fetch('https://localhost:32769/api/CarRentalEnquiries/', {   // ← change this URL
+            const response = await fetch('/api/CarRentalEnquiries/', {   // ← change this URL
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

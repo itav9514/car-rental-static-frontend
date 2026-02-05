@@ -189,7 +189,7 @@ document.addEventListener('DOMContentLoaded', () => {
       console.log('Search data saved to sessionStorage:', bookingData);
 
       // Optional: still try to send to backend (fire-and-forget style)
-      fetch('https://your-domain.com/api/CarRentalEnquiries/', {
+      fetch('/api/CarRentalEnquiries/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(bookingData)

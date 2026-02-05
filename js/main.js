@@ -441,7 +441,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // ── Fetch cars from backend ───────────────────────────────
     async function loadCars() {
       try {
-        const response = await fetch('https://car.adamvacations.com/cms/cms/car_cms/cars/');
+        const response = await fetch('/cms/cms/car_cms/cars/');
         if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
 
         const cars = await response.json();
@@ -641,7 +641,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const isPayNowPage = document.getElementById('pay-now-btn') !== null;
 
   // ─── API Endpoints ─────────────────────────────────────
-  const API_BASE = 'https://car.adamvacations.com/cms/cms/car_cms/';  // Change if your API prefix is different
+  const API_BASE = '/cms/cms/car_cms/';  // Change if your API prefix is different
   const ADDON_API = `${API_BASE}cars/`;
 
   // ─── Helpers ───────────────────────────────────────────
@@ -1445,7 +1445,7 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log("Sending to backend:", formData);
 
     try {
-      const response = await fetch('https://localhost:32769/api/CarRentalEnquiries', {
+      const response = await fetch('/api/CarRentalEnquiries', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData)
