@@ -238,7 +238,7 @@
 
 .top-serch {
     position: relative;
-    margin-top: -41px;
+    margin-top: -507px;
     z-index: 9;
 }
 
@@ -1586,24 +1586,24 @@ input[type="time"] {
 .background-home {
     background: url(../img/car-banner-home-1.jpg) no-repeat;
     width: 100%;
-    height: 550px;
+    height: 100vh;
     position: relative;
 }
 
 .background-home h1 {
-    font-size: 42px;
+    font-size: 35px;
     font-weight:800;
     color: #101212;
-    margin: 240px 0 25px;
+    margin: 72px 0 25px;
 }
 .background-home p {
-    font-size: 30px;
+    font-size: 25px;
     font-weight: 600;
     color: #101212;
 
 }
 .background-home span {
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 500;
     color: #101212;
 
@@ -1615,14 +1615,14 @@ input[type="time"] {
         width: inherit;
 animation-name: fadeIn;
 }
-
+.background-home .carbn1 img{height:100vh;}
 
 /* Apply the animation to your class */
 
 .background-home .carbn2 {
     position: absolute;
     right: 77px;
-    top: 49%;
+    top: 15%;
     z-index: 9;
     width: inherit;
   animation-name: fadeInDown;
