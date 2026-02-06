@@ -103,7 +103,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Load previous search
     function loadPreviousSearch() {
-      const saved = localStorage.getItem('lastCarRentalSearch');
+      const saved = sessionStorage.getItem('lastCarRentalSearch');
       if (!saved) return;
       try {
         const data = JSON.parse(saved);
@@ -203,9 +203,9 @@ document.addEventListener('DOMContentLoaded', () => {
       };
 
       try {
-        localStorage.setItem('lastCarRentalSearch', JSON.stringify(bookingData));
+        sessionStorage.setItem('lastCarRentalSearch', JSON.stringify(bookingData));
         // Optional backend call (fire-and-forget)
-        fetch('https://your-domain.com/api/CarRentalEnquiries/', {
+        fetch('/api/CarRentalEnquiries/', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(bookingData)
@@ -274,7 +274,7 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         try {
-          localStorage.setItem('selectedCar', JSON.stringify(selectedCar));
+          sessionStorage.setItem('selectedCar', JSON.stringify(selectedCar));
           setTimeout(() => {
             window.location.href = 'addon-extra.html';
           }, 400);

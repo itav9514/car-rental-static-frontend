@@ -130,7 +130,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // 4. Send to backend
         try {
-            const response = await fetch('https://localhost:32769/api/CarRentalEnquiries/', {   // ← change this URL
+            const response = await fetch('/api/CarRentalEnquiries/', {   // ← change this URL
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -148,7 +148,7 @@ document.addEventListener('DOMContentLoaded', () => {
             console.log('Booking successful:', result);
 
             alert('Booking submitted successfully! Redirecting to thank-you page...');
-            localStorage.setItem('lastBooking', JSON.stringify(result));
+            sessionStorage.setItem('lastBooking', JSON.stringify(result));
             window.location.href = '/thank-you.html';          
               // Optional: redirect
             // window.location.href = '/booking-confirmation/' + result.bookingId;
