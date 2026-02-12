@@ -1628,4 +1628,13 @@ animation-name: fadeIn;
   animation-name: fadeInDown;
 
 }
+.pickup .loc-1.size-1 {width:26%;}
+.pickup .loc-1.size-2 {width:13%; margin-left:2%;}
+.pickup .loc-1.size-3 {width:25%; margin-left:2%;}
+.pickup .loc-1.size-4 {width:13%; margin-left:2%;}
+.pickup .loc-1.size-5 {width:15%; margin-left:2%;}
+.pickup .loc-1.size-new-1 {width:30%;}
+.pickup .loc-1.size-new-2 {width:20%; margin-left:2%;}
+.pickup .loc-1.size-new-3 {width:30%; margin-left:2%;}
+.pickup .loc-1.size-new-4 {width:20%; margin-left:2%;}
 

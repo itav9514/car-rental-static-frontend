@@ -137,7 +137,15 @@ h4.text-white.mb-4{font-size:16px;         margin-top: 16px;}
     margin-top: 0;
     z-index: 99999;
 }
-
+.pickup .loc-1.size-1 {width:100%;}
+.pickup .loc-1.size-2 {width:100%; margin-left:0%;}
+.pickup .loc-1.size-3 {width:100%; margin-left:0%;}
+.pickup .loc-1.size-4 {width:100%; margin-left:0%;}
+.pickup .loc-1.size-5 {width:100%; margin-left:0%;}
+.pickup .loc-1.size-new-1 {width:100%;}
+.pickup .loc-1.size-new-2 {width:100%; margin-left:0%;}
+.pickup .loc-1.size-new-3 {width:100%; margin-left:0%;}
+.pickup .loc-1.size-new-4 {width:100%; margin-left:0%;}
 
 
 
