@@ -238,7 +238,7 @@
 
 .top-serch {
     position: relative;
-    margin-top: -397px;
+    margin-top: -270px;
     z-index: 9;
 }
 
@@ -1586,7 +1586,7 @@ input[type="time"] {
 .background-home {
     background: url(../img/car-banner-home-1.jpg) no-repeat;
     width: 100%;
-    height: 100vh;
+    height: 550px;
     position: relative;
 }
 
@@ -1594,7 +1594,7 @@ input[type="time"] {
     font-size: 35px;
     font-weight:800;
     color: #101212;
-    margin: 72px 0 25px;
+    margin: 40px 0 25px;
 }
 .background-home p {
     font-size: 25px;
@@ -1612,8 +1612,9 @@ input[type="time"] {
     position: absolute;
     right: 0;
     top: 0;
-        width: inherit;
+        width: auto;
 animation-name: fadeIn;
+height: 550px;
 }
 .background-home .carbn1 img{height:100vh;}
 
@@ -1624,7 +1625,7 @@ animation-name: fadeIn;
     right: 77px;
     top: 15%;
     z-index: 9;
-    width: inherit;
+    /* width: inherit; */
   animation-name: fadeInDown;
 
 }
